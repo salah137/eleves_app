@@ -9,24 +9,42 @@ class PaymentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer(
+    return BlocConsumer<AppCubit, AppState>(
         builder: (ctx, state) {
           AppCubit cubit = BlocProvider.of(ctx);
           List list = AppCubit.payement;
           return Scaffold(
             body: SafeArea(
-                child: ListView.builder(
-              itemBuilder: (ctx, i) => itemBuilder(
-                  ctx,
-                  list[i]['eleveName'],
-                  list[i]["matiere"],
-                  list[i]["payedlastmonth"],
-                  list[i]["nonPayedMonths"]),
-              itemCount: 10,
-            )),
+              child: list.length != 0
+                  ? ListView.builder(
+                      itemBuilder: (ctx, i) => itemBuilder(
+                          ctx,
+                          list[i]['eleveName'],
+                          list[i]["matiere"],
+                          list[i]["payedlastmonth"],
+                          list[i]["nonPayedMonths"]),
+                      itemCount: 10,
+                    )
+                  : Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.task,
+                            size: 50,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Il n'y a aucun eleve",
+                          )
+                        ],
+                      ),
+                    ),
+            ),
           );
         },
         listener: (ctx, state) {});
   }
 }
-
