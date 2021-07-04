@@ -11,7 +11,11 @@ class Splash extends StatelessWidget {
       body: SplashScreen(
         seconds: 5,
         navigateAfterSeconds: HomePage(),
-        title: Text('centre icome plus'),
+        image: Image(
+          image: AssetImage("assets/images/209290103_1798394810347180_7350979293146039910_n.jpg"),
+          fit: BoxFit.cover,
+        ),
+        photoSize: 100,
       ),
     );
   }

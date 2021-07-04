@@ -87,12 +87,6 @@ class AppCubit extends Cubit<AppState> {
     emit(ChangeindexState());
   }
   
-  void check() {
-    if (DateTime.now().day == 1) {
-      for (int i = 0; i < payement.length; i++) {
-        if (p) {}
-      }
-    }
-  }
+
   
 }
