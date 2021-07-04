@@ -1,4 +1,7 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:main/screens/EleveScreen.dart';
+import 'package:main/screens/PaymentScreen.dart';
 import 'package:main/shared/cubit/AppStates.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -7,6 +10,12 @@ class AppCubit extends Cubit<AppState> {
 
   static Database? database;
 
+  int currenIndex = 0;
+  List<Widget> screens = [
+    ElevesScreen(),
+    PaymentScreen(),
+  ];
+  
   // Lists
   static List<Map> elevePrimaire = [];
   static List<Map> elevecollege = [];
