@@ -7,9 +7,12 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: 5,
-      navigateAfterSeconds: HomePage(),
+    return Scaffold(
+      body: SplashScreen(
+        seconds: 5,
+        navigateAfterSeconds: HomePage(),
+        title: Text('centre icome plus'),
+      ),
     );
   }
 }

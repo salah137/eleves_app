@@ -12,10 +12,10 @@ class AppCubit extends Cubit<AppState> {
 
   int currenIndex = 0;
   List<Widget> screens = [
-    ElevesScreen(),
     PaymentScreen(),
+    ElevesScreen(),
   ];
-  
+
   // Lists
   static List<Map> elevePrimaire = [];
   static List<Map> elevecollege = [];
@@ -81,4 +81,18 @@ class AppCubit extends Cubit<AppState> {
     );
     emit(GetDataState());
   }
+
+  void changeindex(int index) {
+    currenIndex = index;
+    emit(ChangeindexState());
+  }
+  
+  void check() {
+    if (DateTime.now().day == 1) {
+      for (int i = 0; i < payement.length; i++) {
+        if (p) {}
+      }
+    }
+  }
+  
 }
