@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main/screens/PaymentScreen.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
+import 'package:main/shared/cubit/AppStates.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (ctx) => AppCubit()..createDataBase(),
-      child: BlocConsumer(
+      child: BlocConsumer<AppCubit,AppState>(
         builder: (ctx, state) => MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
