@@ -1,16 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:main/screens/SelectMatiere.dart';
 
 class SelectEleve extends StatefulWidget {
   SelectEleve(this.name);
   final name;
 
   @override
-  _SelectEleveState createState() => _SelectEleveState();
+  SelectEleveState createState() => SelectEleveState(name);
 }
 
-class _SelectEleveState extends State<SelectEleve> {
+class SelectEleveState extends State<SelectEleve> {
   var _radioval;
+  final name;
 
+  SelectEleveState(this.name);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +32,17 @@ class _SelectEleveState extends State<SelectEleve> {
                   onChanged: (v) {
                     setState(() {
                       _radioval = v;
+                      sleep(
+                        Duration(seconds: 1),
+                      );
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => SelectMatiere(
+                            name: name,
+                            level: _radioval,
+                          ),
+                        ),
+                      );
                     });
                   }),
               SizedBox(
@@ -43,6 +59,17 @@ class _SelectEleveState extends State<SelectEleve> {
                   onChanged: (v) {
                     setState(() {
                       _radioval = v;
+                      sleep(
+                        Duration(seconds: 1),
+                      );
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => SelectMatiere(
+                            name: name,
+                            level: _radioval,
+                          ),
+                        ),
+                      );
                     });
                   }),
               SizedBox(
@@ -59,13 +86,23 @@ class _SelectEleveState extends State<SelectEleve> {
                   onChanged: (v) {
                     setState(() {
                       _radioval = v;
+                      sleep(
+                        Duration(seconds: 1),
+                      );
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => SelectMatiere(
+                            name: name,
+                            level: _radioval,
+                          ),
+                        ),
+                      );
                     });
                   }),
               SizedBox(
                 height: 5,
               ),
               Text("Lycce"),
-              
             ],
           ),
           Row(
@@ -76,11 +113,23 @@ class _SelectEleveState extends State<SelectEleve> {
                   onChanged: (v) {
                     setState(() {
                       _radioval = v;
+                      sleep(
+                        Duration(seconds: 1),
+                      );
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => SelectMatiere(
+                            name: name,
+                            level: _radioval,
+                          ),
+                        ),
+                      );
                     });
                   }),
               SizedBox(
                 height: 5,
-              ),Text("Langue"),
+              ),
+              Text("Langue"),
             ],
           )
         ],
