@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:main/screens/SelectMatiere.dart';
@@ -32,9 +31,6 @@ class SelectEleveState extends State<SelectEleve> {
                   onChanged: (v) {
                     setState(() {
                       _radioval = v;
-                      sleep(
-                        Duration(seconds: 1),
-                      );
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (ctx) => SelectMatiere(
@@ -59,9 +55,6 @@ class SelectEleveState extends State<SelectEleve> {
                   onChanged: (v) {
                     setState(() {
                       _radioval = v;
-                      sleep(
-                        Duration(seconds: 1),
-                      );
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (ctx) => SelectMatiere(
@@ -86,9 +79,6 @@ class SelectEleveState extends State<SelectEleve> {
                   onChanged: (v) {
                     setState(() {
                       _radioval = v;
-                      sleep(
-                        Duration(seconds: 1),
-                      );
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (ctx) => SelectMatiere(
@@ -113,9 +103,7 @@ class SelectEleveState extends State<SelectEleve> {
                   onChanged: (v) {
                     setState(() {
                       _radioval = v;
-                      sleep(
-                        Duration(seconds: 1),
-                      );
+                   
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (ctx) => SelectMatiere(
