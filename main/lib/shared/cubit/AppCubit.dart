@@ -8,11 +8,11 @@ class AppCubit extends Cubit<AppState> {
   static Database? database;
 
   // Lists
-  static List<Map> elevePrimaire = [];
-  static List<Map> elevecollege = [];
-  static List<Map> elevelycees = [];
-  static List<Map> elevelangs = [];
-  static List<Map> payement = [];
+    static List<Map> elevePrimaire = [];
+    static List<Map> elevecollege = [];
+    static List<Map> elevelycees = [];
+    static List<Map> elevelangs = [];
+    static List<Map> payement = [];
 
   void createDataBase() async {
     database = await openDatabase(
