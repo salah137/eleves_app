@@ -70,5 +70,6 @@ class AppCubit extends Cubit<AppState> {
     payement = await db.rawQuery(
       "SELECT * FROM payment",
     );
+    emit(GetDataState());
   }
 }
