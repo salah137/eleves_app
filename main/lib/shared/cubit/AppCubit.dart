@@ -13,13 +13,15 @@ class AppCubit extends Cubit<AppState> {
   static List<Map> elevelycees = [];
   static List<Map> elevelangs = [];
   static List<Map> payement = [];
-  
+
   void createDataBase() async {
-    
     database = await openDatabase(
       "mydata.db",
       version: 1,
-      onCreate: (db, version) {
+      onCreate: (
+        db,
+        version,
+      ) {
         // primaire
         db.execute(
             "CREATE TABLE Eleveprimaire (id INTEGER PRIMARY KEY, name TEXT, math INTEGER, french INTEGER, arabic INTEGER)");
@@ -38,24 +40,35 @@ class AppCubit extends Cubit<AppState> {
         db.execute(
             "CREATE TABLE payment (id INTEGER PRIMARY KEY, eleveName TEXT, matiere TEXT, payedlastmonth INTEGER, nonPayedMonths INTEGER");
       },
-      onOpen: (db,){}
+      onOpen: (
+        db,
+      ) async {
+        getdata(db);
+      },
     );
     emit(CreateDataState());
   }
-  
+
   void getdata(Database db) async {
-    // get data for primaire 
+    // get data for primaire
     elevePrimaire = await db.rawQuery(
-     "SELECT * FROM Eleveprimaire"
-    );    
-    // get data for college 
-    elevecollege = await db.rawQuery(
-    "SELECT * FROM Elevecollege"
+      "SELECT * FROM Eleveprimaire",
     );
-    
-    
+    // get data for college
+    elevecollege = await db.rawQuery(
+      "SELECT * FROM Elevecollege",
+    );
+    // get data for lyce
+    elevelycees = await db.rawQuery(
+      "SELECT * FROM Elevelycee",
+    );
+    // get data for langs
+    elevelangs = await db.rawQuery(
+      "SELECT * FROM Elevelangs",
+    );
+    // get data for payments
+    payement = await db.rawQuery(
+      "SELECT * FROM payment",
+    );
   }
-  
 }
-
-
