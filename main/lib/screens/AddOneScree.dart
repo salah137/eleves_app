@@ -32,7 +32,6 @@ class AddEleve extends StatelessWidget {
                           builder: (ctx) => SelectEleve(value),
                         ),
                       );
-                      ;
                     },
                   ),
                 ],
