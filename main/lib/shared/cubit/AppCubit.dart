@@ -12,8 +12,8 @@ class AppCubit extends Cubit<AppState> {
 
   int currenIndex = 0;
   List<Widget> screens = [
-    PaymentScreen(),
-    ElevesScreen(),
+      PaymentScreen(),
+      ElevesScreen(),
   ];
 
   // Lists
@@ -44,7 +44,7 @@ class AppCubit extends Cubit<AppState> {
 
         // langs
         db.execute(
-            "CREATE TABLE Elevelangs (id INTEGER PRIMARY KEY, name TEXT, category TEXT, english INTEGER)");
+            "CREATE TABLE Elevelangs (id INTEGER PRIMARY KEY, name TEXT, category TEXT, english INTEGER, french INTEGER)");
         // payments
         db.execute(
             "CREATE TABLE payment (id INTEGER PRIMARY KEY, eleveName TEXT, matiere TEXT, payedlastmonth INTEGER, nonPayedMonths INTEGER)");
@@ -194,5 +194,5 @@ class AppCubit extends Cubit<AppState> {
     emit(InsertDataLangsState());
   }
 
-
+  void addLangsState(){}
 }
