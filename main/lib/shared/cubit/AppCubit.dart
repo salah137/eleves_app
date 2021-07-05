@@ -214,4 +214,14 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
 
   }
+
+  void ChekPayments() async {
+    if(DateTime.now().day == 1){
+      for(int i = 0; i < payement.length; i++) {
+        if(payement[i]["payedlastmonth"] == 0){
+          payement[i]["nonPayedMonths"]+= payement[i]["nonPayedMonths"];
+        }
+      }
+    }
+  }
 }
