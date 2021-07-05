@@ -22,8 +22,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa0f67b8-8c17-4403-a3e7-f86ad498174c" name="Default Changelist" comment="">
+    <list default="true" id="aa0f67b8-8c17-4403-a3e7-f86ad498174c" name="Default Changelist" comment="Initail">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/lib/screens/SelectEleveClass.dart" beforeDir="false" afterPath="$PROJECT_DIR$/main/lib/screens/SelectEleveClass.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/lib/screens/SelectMatiere.dart" beforeDir="false" afterPath="$PROJECT_DIR$/main/lib/screens/SelectMatiere.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/lib/shared/cubit/AppCubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/main/lib/shared/cubit/AppCubit.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/flutter/bin/cache/dart-sdk" />
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -59,6 +62,14 @@
       <option name="presentableId" value="Default" />
       <updated>1625429958522</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initail">
+      <created>1625430347296</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1625430347296</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -72,18 +83,26 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initail" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initail" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="0" y="19" width="1024" height="722" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1625430165081">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
     <state x="0" y="19" width="1024" height="722" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1024.741@0.0.1024.741" timestamp="1625430165081" />
-    <state x="16" y="5" key="SettingsEditor" timestamp="1625430216396">
+    <state x="295" y="128" width="424" height="478" key="FileChooserDialogImpl" timestamp="1625430256351">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state x="16" y="5" key="SettingsEditor/0.0.1024.741@0.0.1024.741" timestamp="1625430216396" />
-    <state x="319" y="283" width="376" height="168" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1625429993136">
+    <state x="295" y="128" width="424" height="478" key="FileChooserDialogImpl/0.0.1024.741@0.0.1024.741" timestamp="1625430256351" />
+    <state x="-103" y="11" key="SettingsEditor" timestamp="1625430264546">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state x="319" y="283" width="376" height="168" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1024.741@0.0.1024.741" timestamp="1625429993136" />
+    <state x="-103" y="11" key="SettingsEditor/0.0.1024.741@0.0.1024.741" timestamp="1625430264546" />
+    <state x="319" y="283" width="386" height="174" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1625430307677">
+      <screen x="0" y="0" width="1024" height="741" />
+    </state>
+    <state x="319" y="283" width="386" height="174" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1024.741@0.0.1024.741" timestamp="1625430307677" />
   </component>
 </project>
