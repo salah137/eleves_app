@@ -15,3 +15,4 @@ class InsertDataCollegeState extends AppState{}
 class InsertDataLycceState extends AppState{}
 
 class InsertDataLangsState extends AppState{}
+

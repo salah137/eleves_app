@@ -12,8 +12,8 @@ class AppCubit extends Cubit<AppState> {
 
   int currenIndex = 0;
   List<Widget> screens = [
-      PaymentScreen(),
-      ElevesScreen(),
+    PaymentScreen(),
+    ElevesScreen(),
   ];
 
   // Lists
@@ -44,7 +44,7 @@ class AppCubit extends Cubit<AppState> {
 
         // langs
         db.execute(
-            "CREATE TABLE Elevelangs (id INTEGER PRIMARY KEY, name TEXT, category TEXT, english INTEGER, french INTEGER)");
+            "CREATE TABLE Elevelangs (id INTEGER PRIMARY KEY, name TEXT, category INTEGER, english INTEGER, french INTEGER)");
         // payments
         db.execute(
             "CREATE TABLE payment (id INTEGER PRIMARY KEY, eleveName TEXT, matiere TEXT, payedlastmonth INTEGER, nonPayedMonths INTEGER)");
@@ -116,6 +116,7 @@ class AppCubit extends Cubit<AppState> {
       },
     );
     emit(InsertDataPrimaryState());
+    getdata(database!);
   }
 
   void addCollegeStudent(
@@ -154,17 +155,18 @@ class AppCubit extends Cubit<AppState> {
       },
     );
     emit(InsertDataCollegeState());
+    getdata(database!);
+
   }
 
-  void addLyceeStudent(
-      String name, bool french, bool math, bool pc, bool svt) async {
+  void addLyceeStudent(String name, bool french, bool math, bool pc, bool svt) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int pcisTrue = pc ? 1 : 0;
     int svtisTrue = svt ? 1 : 0;
 
     await database!.transaction(
-          (txn) async {
+      (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevelycee(name,math,french,physic,svt) VALUES(?,?,?,?)",
           [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue],
@@ -192,7 +194,25 @@ class AppCubit extends Cubit<AppState> {
       },
     );
     emit(InsertDataLangsState());
+    getdata(database!);
+
   }
 
-  void addLangsState(){}
+  void addLangsState(String name, bool isBig, bool english, bool french) async {
+    int isFrench = french ? 1 : 0;
+    int isEnglish = english ? 1 : 0;
+
+    int category = isBig ? 0 : 1;
+    database!.transaction(
+      (txn) async {
+        txn.rawInsert(
+            "INSERT INTO Elevelangs(name,category,english,french) VALUES(?,?,?,?)",
+            [name,category,isEnglish,isFrench],
+        );
+      },
+    );
+    emit(InsertDataLangsState(),);
+    getdata(database!);
+
+  }
 }
