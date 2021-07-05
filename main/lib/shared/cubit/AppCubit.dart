@@ -115,5 +115,84 @@ class AppCubit extends Cubit<AppState> {
           );
       },
     );
+    emit(InsertDataPrimaryState());
   }
+
+  void addCollegeStudent(
+      String name, bool french, bool math, bool pc, bool svt) async {
+    int mathisTrue = math ? 1 : 0;
+    int frenchisTrue = french ? 1 : 0;
+    int pcisTrue = pc ? 1 : 0;
+    int svtisTrue = svt ? 1 : 0;
+
+    await database!.transaction(
+      (txn) async {
+        txn.rawInsert(
+          "INSERT INTO Elevecollege(name,math,french,physic,svt) VALUES(?,?,?,?)",
+          [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue],
+        );
+        if (math)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "math", 1, 0],
+          );
+        if (french)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "francer", 1, 0],
+          );
+        if (pc)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "pysics", 1, 0],
+          );
+        if (svt)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "svt", 1, 0],
+          );
+      },
+    );
+    emit(InsertDataCollegeState());
+  }
+
+  void addLyceeStudent(
+      String name, bool french, bool math, bool pc, bool svt) async {
+    int mathisTrue = math ? 1 : 0;
+    int frenchisTrue = french ? 1 : 0;
+    int pcisTrue = pc ? 1 : 0;
+    int svtisTrue = svt ? 1 : 0;
+
+    await database!.transaction(
+          (txn) async {
+        txn.rawInsert(
+          "INSERT INTO Elevelycee(name,math,french,physic,svt) VALUES(?,?,?,?)",
+          [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue],
+        );
+        if (math)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "math", 1, 0],
+          );
+        if (french)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "francer", 1, 0],
+          );
+        if (pc)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "pysics", 1, 0],
+          );
+        if (svt)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "svt", 1, 0],
+          );
+      },
+    );
+    emit(InsertDataLangsState());
+  }
+
+
 }
