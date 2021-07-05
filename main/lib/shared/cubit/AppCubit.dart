@@ -87,6 +87,11 @@ class AppCubit extends Cubit<AppState> {
     emit(ChangeindexState());
   }
   
+  void addPriMairEleve(name,math,french,arabic) async {
+    int mathisTrue = math?1:0;
+    int frenchisTrue = french?1:0;
+    int arabicisTrue = arabic?1:0;
 
+  }
   
 }

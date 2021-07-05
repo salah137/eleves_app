@@ -33,7 +33,7 @@ class SelectEleveState extends State<SelectEleve> {
                       _radioval = v;
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (ctx) => SelectMatiere(
+                          builder: (ctx) => SelectMatiereForPrimair(
                             name: name,
                             level: _radioval,
                           ),
@@ -57,7 +57,7 @@ class SelectEleveState extends State<SelectEleve> {
                       _radioval = v;
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (ctx) => SelectMatiere(
+                          builder: (ctx) => SelectMatiereForPrimair(
                             name: name,
                             level: _radioval,
                           ),
@@ -81,7 +81,7 @@ class SelectEleveState extends State<SelectEleve> {
                       _radioval = v;
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (ctx) => SelectMatiere(
+                          builder: (ctx) => SelectMatiereForPrimair(
                             name: name,
                             level: _radioval,
                           ),
@@ -106,7 +106,7 @@ class SelectEleveState extends State<SelectEleve> {
                    
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (ctx) => SelectMatiere(
+                          builder: (ctx) => SelectMatiereForPrimair(
                             name: name,
                             level: _radioval,
                           ),
