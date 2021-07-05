@@ -6,4 +6,6 @@ class CreateDataState extends AppState{}
 
 class GetDataState extends AppState{}
 
-class ChangeindexState extends AppState{}
+class ChangeIndexState extends AppState{}
+
+class InsertDataPrimaryState extends AppState{}

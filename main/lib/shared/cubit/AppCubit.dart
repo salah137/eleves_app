@@ -84,20 +84,35 @@ class AppCubit extends Cubit<AppState> {
 
   void changeindex(int index) {
     currenIndex = index;
-    emit(ChangeindexState());
+    emit(ChangeIndexState());
   }
 
   void addPriMairEleve(String name, bool math, bool french, bool arabic) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int arabicisTrue = arabic ? 1 : 0;
-    database!.transaction(
+    await database!.transaction(
       (txn) async {
         await txn.rawInsert(
           "INSERT INTO Eleveprimaire(name,math,french,arabic) VALUES(?,?,?,?)",
           [name, mathisTrue, frenchisTrue, arabicisTrue],
         );
         print("data primaire is inserted");
+        if (math)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "math", 1, 0],
+          );
+        if (french)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "francer", 1, 0],
+          );
+        if (arabic)
+          await txn.rawInsert(
+            "INSERT INTO payment (eleveName,matiere,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            [name, "arabe", 1, 0],
+          );
       },
     );
   }
