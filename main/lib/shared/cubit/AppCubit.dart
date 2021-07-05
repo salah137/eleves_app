@@ -119,8 +119,7 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void addCollegeStudent(
-      String name, bool french, bool math, bool pc, bool svt) async {
+  void addCollegeStudent(String name, bool french, bool math, bool pc, bool svt) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int pcisTrue = pc ? 1 : 0;
