@@ -4,6 +4,7 @@ import 'package:main/screens/AddOneScree.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 import 'package:main/shared/cubit/AppStates.dart';
 import 'package:conditional_builder/conditional_builder.dart';
+
 class ElevesScreen extends StatefulWidget {
   @override
   _ElevesScreenState createState() => _ElevesScreenState();
@@ -29,26 +30,26 @@ class _ElevesScreenState extends State<ElevesScreen> {
                 child: Column(
                   children: [
                     InkWell(
+                      borderRadius: BorderRadius.circular(10),
                       child: Container(
                         margin: EdgeInsets.all(5),
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             color: Colors.grey[300],
                             borderRadius: BorderRadius.circular(10)),
-                        child:
-                           Row(
-                            children: [
-                              Text("primaire"),
-                              Spacer(),
-                              Icon(!isTrue1
+                        child: Row(
+                          children: [
+                            Text("primaire"),
+                            Spacer(),
+                            Icon(
+                              !isTrue1
                                   ? Icons.arrow_right
                                   : Icons.arrow_drop_down,
-                                size:30,
-                              ),
-                            ],
-                          ),
+                              size: 30,
+                            ),
+                          ],
                         ),
-
+                      ),
                       onTap: () {
                         setState(
                           () {
@@ -58,28 +59,46 @@ class _ElevesScreenState extends State<ElevesScreen> {
                       },
                     ),
                     if (isTrue1)
-                      if (AppCubit.elevePrimaire.length != 0)
-                        ...AppCubit.elevePrimaire.map(
-                          (e) => Card(
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  child: Text('${e["name"][0]}'),
-                                  radius: 30,
+                      ConditionalBuilder(
+                        condition: AppCubit.elevePrimaire.length != 0,
+                        builder: (ctx) {
+                          return Column(
+                            children: [
+                              ...AppCubit.elevePrimaire.map(
+                                (e) => Card(
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: CircleAvatar(
+                                          child: Text('${e["name"][0]}'),
+                                          radius: 20,
+                                        ),
+                                      ),
+                                      Text(e['name']),
+                                    ],
+                                  ),
                                 ),
-                                Text(e['name']),
-                              ],
-                            ),
-                          ),
-                        ),
+                              ),
+                            ],
+                          );
+                        },
+                        fallback: (ctx) {
+                          return Container(
+                            child: Text("Il n'y a pas aucun eleve"),
+                            padding: EdgeInsets.all(5),
+                          );
+                        },
+                      ),
                     InkWell(
+                      borderRadius: BorderRadius.circular(10),
                       child: Container(
-
                         margin: EdgeInsets.all(5),
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10)),                        child: Row(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
                           children: [
                             Text("collee"),
                             Spacer(),
@@ -97,29 +116,44 @@ class _ElevesScreenState extends State<ElevesScreen> {
                         );
                       },
                     ),
-                    if (isTrue1)
-                      if (AppCubit.elevecollege.length != 0)
-                        ...AppCubit.elevecollege.map(
-                          (e) => Card(
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  child: Text('${e["name"][0]}'),
-                                  radius: 30,
+                    if (isTrue2)
+                      ConditionalBuilder(
+                        condition: AppCubit.elevecollege.length != 0,
+                        builder: (ctx) {
+                          return Column(
+                            children: [
+                              ...AppCubit.elevecollege.map(
+                                (e) => Card(
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        child: Text('${e["name"][0]}'),
+                                        radius: 20,
+                                      ),
+                                      Text(e['name']),
+                                    ],
+                                  ),
                                 ),
-                                Text(e['name']),
-                              ],
-                            ),
-                          ),
-                        ),
+                              ),
+                            ],
+                          );
+                        },
+                        fallback: (ctx) {
+                          return Container(
+                            child: Text("Il n'y a pas aucun eleve"),
+                            padding: EdgeInsets.all(5),
+                          );
+                        },
+                      ),
                     InkWell(
+                      borderRadius: BorderRadius.circular(10),
                       child: Container(
-
                         margin: EdgeInsets.all(5),
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10)),                        child: Row(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
                           children: [
                             Text("lycee"),
                             Spacer(),
@@ -137,38 +171,44 @@ class _ElevesScreenState extends State<ElevesScreen> {
                         );
                       },
                     ),
-                     if (isTrue1)
-                       ConditionalBuilder(
-                         condition: AppCubit.elevelycees.length != 0,
-                         builder: (ctx){
-                           return Column(
-                             children: [
-                               ...AppCubit.elevecollege.map(
-                                     (e) => Card(
-                                   child: Row(
-                                     children: [
-                                       CircleAvatar(
-                                         child: Text('${e["name"][0]}'),
-                                         radius: 30,
-                                       ),
-                                       Text(e['name']),
-                                     ],
-                                   ),
-                                 ),
-                               ),
-                             ],
-                           );
-                         },
-
-                       ),
+                    if (isTrue3)
+                      ConditionalBuilder(
+                        condition: AppCubit.elevecollege.length != 0,
+                        builder: (ctx) {
+                          return Column(
+                            children: [
+                              ...AppCubit.elevecollege.map(
+                                (e) => Card(
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        child: Text('${e["name"][0]}'),
+                                        radius: 20,
+                                      ),
+                                      Text(e['name']),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                        fallback: (ctx) {
+                          return Container(
+                            child: Text("Il n'y a pas aucun eleve"),
+                            padding: EdgeInsets.all(5),
+                          );
+                        },
+                      ),
                     InkWell(
+                      borderRadius: BorderRadius.circular(10),
                       child: Container(
-
                         margin: EdgeInsets.all(5),
                         padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10)),                        child: Row(
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
                           children: [
                             Text("langues"),
                             Spacer(),
@@ -186,21 +226,35 @@ class _ElevesScreenState extends State<ElevesScreen> {
                         );
                       },
                     ),
-                    if (isTrue1)
-                      if (AppCubit.elevelangs.length != 0)
-                        ...AppCubit.elevePrimaire.map(
-                          (e) => Card(
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  child: Text('${e["name"][0]}'),
-                                  radius: 30,
+                    if (isTrue4)
+                      ConditionalBuilder(
+                        condition: AppCubit.elevelangs.length != 0,
+                        builder: (ctx) {
+                          return Column(
+                            children: [
+                              ...AppCubit.elevelangs.map(
+                                (e) => Card(
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        child: Text('${e["name"][0]}'),
+                                        radius: 20,
+                                      ),
+                                      Text(e['name']),
+                                    ],
+                                  ),
                                 ),
-                                Text(e['name']),
-                              ],
-                            ),
-                          ),
-                        ),
+                              ),
+                            ],
+                          );
+                        },
+                        fallback: (ctx) {
+                          return Container(
+                            child: Text("Il n'y a pas aucun eleve"),
+                            padding: EdgeInsets.all(5),
+                          );
+                        },
+                      )
                   ],
                 ),
               ),

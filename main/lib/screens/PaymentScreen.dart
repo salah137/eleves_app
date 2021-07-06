@@ -22,7 +22,7 @@ class PaymentScreen extends StatelessWidget {
                           list[i]["matiere"],
                           list[i]["payedlastmonth"],
                           list[i]["nonPayedMonths"]),
-                      itemCount: 10,
+                      itemCount: AppCubit.payement.length,
                     )
                   : Center(
                       child: Column(
