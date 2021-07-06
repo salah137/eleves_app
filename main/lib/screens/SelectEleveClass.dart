@@ -100,7 +100,7 @@ class SelectEleveState extends State<SelectEleve> {
                 toNavigate = SeletCollegePrtimair(name:name);
               else if (_radioval == "Lycce") {
                 toNavigate = SeletLevelLycce(name:name);
-              } else if (_radioval == 'langs') {
+              } else if (_radioval == 'Langue') {
                 toNavigate = SeletLevelLangs(name:name);
               }
               Navigator.of(context).push(

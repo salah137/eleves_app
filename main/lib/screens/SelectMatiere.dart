@@ -99,7 +99,7 @@ class SelectMatiereForCollege extends StatefulWidget {
       _SelectMatiereForCollegeState(name, level, clas);
 }
 
-class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
+class _SelectMatiereForCollegeState extends State<SelectMatiereForCollege> {
   final name;
   final level;
   final clas;
@@ -196,7 +196,7 @@ class SelectMatiereForLycce extends StatefulWidget {
       _SelectMatiereForLycceState(name, level, clas);
 }
 
-class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
+class _SelectMatiereForLycceState extends State<SelectMatiereForLycce> {
   final name;
   final level;
   final clas;
@@ -293,7 +293,7 @@ class SelectMatiereForLangs extends StatefulWidget {
       _SelectMatiereForLangsState(name, level, clas);
 }
 
-class _SelectMatiereForLangsState extends State<SelectMatiereForPrimair> {
+class _SelectMatiereForLangsState extends State<SelectMatiereForLangs> {
   final name;
   final level;
   final clas;

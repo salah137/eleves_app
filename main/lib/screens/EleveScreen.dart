@@ -173,11 +173,11 @@ class _ElevesScreenState extends State<ElevesScreen> {
                     ),
                     if (isTrue3)
                       ConditionalBuilder(
-                        condition: AppCubit.elevecollege.length != 0,
+                        condition: AppCubit.elevelycees.length != 0,
                         builder: (ctx) {
                           return Column(
                             children: [
-                              ...AppCubit.elevecollege.map(
+                              ...AppCubit.elevelycees.map(
                                 (e) => Card(
                                   child: Row(
                                     children: [

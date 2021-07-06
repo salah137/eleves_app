@@ -33,7 +33,7 @@ class AppCubit extends Cubit<AppState> {
       ) {
         // primaire
         db.execute(
-            "CREATE TABLE Eleveprimaire (id INTEGER PRIMARY KEY, name TEXT, math INTEGER, french INTEGER, arabic INTEGER, level INTEGER, )");
+            "CREATE TABLE Eleveprimaire (id INTEGER PRIMARY KEY, name TEXT, math INTEGER, french INTEGER, arabic INTEGER, level INTEGER )");
         // college
         db.execute(
             "CREATE TABLE Elevecollege (id INTEGER PRIMARY KEY, name TEXT, math INTEGER, french INTEGER, physic INTEGER, svt INTEGER, level INTEGER)");
@@ -191,7 +191,7 @@ class AppCubit extends Cubit<AppState> {
           );
       },
     );
-    emit(InsertDataLangsState());
+    emit(InsertDataLycceState());
     getdata(database!);
   }
 

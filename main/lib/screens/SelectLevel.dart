@@ -48,18 +48,7 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
             },
             title: Text("2ere anne"),
           ),
-          RadioListTile(
-            value: 1,
-            groupValue: level,
-            onChanged: (v) {
-              setState(
-                () {
-                  level = v;
-                },
-              );
-            },
-            title: Text("1ere anne"),
-          ),
+
           RadioListTile(
             value: 3,
             groupValue: level,
@@ -169,7 +158,7 @@ class _SeletLevelCollegeState extends State<SeletCollegePrtimair> {
             title: Text("2ere anne"),
           ),
           RadioListTile(
-            value: 1,
+            value: 3,
             groupValue: level,
             onChanged: (v) {
               setState(
@@ -178,7 +167,7 @@ class _SeletLevelCollegeState extends State<SeletCollegePrtimair> {
                 },
               );
             },
-            title: Text("1ere anne"),
+            title: Text("3ere anne"),
           ),
         ],
       ),
@@ -242,18 +231,7 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
             },
             title: Text("2ere anne"),
           ),
-          RadioListTile(
-            value: 1,
-            groupValue: level,
-            onChanged: (v) {
-              setState(
-                () {
-                  level = v;
-                },
-              );
-            },
-            title: Text("1ere anne"),
-          ),
+          
           RadioListTile(
             value: 3,
             groupValue: level,
