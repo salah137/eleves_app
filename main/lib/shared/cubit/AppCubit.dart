@@ -248,19 +248,18 @@ class AppCubit extends Cubit<AppState> {
           model["id"],
         ],
       );
-    } else if(elevecollege.contains(model)) {
+    } else if (elevecollege.contains(model)) {
       database!.rawUpdate(
-        "UPDATE Elevecollege SET name =?, math = ?, french = ?, svt =?, physic = ? WHERE id =?",
-        [
-          model["name"],
-          model["math"],
-          model["french"],
-          model["svt"],
-          model["physic"],
-          model["id"]
-        ]
-      );
-    } else if(elevelycees.contains(model)){
+          "UPDATE Elevecollege SET name =?, math = ?, french = ?, svt =?, physic = ? WHERE id =?",
+          [
+            model["name"],
+            model["math"],
+            model["french"],
+            model["svt"],
+            model["physic"],
+            model["id"]
+          ]);
+    } else if (elevelycees.contains(model)) {
       database!.rawUpdate(
           "UPDATE Elevelycee SET name =?, math = ?, french = ?, svt =?, physic = ? WHERE id =?",
           [
@@ -270,11 +269,18 @@ class AppCubit extends Cubit<AppState> {
             model["svt"],
             model["physic"],
             model["id"]
-          ]
-      );
-
+          ]);
+    } else if (elevelangs.contains(model)) {
+      database!.rawUpdate(
+          "UPDATE Elevelangs SET name =?, category = ?, french = ?, english = ?,  WHERE id =?",
+          [
+            model["name"],
+            model["category"],
+            model["french"],
+            model["english"],
+            model["id"]
+          ]);
     }
-
   }
 
   void ChekPayments() async {
