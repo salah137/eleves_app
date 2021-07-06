@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
         return Scaffold(
           body: cubit.screens[cubit.currenIndex],
           bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Colors.pink,
             onTap: cubit.changeindex,
             currentIndex: cubit.currenIndex,
             items: [

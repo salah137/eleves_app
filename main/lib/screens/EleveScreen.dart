@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main/screens/AddOneScree.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 import 'package:main/shared/cubit/AppStates.dart';
-
+import 'package:conditional_builder/conditional_builder.dart';
 class ElevesScreen extends StatefulWidget {
   @override
   _ElevesScreenState createState() => _ElevesScreenState();
@@ -30,17 +30,25 @@ class _ElevesScreenState extends State<ElevesScreen> {
                   children: [
                     InkWell(
                       child: Container(
-                        color: Colors.grey[300],
-                        child: Row(
-                          children: [
-                            Text("primaire"),
-                            Spacer(),
-                            Icon(!isTrue1
-                                ? Icons.arrow_right
-                                : Icons.arrow_drop_down),
-                          ],
+                        margin: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(10)),
+                        child:
+                           Row(
+                            children: [
+                              Text("primaire"),
+                              Spacer(),
+                              Icon(!isTrue1
+                                  ? Icons.arrow_right
+                                  : Icons.arrow_drop_down,
+                                size:30,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
+
                       onTap: () {
                         setState(
                           () {
@@ -66,8 +74,12 @@ class _ElevesScreenState extends State<ElevesScreen> {
                         ),
                     InkWell(
                       child: Container(
-                        color: Colors.grey[300],
-                        child: Row(
+
+                        margin: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(10)),                        child: Row(
                           children: [
                             Text("collee"),
                             Spacer(),
@@ -102,8 +114,12 @@ class _ElevesScreenState extends State<ElevesScreen> {
                         ),
                     InkWell(
                       child: Container(
-                        color: Colors.grey[300],
-                        child: Row(
+
+                        margin: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(10)),                        child: Row(
                           children: [
                             Text("lycee"),
                             Spacer(),
@@ -121,25 +137,38 @@ class _ElevesScreenState extends State<ElevesScreen> {
                         );
                       },
                     ),
-                    if (isTrue1)
-                      if (AppCubit.elevelycees.length != 0)
-                        ...AppCubit.elevelycees.map(
-                          (e) => Card(
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  child: Text('${e["name"][0]}'),
-                                  radius: 30,
-                                ),
-                                Text(e['name']),
-                              ],
-                            ),
-                          ),
-                        ),
+                     if (isTrue1)
+                       ConditionalBuilder(
+                         condition: AppCubit.elevelycees.length != 0,
+                         builder: (ctx){
+                           return Column(
+                             children: [
+                               ...AppCubit.elevecollege.map(
+                                     (e) => Card(
+                                   child: Row(
+                                     children: [
+                                       CircleAvatar(
+                                         child: Text('${e["name"][0]}'),
+                                         radius: 30,
+                                       ),
+                                       Text(e['name']),
+                                     ],
+                                   ),
+                                 ),
+                               ),
+                             ],
+                           );
+                         },
+
+                       ),
                     InkWell(
                       child: Container(
-                        color: Colors.grey[300],
-                        child: Row(
+
+                        margin: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(10)),                        child: Row(
                           children: [
                             Text("langues"),
                             Spacer(),
