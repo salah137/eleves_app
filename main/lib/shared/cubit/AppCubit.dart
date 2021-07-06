@@ -134,22 +134,22 @@ class AppCubit extends Cubit<AppState> {
         );
         if (math)
           await txn.rawInsert(
-            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
             [name, "math", 0, 1, 0],
           );
         if (french)
           await txn.rawInsert(
-            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
             [name, "francer", 0, 1, 0],
           );
         if (pc)
           await txn.rawInsert(
-            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
             [name, "pysics", 0, 1, 0],
           );
         if (svt)
           await txn.rawInsert(
-            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
             [name, "svt", 0, 1, 0],
           );
       },
@@ -173,22 +173,22 @@ class AppCubit extends Cubit<AppState> {
         );
         if (math)
           await txn.rawInsert(
-            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
             [name, "math", 0, 1, 0],
           );
         if (french)
           await txn.rawInsert(
-            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
             [name, "francer", 0, 1, 0],
           );
         if (pc)
           await txn.rawInsert(
-            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
             [name, "pysics", 0, 1, 0],
           );
         if (svt)
           await txn.rawInsert(
-            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?)",
+            "INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
             [name, "svt", 0, 1, 0],
           );
       },
@@ -208,6 +208,16 @@ class AppCubit extends Cubit<AppState> {
           "INSERT INTO Elevelangs(name,category,english,french) VALUES(?,?,?,?)",
           [name, category, isEnglish, isFrench],
         );
+        if(french)
+          txn.rawInsert(
+            "INSERT INTO payment  (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
+            [name,"french",0,1, 0]
+          );
+        if(english)
+          txn.rawInsert(
+              "INSERT INTO payment  (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
+              [name,"english",0,1, 0]
+          );
 
       },
     );
@@ -220,7 +230,8 @@ class AppCubit extends Cubit<AppState> {
   void ChekPayments() async {
     if (DateTime.now().day == 1) {
       for (int i = 0; i < payement.length; i++) {
-        if (payement[i]["payedlastmonth"] == 0) {
+        if (payement[i]["hepaythisMonth"] == 0) {
+          payement[i]["payedlastmonth"] = 0;
           payement[i]["nonPayedMonths"] += 1;
         }
       }
