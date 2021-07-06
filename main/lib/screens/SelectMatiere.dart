@@ -86,3 +86,250 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
         listener: (ctx, state) {});
   }
 }
+
+class SelectMatiereForCollege extends StatefulWidget {
+  SelectMatiereForCollege({Key? key, this.name, this.level, this.clas}) : super(key: key);
+  final name;
+  final level;
+  final clas;
+  @override
+  _SelectMatiereForCollegeState createState() =>
+      _SelectMatiereForCollegeState(name,level,clas);
+}
+
+class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
+  final name;
+  final level;
+  final clas;
+  bool math = false;
+
+  bool french = false;
+
+  bool arabic = false;
+
+  _SelectMatiereForCollegeState(this.name , this.level, this.clas);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<AppCubit, AppState>(
+        builder: (ctx, state) {
+          AppCubit cubit = BlocProvider.of(ctx);
+          return Scaffold(
+            body: SafeArea(
+              child: Column(
+                children: [
+                  Text("Selecter Les matiere"),
+                  CheckboxListTile(
+                    value: math,
+                    onChanged: (v) {
+                      setState(
+                            () {
+                          math = v!;
+                        },
+                      );
+                    },
+                    title: Text('Math'),
+                  ),
+                  CheckboxListTile(
+                    value: french,
+                    onChanged: (v) {
+                      setState(
+                            () {
+                          french = v!;
+                        },
+                      );
+                    },
+                    title: Text('francais'),
+                  ),
+                  CheckboxListTile(
+                    value: arabic,
+                    onChanged: (v) {
+                      setState(
+                            () {
+                          arabic = v!;
+                        },
+                      );
+                    },
+                    title: Text('Arabic'),
+                  ),
+                ],
+              ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () async {
+                cubit.addPriMairEleve(name, math, french, arabic,clas);
+                Navigator.of(ctx).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (ctx) => HomePage()),
+                        (route) => false);
+              },
+              child: Icon(Icons.done),
+            ),
+          );
+        },
+        listener: (ctx, state) {});
+  }
+}
+class SelectMatiereForLycce extends StatefulWidget {
+  SelectMatiereForLycce({Key? key, this.name, this.level, this.clas}) : super(key: key);
+  final name;
+  final level;
+  final clas;
+  @override
+  _SelectMatiereForLycceState createState() =>
+      _SelectMatiereForLycceState(name,level,clas);
+}
+
+class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
+  final name;
+  final level;
+  final clas;
+  bool math = false;
+
+  bool french = false;
+
+  bool arabic = false;
+
+  _SelectMatiereForLycceState(this.name , this.level, this.clas);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<AppCubit, AppState>(
+        builder: (ctx, state) {
+          AppCubit cubit = BlocProvider.of(ctx);
+          return Scaffold(
+            body: SafeArea(
+              child: Column(
+                children: [
+                  Text("Selecter Les matiere"),
+                  CheckboxListTile(
+                    value: math,
+                    onChanged: (v) {
+                      setState(
+                            () {
+                          math = v!;
+                        },
+                      );
+                    },
+                    title: Text('Math'),
+                  ),
+                  CheckboxListTile(
+                    value: french,
+                    onChanged: (v) {
+                      setState(
+                            () {
+                          french = v!;
+                        },
+                      );
+                    },
+                    title: Text('francais'),
+                  ),
+                  CheckboxListTile(
+                    value: arabic,
+                    onChanged: (v) {
+                      setState(
+                            () {
+                          arabic = v!;
+                        },
+                      );
+                    },
+                    title: Text('Arabic'),
+                  ),
+                ],
+              ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () async {
+                cubit.addPriMairEleve(name, math, french, arabic,clas);
+                Navigator.of(ctx).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (ctx) => HomePage()),
+                        (route) => false);
+              },
+              child: Icon(Icons.done),
+            ),
+          );
+        },
+        listener: (ctx, state) {});
+  }
+}
+class SelectMatiereForLangs extends StatefulWidget {
+  SelectMatiereForLangs({Key? key, this.name, this.level, this.clas}) : super(key: key);
+  final name;
+  final level;
+  final clas;
+  @override
+  _SelectMatiereForLangsState createState() =>
+      _SelectMatiereForLangsState(name,level,clas);
+}
+
+class _SelectMatiereForLangsState extends State<SelectMatiereForPrimair> {
+  final name;
+  final level;
+  final clas;
+  bool math = false;
+
+  bool french = false;
+
+  bool arabic = false;
+
+  _SelectMatiereForLangsState(this.name , this.level, this.clas);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<AppCubit, AppState>(
+        builder: (ctx, state) {
+          AppCubit cubit = BlocProvider.of(ctx);
+          return Scaffold(
+            body: SafeArea(
+              child: Column(
+                children: [
+                  Text("Selecter Les matiere"),
+                  CheckboxListTile(
+                    value: math,
+                    onChanged: (v) {
+                      setState(
+                            () {
+                          math = v!;
+                        },
+                      );
+                    },
+                    title: Text('Math'),
+                  ),
+                  CheckboxListTile(
+                    value: french,
+                    onChanged: (v) {
+                      setState(
+                            () {
+                          french = v!;
+                        },
+                      );
+                    },
+                    title: Text('francais'),
+                  ),
+                  CheckboxListTile(
+                    value: arabic,
+                    onChanged: (v) {
+                      setState(
+                            () {
+                          arabic = v!;
+                        },
+                      );
+                    },
+                    title: Text('Arabic'),
+                  ),
+                ],
+              ),
+            ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: () async {
+                cubit.addPriMairEleve(name, math, french, arabic,clas);
+                Navigator.of(ctx).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (ctx) => HomePage()),
+                        (route) => false);
+              },
+              child: Icon(Icons.done),
+            ),
+          );
+        },
+        listener: (ctx, state) {});
+  }
+}
