@@ -27,10 +27,8 @@ class AppCubit extends Cubit<AppState> {
     database = await openDatabase(
       "mydata.db",
       version: 1,
-      onCreate: (
-        db,
-        version,
-      ) {
+      onCreate: (db,
+          version,) {
         // primaire
         db.execute(
             "CREATE TABLE Eleveprimaire (id INTEGER PRIMARY KEY, name TEXT, math INTEGER, french INTEGER, arabic INTEGER)");
@@ -49,9 +47,7 @@ class AppCubit extends Cubit<AppState> {
         db.execute(
             "CREATE TABLE payment (id INTEGER PRIMARY KEY, eleveName TEXT, matiere TEXT,hepaythisMonth INTEGER, payedlastmonth INTEGER, nonPayedMonths INTEGER)");
       },
-      onOpen: (
-        db,
-      ) async {
+      onOpen: (db,) async {
         getdata(db);
       },
     );
@@ -92,7 +88,7 @@ class AppCubit extends Cubit<AppState> {
     int frenchisTrue = french ? 1 : 0;
     int arabicisTrue = arabic ? 1 : 0;
     await database!.transaction(
-      (txn) async {
+          (txn) async {
         await txn.rawInsert(
           "INSERT INTO Eleveprimaire(name,math,french,arabic) VALUES(?,?,?,?)",
           [name, mathisTrue, frenchisTrue, arabicisTrue],
@@ -119,15 +115,15 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void addCollegeStudent(
-      String name, bool french, bool math, bool pc, bool svt) async {
+  void addCollegeStudent(String name, bool french, bool math, bool pc,
+      bool svt) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int pcisTrue = pc ? 1 : 0;
     int svtisTrue = svt ? 1 : 0;
 
     await database!.transaction(
-      (txn) async {
+          (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevecollege(name,math,french,physic,svt) VALUES(?,?,?,?)",
           [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue],
@@ -158,15 +154,15 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void addLyceeStudent(
-      String name, bool french, bool math, bool pc, bool svt) async {
+  void addLyceeStudent(String name, bool french, bool math, bool pc,
+      bool svt) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int pcisTrue = pc ? 1 : 0;
     int svtisTrue = svt ? 1 : 0;
 
     await database!.transaction(
-      (txn) async {
+          (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevelycee(name,math,french,physic,svt) VALUES(?,?,?,?)",
           [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue],
@@ -203,22 +199,21 @@ class AppCubit extends Cubit<AppState> {
 
     int category = isBig ? 0 : 1;
     database!.transaction(
-      (txn) async {
+          (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevelangs(name,category,english,french) VALUES(?,?,?,?)",
           [name, category, isEnglish, isFrench],
         );
-        if(french)
-          txn.rawInsert(
-            "INSERT INTO payment  (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
-            [name,"french",0,1, 0]
-          );
-        if(english)
+        if (french)
           txn.rawInsert(
               "INSERT INTO payment  (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
-              [name,"english",0,1, 0]
+              [name, "french", 0, 1, 0]
           );
-
+        if (english)
+          txn.rawInsert(
+              "INSERT INTO payment  (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)",
+              [name, "english", 0, 1, 0]
+          );
       },
     );
     emit(
@@ -227,13 +222,36 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
+  void UpdateData(Map model) async {
+    if (payement.contains(model)) {
+      database!.rawUpdate(
+        "UPDATE payment SET eleveName = ?,matiere = ? hepaythisMonth = ?,payedlastmonth = ?,nonPayedMonths = ? WHERE id = ?",
+        [
+          model["eleveName"],
+          model["matiere"],
+          model["hepaythisMonth"],
+          model["payedlastmonth"],
+          model["nonPayedMonths"],
+          model["id"],
+        ],
+      );
+    }
+
+    else if(elevePrimaire.contains(model)) {
+
+    }
+  }
+
   void ChekPayments() async {
-    if (DateTime.now().day == 1) {
+    if (DateTime
+        .now()
+        .day == 1) {
       for (int i = 0; i < payement.length; i++) {
         if (payement[i]["hepaythisMonth"] == 0) {
           payement[i]["payedlastmonth"] = 0;
           payement[i]["nonPayedMonths"] += 1;
         }
+        payement[i]["hepaythisMonth"] == 0;
       }
     }
   }
