@@ -5,24 +5,26 @@ import 'package:main/shared/cubit/AppCubit.dart';
 import 'package:main/shared/cubit/AppStates.dart';
 
 class SelectMatiereForPrimair extends StatefulWidget {
-  SelectMatiereForPrimair({Key? key, this.name, this.level}) : super(key: key);
+  SelectMatiereForPrimair({Key? key, this.name, this.level, this.clas}) : super(key: key);
   final name;
   final level;
-
+  final clas;
   @override
   _SelectMatiereForPrimairState createState() =>
-      _SelectMatiereForPrimairState(name);
+      _SelectMatiereForPrimairState(name,level,clas);
 }
 
 class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
   final name;
+  final level;
+  final clas;
   bool math = false;
 
   bool french = false;
 
   bool arabic = false;
 
-  _SelectMatiereForPrimairState(this.name);
+  _SelectMatiereForPrimairState(this.name , this.level, this.clas);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
-                cubit.addPriMairEleve(name, math, french, arabic);
+                cubit.addPriMairEleve(name, math, french, arabic,clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
                     (route) => false);
