@@ -41,7 +41,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
                     value: math,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           math = v!;
                         },
                       );
@@ -52,7 +52,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
                     value: french,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           french = v!;
                         },
                       );
@@ -63,7 +63,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
                     value: arabic,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           arabic = v!;
                         },
                       );
@@ -78,7 +78,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
                 cubit.addPriMairEleve(name, math, french, arabic, clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                    (route) => false);
+                        (route) => false);
               },
               child: Icon(Icons.done),
             ),
@@ -127,7 +127,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
                     value: math,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           math = v!;
                         },
                       );
@@ -138,7 +138,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
                     value: french,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           french = v!;
                         },
                       );
@@ -149,7 +149,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
                     value: svt,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           svt = v!;
                         },
                       );
@@ -160,7 +160,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
                     value: pc,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           pc = v!;
                         },
                       );
@@ -175,7 +175,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
                 cubit.addCollegeStudent(name, french, math, pc, svt, clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                    (route) => false);
+                        (route) => false);
               },
               child: Icon(Icons.done),
             ),
@@ -224,7 +224,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
                     value: math,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           math = v!;
                         },
                       );
@@ -235,7 +235,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
                     value: french,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           french = v!;
                         },
                       );
@@ -246,7 +246,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
                     value: svt,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           svt = v!;
                         },
                       );
@@ -257,7 +257,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
                     value: pc,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           pc = v!;
                         },
                       );
@@ -272,7 +272,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
                 cubit.addLyceeStudent(name, french, math, pc, svt, clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                    (route) => false);
+                        (route) => false);
               },
               child: Icon(Icons.done),
             ),
@@ -318,7 +318,7 @@ class _SelectMatiereForLangsState extends State<SelectMatiereForPrimair> {
                     value: french,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           french = v!;
                         },
                       );
@@ -329,7 +329,7 @@ class _SelectMatiereForLangsState extends State<SelectMatiereForPrimair> {
                     value: englih,
                     onChanged: (v) {
                       setState(
-                        () {
+                            () {
                           englih = v!;
                         },
                       );
@@ -344,7 +344,7 @@ class _SelectMatiereForLangsState extends State<SelectMatiereForPrimair> {
                 cubit.addLangsState(name, level, englih, french);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                    (route) => false);
+                        (route) => false);
               },
               child: Icon(Icons.done),
             ),

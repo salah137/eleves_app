@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:main/screens/SelectMatiere.dart';
 
 class SeletLevelPrtimair extends StatefulWidget {
-  SeletLevelPrtimair({Key? key}) : super(key: key);
+  final String name;
+
+  SeletLevelPrtimair({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
 
   @override
-  _SeletLevelPrtimairState createState() => _SeletLevelPrtimairState();
+  _SeletLevelPrtimairState createState() => _SeletLevelPrtimairState(name);
 }
 
 class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
   var level;
+  final name;
+
+  _SeletLevelPrtimairState(this.name);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +41,7 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -44,7 +53,7 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -56,7 +65,7 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -68,7 +77,7 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -80,7 +89,7 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -92,32 +101,44 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
             },
             title: Text("6ere anne"),
           ),
-
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        child:Icon(Icons.arrow_right)
-      ),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) {
+                return SelectMatiereForPrimair(
+                  name: name,
+                  clas: level,
+                );
+              }),
+            );
+          },
+          child: Icon(Icons.arrow_right)),
     );
   }
 }
-class SeletCollegePrtimair extends StatefulWidget {
 
+class SeletCollegePrtimair extends StatefulWidget {
+  final name;
+
+  const SeletCollegePrtimair({Key? key, this.name}) : super(key: key);
   @override
-  _SeletLevelCollegeState createState() => _SeletLevelCollegeState();
+  _SeletLevelCollegeState createState() => _SeletLevelCollegeState(name);
 }
 
 class _SeletLevelCollegeState extends State<SeletCollegePrtimair> {
   var level;
+  final name;
 
+  _SeletLevelCollegeState(this.name);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,7 +149,7 @@ class _SeletLevelCollegeState extends State<SeletCollegePrtimair> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -140,7 +161,7 @@ class _SeletLevelCollegeState extends State<SeletCollegePrtimair> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -152,7 +173,7 @@ class _SeletLevelCollegeState extends State<SeletCollegePrtimair> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -162,23 +183,36 @@ class _SeletLevelCollegeState extends State<SeletCollegePrtimair> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: (){},
-          child:Icon(Icons.arrow_right)
-      ),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (ctx) => SelectMatiereForCollege(
+                  name: name,
+                  clas: level,
+                ),
+              ),
+            );
+          },
+          child: Icon(Icons.arrow_right)),
     );
   }
 }
 
-
 class SeletLevelLycce extends StatefulWidget {
+  final name;
 
+  const SeletLevelLycce({Key? key, this.name}) : super(key: key);
   @override
-  _SeletLevelLycceState createState() => _SeletLevelLycceState();
+  _SeletLevelLycceState createState() => _SeletLevelLycceState(name);
 }
 
 class _SeletLevelLycceState extends State<SeletLevelLycce> {
   var level;
 
+  final name;
+
+  _SeletLevelLycceState(this.name);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -189,7 +223,7 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -201,7 +235,7 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -213,7 +247,7 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -225,7 +259,7 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -235,22 +269,33 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: (){},
-          child:Icon(Icons.arrow_right)
-      ),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (ctx)=> SelectMatiereForLycce(
+                  name: name,
+                  clas: level,
+                )
+              ),
+            );
+          }, child: Icon(Icons.arrow_right)),
     );
   }
 }
+
 class SeletLevelLangs extends StatefulWidget {
-  SeletLevelLangs({Key? key}) : super(key: key);
+  final name;
+  SeletLevelLangs({Key? key, this.name}) : super(key: key);
 
   @override
-  _SeletLevelLangsState createState() => _SeletLevelLangsState();
+  _SeletLevelLangsState createState() => _SeletLevelLangsState(name);
 }
 
 class _SeletLevelLangsState extends State<SeletLevelLangs> {
   var level;
+  final name;
 
+  _SeletLevelLangsState(this.name);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -261,7 +306,7 @@ class _SeletLevelLangsState extends State<SeletLevelLangs> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
@@ -273,21 +318,21 @@ class _SeletLevelLangsState extends State<SeletLevelLangs> {
             groupValue: level,
             onChanged: (v) {
               setState(
-                    () {
+                () {
                   level = v;
                 },
               );
             },
             title: Text("pour les adulte"),
           ),
-
         ],
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: (){},
-          child:Icon(Icons.arrow_right)
-      ),
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx)=>SelectMatiereForLangs(name:name,clas: level,))
+            );
+          }, child: Icon(Icons.arrow_right)),
     );
   }
 }
-

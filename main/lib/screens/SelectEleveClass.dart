@@ -95,13 +95,13 @@ class SelectEleveState extends State<SelectEleve> {
             onPressed: () {
               late Widget toNavigate;
               if (_radioval == "Primaire")
-                toNavigate = SeletLevelPrtimair();
+                toNavigate = SeletLevelPrtimair(name:name);
               else if (_radioval == "College")
-                toNavigate = SeletCollegePrtimair();
+                toNavigate = SeletCollegePrtimair(name:name);
               else if (_radioval == "Lycce") {
-                toNavigate = SeletLevelLycce();
+                toNavigate = SeletLevelLycce(name:name);
               } else if (_radioval == 'langs') {
-                toNavigate = SeletLevelLangs();
+                toNavigate = SeletLevelLangs(name:name);
               }
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (ctx) => toNavigate),
