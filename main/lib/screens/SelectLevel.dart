@@ -23,6 +23,8 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+      mainAxisAlignment:MainAxisAlignment.center,
+      
         children: [
           RadioListTile(
             value: 1,
@@ -132,6 +134,8 @@ class _SeletLevelCollegeState extends State<SeletCollegePrtimair> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+      mainAxisAlignment:MainAxisAlignment.center,
+      
         children: [
           RadioListTile(
             value: 1,
@@ -206,6 +210,8 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+              
+      mainAxisAlignment:MainAxisAlignment.center,
         children: [
           RadioListTile(
             value: 1,
@@ -278,6 +284,7 @@ class _SeletLevelLangsState extends State<SeletLevelLangs> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RadioListTile(
             value: 1,

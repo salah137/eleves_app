@@ -35,13 +35,14 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
           return Scaffold(
             body: SafeArea(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Selecter Les matiere"),
                   CheckboxListTile(
                     value: math,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           math = v!;
                         },
                       );
@@ -52,7 +53,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
                     value: french,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           french = v!;
                         },
                       );
@@ -63,7 +64,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
                     value: arabic,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           arabic = v!;
                         },
                       );
@@ -78,7 +79,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
                 cubit.addPriMairEleve(name, math, french, arabic, clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                        (route) => false);
+                    (route) => false);
               },
               child: Icon(Icons.done),
             ),
@@ -121,13 +122,14 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForCollege> {
           return Scaffold(
             body: SafeArea(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Selecter Les matiere"),
                   CheckboxListTile(
                     value: math,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           math = v!;
                         },
                       );
@@ -138,7 +140,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForCollege> {
                     value: french,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           french = v!;
                         },
                       );
@@ -149,7 +151,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForCollege> {
                     value: svt,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           svt = v!;
                         },
                       );
@@ -160,7 +162,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForCollege> {
                     value: pc,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           pc = v!;
                         },
                       );
@@ -175,7 +177,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForCollege> {
                 cubit.addCollegeStudent(name, french, math, pc, svt, clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                        (route) => false);
+                    (route) => false);
               },
               child: Icon(Icons.done),
             ),
@@ -218,13 +220,14 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForLycce> {
           return Scaffold(
             body: SafeArea(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Selecter Les matiere"),
                   CheckboxListTile(
                     value: math,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           math = v!;
                         },
                       );
@@ -235,7 +238,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForLycce> {
                     value: french,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           french = v!;
                         },
                       );
@@ -246,7 +249,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForLycce> {
                     value: svt,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           svt = v!;
                         },
                       );
@@ -257,7 +260,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForLycce> {
                     value: pc,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           pc = v!;
                         },
                       );
@@ -272,7 +275,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForLycce> {
                 cubit.addLyceeStudent(name, french, math, pc, svt, clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                        (route) => false);
+                    (route) => false);
               },
               child: Icon(Icons.done),
             ),
@@ -312,13 +315,14 @@ class _SelectMatiereForLangsState extends State<SelectMatiereForLangs> {
           return Scaffold(
             body: SafeArea(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Selecter Les Langues"),
                   CheckboxListTile(
                     value: french,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           french = v!;
                         },
                       );
@@ -329,7 +333,7 @@ class _SelectMatiereForLangsState extends State<SelectMatiereForLangs> {
                     value: englih,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           englih = v!;
                         },
                       );
@@ -341,10 +345,10 @@ class _SelectMatiereForLangsState extends State<SelectMatiereForLangs> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
-                cubit.addLangsState(name, level, englih, french);
+                cubit.addLangsState(name, clas, englih, french);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                        (route) => false);
+                    (route) => false);
               },
               child: Icon(Icons.done),
             ),

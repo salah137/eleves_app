@@ -195,15 +195,15 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void addLangsState(String name, bool isBig, bool english, bool french) async {
+  void addLangsState(String name,  isBig, bool english, bool french) async {
     int isFrench = french ? 1 : 0;
     int isEnglish = english ? 1 : 0;
 
-    int category = isBig ? 0 : 1;
+    int category = isBig;
     database!.transaction(
       (txn) async {
         txn.rawInsert(
-          "INSERT INTO Elevelangs(name,category,english,french) VALUES(?,?,?,?,?)",
+          "INSERT INTO Elevelangs(name,category,english,french) VALUES(?,?,?,?)",
           [name, category, isEnglish, isFrench],
         );
         if (french)

@@ -1,275 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main/screens/AddOneScree.dart';
+import 'package:main/shared/components/components.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 import 'package:main/shared/cubit/AppStates.dart';
 import 'package:conditional_builder/conditional_builder.dart';
 
 class ElevesScreen extends StatefulWidget {
+  const ElevesScreen({Key? key}) : super(key: key);
+
   @override
   _ElevesScreenState createState() => _ElevesScreenState();
 }
 
 class _ElevesScreenState extends State<ElevesScreen> {
-  bool isTrue1 = false;
 
-  bool isTrue2 = false;
-
-  bool isTrue3 = false;
-
-  bool isTrue4 = false;
-
-  @override
+  bool showPrimaire = false;
+  bool showCollege = false;
+  bool showLycces = false;
+  bool showLang = false;
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
         builder: (ctx, state) {
           AppCubit cubit = BlocProvider.of(ctx);
+
           return Scaffold(
-            body: SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    InkWell(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Row(
-                          children: [
-                            Text("primaire"),
-                            Spacer(),
-                            Icon(
-                              !isTrue1
-                                  ? Icons.arrow_right
-                                  : Icons.arrow_drop_down,
-                              size: 30,
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        setState(
-                          () {
-                            isTrue1 = !isTrue1;
-                          },
-                        );
-                      },
-                    ),
-                    if (isTrue1)
-                      ConditionalBuilder(
-                        condition: AppCubit.elevePrimaire.length != 0,
-                        builder: (ctx) {
-                          return Column(
-                            children: [
-                              ...AppCubit.elevePrimaire.map(
-                                (e) => Card(
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: CircleAvatar(
-                                          child: Text('${e["name"][0]}'),
-                                          radius: 20,
-                                        ),
-                                      ),
-                                      Text(e['name']),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  buildButton(
+                    "Primaire",
+                    () {
+                      setState(
+                        () {
+                          showPrimaire = !showPrimaire;
                         },
-                        fallback: (ctx) {
-                          return Container(
-                            child: Text("Il n'y a pas aucun eleve"),
-                            padding: EdgeInsets.all(5),
-                          );
-                        },
-                      ),
-                    InkWell(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Row(
-                          children: [
-                            Text("collee"),
-                            Spacer(),
-                            Icon(!isTrue2
-                                ? Icons.arrow_right
-                                : Icons.arrow_drop_down),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        setState(
-                          () {
-                            isTrue2 = !isTrue2;
-                          },
-                        );
-                      },
-                    ),
-                    if (isTrue2)
-                      ConditionalBuilder(
-                        condition: AppCubit.elevecollege.length != 0,
-                        builder: (ctx) {
-                          return Column(
-                            children: [
-                              ...AppCubit.elevecollege.map(
-                                (e) => Card(
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        child: Text('${e["name"][0]}'),
-                                        radius: 20,
-                                      ),
-                                      Text(e['name']),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                        fallback: (ctx) {
-                          return Container(
-                            child: Text("Il n'y a pas aucun eleve"),
-                            padding: EdgeInsets.all(5),
-                          );
-                        },
-                      ),
-                    InkWell(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Row(
-                          children: [
-                            Text("lycee"),
-                            Spacer(),
-                            Icon(!isTrue3
-                                ? Icons.arrow_right
-                                : Icons.arrow_drop_down),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        setState(
-                          () {
-                            isTrue3 = !isTrue3;
-                          },
-                        );
-                      },
-                    ),
-                    if (isTrue3)
-                      ConditionalBuilder(
-                        condition: AppCubit.elevelycees.length != 0,
-                        builder: (ctx) {
-                          return Column(
-                            children: [
-                              ...AppCubit.elevelycees.map(
-                                (e) => Card(
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        child: Text('${e["name"][0]}'),
-                                        radius: 20,
-                                      ),
-                                      Text(e['name']),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                        fallback: (ctx) {
-                          return Container(
-                            child: Text("Il n'y a pas aucun eleve"),
-                            padding: EdgeInsets.all(5),
-                          );
-                        },
-                      ),
-                    InkWell(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Container(
-                        margin: EdgeInsets.all(5),
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Row(
-                          children: [
-                            Text("langues"),
-                            Spacer(),
-                            Icon(!isTrue4
-                                ? Icons.arrow_right
-                                : Icons.arrow_drop_down),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        setState(
-                          () {
-                            isTrue4 = !isTrue4;
-                          },
-                        );
-                      },
-                    ),
-                    if (isTrue4)
-                      ConditionalBuilder(
-                        condition: AppCubit.elevelangs.length != 0,
-                        builder: (ctx) {
-                          return Column(
-                            children: [
-                              ...AppCubit.elevelangs.map(
-                                (e) => Card(
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        child: Text('${e["name"][0]}'),
-                                        radius: 20,
-                                      ),
-                                      Text(e['name']),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                        fallback: (ctx) {
-                          return Container(
-                            child: Text("Il n'y a pas aucun eleve"),
-                            padding: EdgeInsets.all(5),
-                          );
-                        },
-                      )
-                  ],
-                ),
-              ),
-            ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Navigator.of(ctx).push(
-                  MaterialPageRoute(
-                    builder: (ctx) => AddEleve(),
+                      );
+                    },
+                    showPrimaire,
                   ),
-                );
-              },
-              child: Icon(
-                Icons.add,
-                color: Colors.white,
+                  buildButton(
+                    "College",
+                    () {
+                      setState(() {
+                        showCollege = !showCollege;
+                      });
+                    },
+                    showCollege,
+                  ),
+                  buildButton("Lycce", (){
+                    setState(() {
+                      showLycces = !showLycces;
+                    });
+                  }, showLycces),
+                  buildButton("langs", (){setState(() {
+                    showLang = !showLang;
+                  });}, showLang)
+                ],
               ),
             ),
           );

@@ -93,16 +93,13 @@ class SelectEleveState extends State<SelectEleve> {
         ),
         floatingActionButton: FloatingActionButton(
             onPressed: () {
-              late Widget toNavigate;
-              if (_radioval == "Primaire")
-                toNavigate = SeletLevelPrtimair(name:name);
-              else if (_radioval == "College")
-                toNavigate = SeletCollegePrtimair(name:name);
-              else if (_radioval == "Lycce") {
-                toNavigate = SeletLevelLycce(name:name);
-              } else if (_radioval == 'Langue') {
-                toNavigate = SeletLevelLangs(name:name);
-              }
+              Widget toNavigate = _radioval == "Primaire"
+                  ? SeletLevelPrtimair(name: name)
+                  : _radioval == "College"
+                      ? SeletCollegePrtimair(name: name)
+                      : _radioval == "Lycce"
+                          ? SeletLevelLycce(name: name)
+                          : SeletLevelLangs(name: name);
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (ctx) => toNavigate),
               );
