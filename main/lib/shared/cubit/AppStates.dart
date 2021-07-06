@@ -17,3 +17,5 @@ class InsertDataLycceState extends AppState{}
 class InsertDataLangsState extends AppState{}
 
 class ChekPayments extends AppState{}
+
+class UpdateData extends AppState{}

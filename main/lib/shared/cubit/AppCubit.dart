@@ -119,8 +119,7 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void addCollegeStudent(
-      String name, bool french, bool math, bool pc, bool svt) async {
+  void addCollegeStudent(String name, bool french, bool math, bool pc, bool svt) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int pcisTrue = pc ? 1 : 0;
@@ -158,8 +157,7 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void addLyceeStudent(
-      String name, bool french, bool math, bool pc, bool svt) async {
+  void addLyceeStudent(String name, bool french, bool math, bool pc, bool svt) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int pcisTrue = pc ? 1 : 0;
@@ -224,7 +222,7 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void UpdateData(Map model) async {
+  void updateData(Map model) async {
     if (payement.contains(model)) {
       database!.rawUpdate(
         "UPDATE payment SET eleveName = ?,matiere = ? hepaythisMonth = ?,payedlastmonth = ?,nonPayedMonths = ? WHERE id = ?",
@@ -281,9 +279,11 @@ class AppCubit extends Cubit<AppState> {
             model["id"]
           ]);
     }
+    emit(UpdateData());
+    getdata(database!);
   }
 
-  void ChekPayments() async {
+  void chekPayments() async {
     if (DateTime.now().day == 1) {
       for (int i = 0; i < payement.length; i++) {
         if (payement[i]["hepaythisMonth"] == 0) {
@@ -293,5 +293,6 @@ class AppCubit extends Cubit<AppState> {
         payement[i]["hepaythisMonth"] == 0;
       }
     }
+    emit(ChekPayments());
   }
 }
