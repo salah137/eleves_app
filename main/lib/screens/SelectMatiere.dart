@@ -5,13 +5,14 @@ import 'package:main/shared/cubit/AppCubit.dart';
 import 'package:main/shared/cubit/AppStates.dart';
 
 class SelectMatiereForPrimair extends StatefulWidget {
-  SelectMatiereForPrimair({Key? key, this.name, this.level, this.clas}) : super(key: key);
+  SelectMatiereForPrimair({Key? key, this.name, this.level, this.clas})
+      : super(key: key);
   final name;
   final level;
   final clas;
   @override
   _SelectMatiereForPrimairState createState() =>
-      _SelectMatiereForPrimairState(name,level,clas);
+      _SelectMatiereForPrimairState(name, level, clas);
 }
 
 class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
@@ -24,7 +25,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
 
   bool arabic = false;
 
-  _SelectMatiereForPrimairState(this.name , this.level, this.clas);
+  _SelectMatiereForPrimairState(this.name, this.level, this.clas);
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +75,7 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
-                cubit.addPriMairEleve(name, math, french, arabic,clas);
+                cubit.addPriMairEleve(name, math, french, arabic, clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
                     (route) => false);
@@ -88,13 +89,14 @@ class _SelectMatiereForPrimairState extends State<SelectMatiereForPrimair> {
 }
 
 class SelectMatiereForCollege extends StatefulWidget {
-  SelectMatiereForCollege({Key? key, this.name, this.level, this.clas}) : super(key: key);
+  SelectMatiereForCollege({Key? key, this.name, this.level, this.clas})
+      : super(key: key);
   final name;
   final level;
   final clas;
   @override
   _SelectMatiereForCollegeState createState() =>
-      _SelectMatiereForCollegeState(name,level,clas);
+      _SelectMatiereForCollegeState(name, level, clas);
 }
 
 class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
@@ -105,9 +107,11 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
 
   bool french = false;
 
-  bool arabic = false;
+  bool svt = false;
 
-  _SelectMatiereForCollegeState(this.name , this.level, this.clas);
+  bool pc = false;
+
+  _SelectMatiereForCollegeState(this.name, this.level, this.clas);
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +127,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
                     value: math,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           math = v!;
                         },
                       );
@@ -134,7 +138,7 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
                     value: french,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           french = v!;
                         },
                       );
@@ -142,25 +146,36 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
                     title: Text('francais'),
                   ),
                   CheckboxListTile(
-                    value: arabic,
+                    value: svt,
                     onChanged: (v) {
                       setState(
-                            () {
-                          arabic = v!;
+                        () {
+                          svt = v!;
                         },
                       );
                     },
-                    title: Text('Arabic'),
+                    title: Text('Svt'),
+                  ),
+                  CheckboxListTile(
+                    value: pc,
+                    onChanged: (v) {
+                      setState(
+                        () {
+                          pc = v!;
+                        },
+                      );
+                    },
+                    title: Text('Physics'),
                   ),
                 ],
               ),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
-                cubit.addPriMairEleve(name, math, french, arabic,clas);
+                cubit.addCollegeStudent(name, french, math, pc, svt, clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                        (route) => false);
+                    (route) => false);
               },
               child: Icon(Icons.done),
             ),
@@ -169,14 +184,16 @@ class _SelectMatiereForCollegeState extends State<SelectMatiereForPrimair> {
         listener: (ctx, state) {});
   }
 }
+
 class SelectMatiereForLycce extends StatefulWidget {
-  SelectMatiereForLycce({Key? key, this.name, this.level, this.clas}) : super(key: key);
+  SelectMatiereForLycce({Key? key, this.name, this.level, this.clas})
+      : super(key: key);
   final name;
   final level;
   final clas;
   @override
   _SelectMatiereForLycceState createState() =>
-      _SelectMatiereForLycceState(name,level,clas);
+      _SelectMatiereForLycceState(name, level, clas);
 }
 
 class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
@@ -187,9 +204,11 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
 
   bool french = false;
 
-  bool arabic = false;
+  bool pc = false;
 
-  _SelectMatiereForLycceState(this.name , this.level, this.clas);
+  bool svt = false;
+
+  _SelectMatiereForLycceState(this.name, this.level, this.clas);
 
   @override
   Widget build(BuildContext context) {
@@ -205,7 +224,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
                     value: math,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           math = v!;
                         },
                       );
@@ -216,7 +235,7 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
                     value: french,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           french = v!;
                         },
                       );
@@ -224,25 +243,36 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
                     title: Text('francais'),
                   ),
                   CheckboxListTile(
-                    value: arabic,
+                    value: svt,
                     onChanged: (v) {
                       setState(
-                            () {
-                          arabic = v!;
+                        () {
+                          svt = v!;
                         },
                       );
                     },
-                    title: Text('Arabic'),
+                    title: Text('Svt'),
+                  ),
+                  CheckboxListTile(
+                    value: pc,
+                    onChanged: (v) {
+                      setState(
+                        () {
+                          pc = v!;
+                        },
+                      );
+                    },
+                    title: Text('Physics'),
                   ),
                 ],
               ),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
-                cubit.addPriMairEleve(name, math, french, arabic,clas);
+                cubit.addLyceeStudent(name, french, math, pc, svt, clas);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                        (route) => false);
+                    (route) => false);
               },
               child: Icon(Icons.done),
             ),
@@ -251,27 +281,28 @@ class _SelectMatiereForLycceState extends State<SelectMatiereForPrimair> {
         listener: (ctx, state) {});
   }
 }
+
 class SelectMatiereForLangs extends StatefulWidget {
-  SelectMatiereForLangs({Key? key, this.name, this.level, this.clas}) : super(key: key);
+  SelectMatiereForLangs({Key? key, this.name, this.level, this.clas})
+      : super(key: key);
   final name;
   final level;
   final clas;
   @override
   _SelectMatiereForLangsState createState() =>
-      _SelectMatiereForLangsState(name,level,clas);
+      _SelectMatiereForLangsState(name, level, clas);
 }
 
 class _SelectMatiereForLangsState extends State<SelectMatiereForPrimair> {
   final name;
   final level;
   final clas;
-  bool math = false;
 
   bool french = false;
 
-  bool arabic = false;
+  bool englih = false;
 
-  _SelectMatiereForLangsState(this.name , this.level, this.clas);
+  _SelectMatiereForLangsState(this.name, this.level, this.clas);
 
   @override
   Widget build(BuildContext context) {
@@ -282,23 +313,12 @@ class _SelectMatiereForLangsState extends State<SelectMatiereForPrimair> {
             body: SafeArea(
               child: Column(
                 children: [
-                  Text("Selecter Les matiere"),
-                  CheckboxListTile(
-                    value: math,
-                    onChanged: (v) {
-                      setState(
-                            () {
-                          math = v!;
-                        },
-                      );
-                    },
-                    title: Text('Math'),
-                  ),
+                  Text("Selecter Les Langues"),
                   CheckboxListTile(
                     value: french,
                     onChanged: (v) {
                       setState(
-                            () {
+                        () {
                           french = v!;
                         },
                       );
@@ -306,25 +326,25 @@ class _SelectMatiereForLangsState extends State<SelectMatiereForPrimair> {
                     title: Text('francais'),
                   ),
                   CheckboxListTile(
-                    value: arabic,
+                    value: englih,
                     onChanged: (v) {
                       setState(
-                            () {
-                          arabic = v!;
+                        () {
+                          englih = v!;
                         },
                       );
                     },
-                    title: Text('Arabic'),
+                    title: Text('Englih'),
                   ),
                 ],
               ),
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
-                cubit.addPriMairEleve(name, math, french, arabic,clas);
+                cubit.addLangsState(name, level, englih, french);
                 Navigator.of(ctx).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (ctx) => HomePage()),
-                        (route) => false);
+                    (route) => false);
               },
               child: Icon(Icons.done),
             ),
