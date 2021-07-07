@@ -22,6 +22,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
   bool showEnglisKids = false;
   bool showFrenchBigs = false;
   bool showFrenchKids = false;
+
   // primaire settings
   bool showPrimaire = false;
   bool showPrimaireArabic = false;
@@ -45,6 +46,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
   bool showPrimaireMath4 = false;
   bool showPrimaireMath5 = false;
   bool showPrimaireMath6 = false;
+
   // College settings
   bool showCollege = false;
   bool showCollegeFrench = false;
@@ -63,6 +65,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
   bool showCollegeSvt1 = false;
   bool showCollegeSvt2 = false;
   bool showCollegeSvt3 = false;
+
   // LyccE
   bool showLycces = false;
   bool showLyccesFrench = false;
@@ -86,58 +89,183 @@ class _ElevesScreenState extends State<ElevesScreen> {
     return BlocConsumer<AppCubit, AppState>(
         builder: (ctx, state) {
           AppCubit cubit = BlocProvider.of(ctx);
-  bool listEnglisBigs = false;
-  bool listEnglisKids = false;
-  bool listFrenchBigs = false;
-  bool listFrenchKids = false;
-  // primaire settings
+          List listEnglisBigs = AppCubit.elevelangs
+              .where((element) =>
+                  element["english"] == 1 && element["category"] == 2)
+              .toList();
+          List listEnglisKids = AppCubit.elevelangs
+              .where((element) =>
+                  element["english"] == 1 && element["category"] == 1)
+              .toList();
+          List listFrenchBigs = AppCubit.elevelangs
+              .where((element) =>
+                  element["french"] == 1 && element["category"] == 2)
+              .toList();
+          List listFrenchKids = AppCubit.elevelangs
+              .where((element) =>
+                  element["french"] == 1 && element["category"] == 1)
+              .toList();
 
-  bool listPrimaireArabic1 = false;
-  bool showPrimaireArabic2 = false;
-  bool showPrimaireArabic3 = false;
-  bool showPrimaireArabic4 = false;
-  bool showPrimaireArabic5 = false;
-  bool showPrimaireArabic6 = false;
-  bool showPrimaireFrench1 = false;
-  bool showPrimaireFrench2 = false;
-  bool showPrimaireFrench3 = false;
-  bool showPrimaireFrench4 = false;
-  bool showPrimaireFrench5 = false;
-  bool showPrimaireFrench6 = false;
-  bool showPrimaireMath1 = false;
-  bool showPrimaireMath2 = false;
-  bool showPrimaireMath3 = false;
-  bool showPrimaireMath4 = false;
-  bool showPrimaireMath5 = false;
-  bool showPrimaireMath6 = false;
-  // College settings
+          List listPrimaireArabic1 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["arabic"] == 1 && element['level'] == 1)
+              .toList();
+          List listPrimaireArabic2 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["arabic"] == 1 && element['level'] == 2)
+              .toList();
+          List listPrimaireArabic3 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["arabic"] == 1 && element['level'] == 3)
+              .toList();
+          List listPrimaireArabic4 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["arabic"] == 1 && element['level'] == 4)
+              .toList();
+          List listPrimaireArabic5 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["arabic"] == 1 && element['level'] == 5)
+              .toList();
+          ;
+          List listPrimaireArabic6 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["arabic"] == 1 && element['level'] == 6)
+              .toList();
+          List listPrimaireFrench1 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element['level'] == 1)
+              .toList();
+          List listPrimaireFrench2 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element['level'] == 2)
+              .toList();
+          List listPrimaireFrench3 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element['level'] == 3)
+              .toList();
+          List listPrimaireFrench4 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element['level'] == 4)
+              .toList();
+          List listPrimaireFrench5 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element['level'] == 5)
+              .toList();
+          List listPrimaireFrench6 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element['level'] == 6)
+              .toList();
+          List listPrimaireMath1 = AppCubit.elevePrimaire
+              .where((element) => element["math"] == 1 && element['level'] == 1)
+              .toList();
+          List listPrimaireMath2 = AppCubit.elevePrimaire
+              .where((element) => element["math"] == 1 && element['level'] == 2)
+              .toList();
+          List listPrimaireMath3 = AppCubit.elevePrimaire
+              .where((element) => element["math"] == 1 && element['level'] == 3)
+              .toList();
+          List listPrimaireMath4 = AppCubit.elevePrimaire
+              .where((element) => element["math"] == 1 && element['level'] == 4)
+              .toList();
+          List listPrimaireMath5 = AppCubit.elevePrimaire
+              .where((element) => element["math"] == 1 && element['level'] == 5)
+              .toList();
+          List listPrimaireMath6 = AppCubit.elevePrimaire
+              .where((element) => element["math"] == 1 && element['level'] == 6)
+              .toList();
 
-  bool showCollegeFrench1 = false;
-  bool showCollegeFrench2 = false;
-  bool showCollegeFrench3 = false;
-  bool showCollegeMath1 = false;
-  bool showCollegeMath2 = false;
-  bool showCollegeMath3 = false;
-  bool showCollegePc1 = false;
-  bool showCollegePc2 = false;
-  bool showCollegePc3 = false;
-  bool showCollegeSvt1 = false;
-  bool showCollegeSvt2 = false;
-  bool showCollegeSvt3 = false;
-  // LyccE
-  bool showLyccesFrench1 = false;
-  bool showLyccesFrench2 = false;
-  bool showLyccesFrench3 = false;
-  bool showLyccesMath1 = false;
-  bool showLyccesMath2 = false;
-  bool showLyccesMath3 = false;
-  bool showLyccesPc1 = false;
-  bool showLyccesPc2 = false;
-  bool showLyccesPc3 = false;
-  bool showLyccesSvt1 = false;
-  bool showLyccesSvt2 = false;
-  bool showLyccesSvt3 = false;
-  
+          List CollegeFrench1 = AppCubit.elevecollege
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List CollegeFrench2 = AppCubit.elevecollege
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 2)
+              .toList();
+          List CollegeFrench3 = AppCubit.elevecollege
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 3)
+              .toList();
+          List listCollegeMath1 = AppCubit.elevecollege
+              .where((element) => element["math"] == 1 && element["level"] == 1)
+              .toList();
+          List listCollegeMath2 = AppCubit.elevecollege
+              .where((element) => element["math"] == 1 && element["level"] == 2)
+              .toList();
+          List listCollegeMath3 = AppCubit.elevecollege
+              .where((element) => element["math"] == 1 && element["level"] == 3)
+              .toList();
+          List listCollegePc1 = AppCubit.elevecollege
+              .where(
+                  (element) => element["physic"] == 1 && element["level"] == 1)
+              .toList();
+          List listCollegePc2 = AppCubit.elevecollege
+              .where(
+                  (element) => element["physic"] == 1 && element["level"] == 2)
+              .toList();
+          List listCollegePc3 = AppCubit.elevecollege
+              .where(
+                  (element) => element["physic"] == 1 && element["level"] == 3)
+              .toList();
+          List listCollegeSvt1 = AppCubit.elevecollege
+              .where((element) => element["svt"] == 1 && element["level"] == 1)
+              .toList();
+          List listCollegeSvt2 = AppCubit.elevecollege
+              .where((element) => element["svt"] == 1 && element["level"] == 2)
+              .toList();
+          List listCollegeSvt3 = AppCubit.elevecollege
+              .where((element) => element["svt"] == 1 && element["level"] == 3)
+              .toList();
+          // LyccE
+          List listLyccesFrench1 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesFrench2 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesFrench3 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesMath1 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesMath2 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesMath3 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesPc1 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesPc2 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesPc3 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesSvt1 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesSvt2 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+          List listLyccesSvt3 = AppCubit.elevePrimaire
+              .where(
+                  (element) => element["french"] == 1 && element["level"] == 1)
+              .toList();
+
           return Scaffold(
               body: SafeArea(
                 child: Padding(
@@ -153,7 +281,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                               () {
                                 setState(
                                   () {
-                                    if (showCollege || showLycces){
+                                    if (showCollege || showLycces) {
                                       showCollege = false;
                                       showLycces = false;
                                     }
@@ -171,7 +299,8 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                   builder: (ctx) => Column(children: [
                                     buildButton("Arabic", () {
                                       setState(() {
-                                        showPrimaireArabic = !showPrimaireArabic;
+                                        showPrimaireArabic =
+                                            !showPrimaireArabic;
                                       });
                                     }, showPrimaireArabic),
                                     if (showPrimaireArabic)
@@ -190,13 +319,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireArabic1,
                                             ),
                                             if (showPrimaireArabic1)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["arabic"] == 1 &&
-                                                    e["level"] == 1) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                condition:
+                                                    listPrimaireArabic1 != 0,
+                                                builder: (ctx) => Column(
+                                                  children: [
+                                                    ...listPrimaireArabic1.map(
+                                                      (e) =>
+                                                          buildItemForStudent(
+                                                        e["name"],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "Il n'y a aucun eleve"),
+                                                ),
+                                              ),
                                             buildButton(
                                               "2ere anne",
                                               () {
@@ -208,13 +348,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireArabic2,
                                             ),
                                             if (showPrimaireArabic2)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["arabic"] == 1 &&
-                                                    e["level"] == 2) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireArabic2 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireArabic2
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "3ere anne",
                                               () {
@@ -226,13 +377,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireArabic3,
                                             ),
                                             if (showPrimaireArabic3)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["arabic"] == 1 &&
-                                                    e["level"] == 3) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireArabic3 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireArabic3
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "4ere anne",
                                               () {
@@ -244,13 +406,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireArabic4,
                                             ),
                                             if (showPrimaireArabic4)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["arabic"] == 1 &&
-                                                    e["level"] == 4) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireArabic4 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireArabic4
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "5ere anne",
                                               () {
@@ -262,13 +435,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireArabic5,
                                             ),
                                             if (showPrimaireArabic5)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["arabic"] == 1 &&
-                                                    e["level"] == 3) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireArabic5 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireArabic5
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "6ere anne",
                                               () {
@@ -280,19 +464,31 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireArabic6,
                                             ),
                                             if (showPrimaireArabic6)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["arabic"] == 1 &&
-                                                    e["level"] == 6) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireArabic6 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireArabic6
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                           ],
                                         ),
                                       ),
                                     buildButton("Francais", () {
                                       setState(() {
-                                        showPrimaireFrench = !showPrimaireFrench;
+                                        showPrimaireFrench =
+                                            !showPrimaireFrench;
                                       });
                                     }, showPrimaireFrench),
                                     if (showPrimaireFrench)
@@ -311,13 +507,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireFrench1,
                                             ),
                                             if (showPrimaireFrench1)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["french"] == 1 &&
-                                                    e["level"] == 1) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireFrench1 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireFrench1
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "2ere anne",
                                               () {
@@ -329,13 +536,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireFrench2,
                                             ),
                                             if (showPrimaireFrench2)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["french"] == 1 &&
-                                                    e["level"] == 2) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireFrench2 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireFrench2
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "3ere anne",
                                               () {
@@ -347,13 +565,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireFrench3,
                                             ),
                                             if (showPrimaireFrench3)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["french"] == 1 &&
-                                                    e["level"] == 3) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireFrench3 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireFrench3
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "4ere anne",
                                               () {
@@ -365,13 +594,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireFrench4,
                                             ),
                                             if (showPrimaireArabic4)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["french"] == 1 &&
-                                                    e["level"] == 4) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireFrench4 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireFrench4
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "5ere anne",
                                               () {
@@ -383,13 +623,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireFrench5,
                                             ),
                                             if (showPrimaireFrench5)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["french"] == 1 &&
-                                                    e["level"] == 3) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireFrench5 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireFrench5
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "6ere anne",
                                               () {
@@ -401,13 +652,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireFrench6,
                                             ),
                                             if (showPrimaireFrench6)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["french"] == 1 &&
-                                                    e["level"] == 6) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireFrench6 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireFrench6
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                           ],
                                         ),
                                       ),
@@ -436,12 +698,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireMath1,
                                             ),
                                             if (showPrimaireMath1)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["math"] == 1 && e["level"] == 1) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireMath1 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireMath1
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "2ere anne",
                                               () {
@@ -453,12 +727,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireMath2,
                                             ),
                                             if (showPrimaireMath2)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["math"] == 1 && e["level"] == 2) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireMath2 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireMath2
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "3ere anne",
                                               () {
@@ -470,12 +756,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireMath3,
                                             ),
                                             if (showPrimaireMath3)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["math"] == 1 && e["level"] == 3) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireMath1 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireMath1
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "4ere anne",
                                               () {
@@ -487,12 +785,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireMath4,
                                             ),
                                             if (showPrimaireMath4)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["math"] == 1 && e["level"] == 4) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireMath4 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireMath4
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "5ere anne",
                                               () {
@@ -504,12 +814,24 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showPrimaireMath5,
                                             ),
                                             if (showPrimaireMath5)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["math"] == 1 && e["level"] == 3) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireMath5 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireMath5
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                             buildButton(
                                               "6ere anne",
                                               () {
@@ -518,15 +840,27 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       !showPrimaireMath6;
                                                 });
                                               },
-                                              showPrimaireFrench6,
+                                              showPrimaireMath6,
                                             ),
-                                            if (showPrimaireFrench6)
-                                              ...AppCubit.elevePrimaire.map((e) {
-                                                if (e["math"] == 1 && e["level"] == 6) {
-                                                  return buildItemForStudent(e["name"]);
-                                                }
-                                                return Container();
-                                              }),
+                                            if (showPrimaireMath6)
+                                              ConditionalBuilder(
+                                                  condition:
+                                                      listPrimaireMath6 != 0,
+                                                  builder: (ctx) => Column(
+                                                        children: [
+                                                          ...listPrimaireMath6
+                                                              .map(
+                                                            (e) =>
+                                                                buildItemForStudent(
+                                                              e["name"],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                  fallback: (ctx) => Container(
+                                                        child: Text(
+                                                            "Il n'y a aucun eleve"),
+                                                      )),
                                           ],
                                         ),
                                       ),
@@ -545,6 +879,330 @@ class _ElevesScreenState extends State<ElevesScreen> {
                               },
                               showCollege,
                             ),
+                            if (showCollege)
+                              ConditionalBuilder(
+                                condition: AppCubit.elevecollege.length != 0,
+                                builder: (ctx) {
+                                  return Column(
+                                    children: [
+                                      buildButton(
+                                        'francais',
+                                        () {
+                                          setState(() {
+                                            showCollegeFrench =
+                                                !showCollegeFrench;
+                                          });
+                                        },
+                                        showCollegeFrench,
+                                      ),
+                                      if (showCollegeFrench)
+                                        buildButton("1er ", () {
+                                          setState(() {
+                                            showCollegeFrench1 =
+                                                !showCollegeFrench1;
+                                          });
+                                        }, showCollegeFrench1),
+                                      if (showCollegeFrench1)
+                                        ConditionalBuilder(
+                                            condition:
+                                                CollegeFrench1.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...CollegeFrench1.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton("2er ", () {
+                                        setState(() {
+                                          showCollegeFrench2 =
+                                              !showCollegeFrench2;
+                                        });
+                                      }, showCollegeFrench2),
+                                      if (showCollegeFrench2)
+                                        ConditionalBuilder(
+                                            condition:
+                                                CollegeFrench2.length == 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...CollegeFrench2.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton("3er ", () {
+                                        setState(() {
+                                          showCollegeFrench3 =
+                                              !showCollegeFrench3;
+                                        });
+                                      }, showCollegeFrench3),
+                                      if (showCollegeFrench3)
+                                        ConditionalBuilder(
+                                            condition:
+                                                CollegeFrench3.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...CollegeFrench3.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton(
+                                        'math',
+                                        () {
+                                          setState(() {
+                                            showCollegeMath = !showCollegeMath;
+                                          });
+                                        },
+                                        showCollegeMath,
+                                      ),
+                                      if (showCollegeMath)
+                                        buildButton("1er ", () {
+                                          setState(() {
+                                            showCollegeMath1 =
+                                                !showCollegeMath1;
+                                          });
+                                        }, showCollegeMath1),
+                                      if (showCollegeMath1)
+                                        ConditionalBuilder(
+                                            condition:
+                                                listCollegeMath1.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegeMath1.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton("2er ", () {
+                                        setState(() {
+                                          showCollegeMath2 = !showCollegeMath2;
+                                        });
+                                      }, showCollegeMath2),
+                                      if (showCollegeMath2)
+                                        ConditionalBuilder(
+                                            condition:
+                                                listCollegeMath2.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegeMath2.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton("3er ", () {
+                                        setState(() {
+                                          showCollegeMath3 = !showCollegeMath3;
+                                        });
+                                      }, showCollegeMath3),
+                                      if (showCollegeMath3)
+                                        ConditionalBuilder(
+                                            condition:
+                                                listCollegeMath3.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegeMath3.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton(
+                                        'PC',
+                                        () {
+                                          setState(() {
+                                            showCollegePc = !showCollegePc;
+                                          });
+                                        },
+                                        showCollegePc,
+                                      ),
+                                      if (showCollegePc)
+                                        buildButton("1er ", () {
+                                          setState(() {
+                                            showCollegePc1 =
+                                                !showCollegePc1;
+                                          });
+                                        }, showCollegePc1),
+                                      if (showCollegePc1)
+                                        ConditionalBuilder(
+                                            condition:
+                                                listCollegePc1.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegePc1.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton("2er ", () {
+                                        setState(() {
+                                          showCollegePc2 = !showCollegePc2;
+                                        });
+                                      }, showCollegePc2),
+                                      if (showCollegePc2)
+                                        ConditionalBuilder(
+                                            condition:
+                                                listCollegeMath2.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegeMath2.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton("3er ", () {
+                                        setState(() {
+                                          showCollegePc3 = !showCollegePc3;
+                                        });
+                                      }, showCollegePc3),
+                                      if (showCollegePc3)
+                                        ConditionalBuilder(
+                                            condition:
+                                                listCollegePc3.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegePc3.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton(
+                                        'Svt',
+                                        () {
+                                          setState(() {
+                                            showCollegeSvt = !showCollegeSvt;
+                                          });
+                                        },
+                                        showCollegeSvt,
+                                      ),
+                                      if (showCollegeSvt)
+                                        buildButton("1er ", () {
+                                          setState(() {
+                                            showCollegeSvt1 =
+                                                !showCollegeSvt1;
+                                          });
+                                        }, showCollegeSvt1),
+                                      if (showCollegeSvt2)
+                                        ConditionalBuilder(
+                                            condition:
+                                                listCollegeSvt1.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegeSvt1.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton("2er ", () {
+                                        setState(() {
+                                          showCollegeSvt2 = !showCollegeSvt2;
+                                        });
+                                      }, showCollegeSvt2),
+                                      if (showCollegeSvt1)
+                                        ConditionalBuilder(
+                                            condition:
+                                                listCollegeSvt2.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegeSvt2.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                      buildButton("3er ", () {
+                                        setState(() {
+                                          showCollegeSvt3 = !showCollegeSvt3;
+                                        });
+                                      }, showCollegeSvt3),
+                                      if (showCollegeSvt3)
+                                        ConditionalBuilder(
+                                            condition:
+                                                listCollegeSvt3.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegeSvt3.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                                  child: Text(
+                                                      "il n'y a aucun eleve"),
+                                                )),
+                                    ],
+                                  );
+                                },
+                                fallback: (ctx) => Container(
+                                  child: Text("il n'y a aucun eleve"),
+                                ),
+                              ),
                             buildButton("Lycce", () {
                               setState(() {
                                 showLycces = !showLycces;
