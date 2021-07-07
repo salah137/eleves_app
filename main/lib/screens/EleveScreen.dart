@@ -88,154 +88,443 @@ class _ElevesScreenState extends State<ElevesScreen> {
           AppCubit cubit = BlocProvider.of(ctx);
 
           return Scaffold(
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  buildButton(
-                    "Primaire",
-                    () {
-                      setState(
-                        () {
-                          showPrimaire = !showPrimaire;
-                        },
-                      );
-                    },
-                    showPrimaire,
-                  ),
-                  if (showPrimaire)
-                    ConditionalBuilder(
-                      condition: AppCubit.elevePrimaire.length != 0,
-                      builder: (ctx) => Column(children: [
-                        buildButton("Arabic", () {
-                          setState(() {
-                            showPrimaireArabic = !showPrimaireArabic;
-                          });
-                        }, showPrimaireArabic),
-                        if (showPrimaireArabic)
-                          Column(
-                            children: [
-                              buildButton(
-                                "1ere anne",
-                                () {
-                                  setState(() {
-                                    showPrimaireArabic1 = !showPrimaireArabic1;
-                                  });
-                                },
-                                showPrimaireArabic1,
-                              ),
-                                if(showPrimaireArabic1)
-                                  ...AppCubit.elevePrimaire.map((e){
-                                    if(e["arabic"] == 1 && e["level"] == 1){
-                                      return Card(
-                                        child:Row(
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.all(5.0),
-                                              child: CircleAvatar(
-                                                radius: 30,
-                                                child: Text("${e["name"][0]}"),
-                                                
-                                              ),
-                                            ),
-                                            Text('${e["name"]}')
-                                        
-                                          ],
-                                        )
-                                      );
+              body: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Center(
+                    child: SingleChildScrollView(
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            buildButton(
+                              "Primaire",
+                              () {
+                                setState(
+                                  () {
+                                    if (showCollege || showLycces){
+                                      showCollege = false;
+                                      showLycces = false;
                                     }
-                                    return Container();
-                                  }),
-                              buildButton(
-                                "2ere anne",
-                                () {
-                                  setState(() {
-                                    showPrimaireArabic2 = !showPrimaireArabic2;
-                                  });
-                                },
-                                showPrimaireArabic2,
+                                    showPrimaire = !showPrimaire;
+                                  },
+                                );
+                              },
+                              showPrimaire,
+                            ),
+                            if (showPrimaire)
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: ConditionalBuilder(
+                                  condition: AppCubit.elevePrimaire.length != 0,
+                                  builder: (ctx) => Column(children: [
+                                    buildButton("Arabic", () {
+                                      setState(() {
+                                        showPrimaireArabic = !showPrimaireArabic;
+                                      });
+                                    }, showPrimaireArabic),
+                                    if (showPrimaireArabic)
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Column(
+                                          children: [
+                                            buildButton(
+                                              "1ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireArabic1 =
+                                                      !showPrimaireArabic1;
+                                                });
+                                              },
+                                              showPrimaireArabic1,
+                                            ),
+                                            if (showPrimaireArabic1)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["arabic"] == 1 &&
+                                                    e["level"] == 1) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "2ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireArabic2 =
+                                                      !showPrimaireArabic2;
+                                                });
+                                              },
+                                              showPrimaireArabic2,
+                                            ),
+                                            if (showPrimaireArabic2)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["arabic"] == 1 &&
+                                                    e["level"] == 2) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "3ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireArabic3 =
+                                                      !showPrimaireArabic3;
+                                                });
+                                              },
+                                              showPrimaireArabic3,
+                                            ),
+                                            if (showPrimaireArabic3)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["arabic"] == 1 &&
+                                                    e["level"] == 3) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "4ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireArabic4 =
+                                                      !showPrimaireArabic4;
+                                                });
+                                              },
+                                              showPrimaireArabic4,
+                                            ),
+                                            if (showPrimaireArabic4)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["arabic"] == 1 &&
+                                                    e["level"] == 4) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "5ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireArabic5 =
+                                                      !showPrimaireArabic5;
+                                                });
+                                              },
+                                              showPrimaireArabic5,
+                                            ),
+                                            if (showPrimaireArabic5)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["arabic"] == 1 &&
+                                                    e["level"] == 3) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "6ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireArabic6 =
+                                                      !showPrimaireArabic6;
+                                                });
+                                              },
+                                              showPrimaireArabic6,
+                                            ),
+                                            if (showPrimaireArabic6)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["arabic"] == 1 &&
+                                                    e["level"] == 6) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                          ],
+                                        ),
+                                      ),
+                                    buildButton("Francais", () {
+                                      setState(() {
+                                        showPrimaireFrench = !showPrimaireFrench;
+                                      });
+                                    }, showPrimaireFrench),
+                                    if (showPrimaireFrench)
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Column(
+                                          children: [
+                                            buildButton(
+                                              "1ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireFrench1 =
+                                                      !showPrimaireFrench1;
+                                                });
+                                              },
+                                              showPrimaireFrench1,
+                                            ),
+                                            if (showPrimaireFrench1)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["french"] == 1 &&
+                                                    e["level"] == 1) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "2ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireFrench2 =
+                                                      !showPrimaireFrench2;
+                                                });
+                                              },
+                                              showPrimaireFrench2,
+                                            ),
+                                            if (showPrimaireFrench2)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["french"] == 1 &&
+                                                    e["level"] == 2) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "3ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireFrench3 =
+                                                      !showPrimaireFrench3;
+                                                });
+                                              },
+                                              showPrimaireFrench3,
+                                            ),
+                                            if (showPrimaireFrench3)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["french"] == 1 &&
+                                                    e["level"] == 3) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "4ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireFrench4 =
+                                                      !showPrimaireFrench4;
+                                                });
+                                              },
+                                              showPrimaireFrench4,
+                                            ),
+                                            if (showPrimaireArabic4)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["french"] == 1 &&
+                                                    e["level"] == 4) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "5ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireFrench5 =
+                                                      !showPrimaireFrench5;
+                                                });
+                                              },
+                                              showPrimaireFrench5,
+                                            ),
+                                            if (showPrimaireFrench5)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["french"] == 1 &&
+                                                    e["level"] == 3) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "6ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireFrench6 =
+                                                      !showPrimaireFrench6;
+                                                });
+                                              },
+                                              showPrimaireFrench6,
+                                            ),
+                                            if (showPrimaireFrench6)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["french"] == 1 &&
+                                                    e["level"] == 6) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                          ],
+                                        ),
+                                      ),
+                                    buildButton(
+                                      "Math",
+                                      () {
+                                        setState(() {
+                                          showPrimaireMath = !showPrimaireMath;
+                                        });
+                                      },
+                                      showPrimaireMath,
+                                    ),
+                                    if (showPrimaireMath)
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Column(
+                                          children: [
+                                            buildButton(
+                                              "1ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireMath1 =
+                                                      !showPrimaireMath1;
+                                                });
+                                              },
+                                              showPrimaireMath1,
+                                            ),
+                                            if (showPrimaireMath1)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["math"] == 1 && e["level"] == 1) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "2ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireMath2 =
+                                                      !showPrimaireMath2;
+                                                });
+                                              },
+                                              showPrimaireMath2,
+                                            ),
+                                            if (showPrimaireMath2)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["math"] == 1 && e["level"] == 2) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "3ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireMath3 =
+                                                      !showPrimaireMath3;
+                                                });
+                                              },
+                                              showPrimaireMath3,
+                                            ),
+                                            if (showPrimaireMath3)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["math"] == 1 && e["level"] == 3) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "4ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireMath4 =
+                                                      !showPrimaireMath4;
+                                                });
+                                              },
+                                              showPrimaireMath4,
+                                            ),
+                                            if (showPrimaireMath4)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["math"] == 1 && e["level"] == 4) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "5ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireMath5 =
+                                                      !showPrimaireMath5;
+                                                });
+                                              },
+                                              showPrimaireMath5,
+                                            ),
+                                            if (showPrimaireMath5)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["math"] == 1 && e["level"] == 3) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                            buildButton(
+                                              "6ere anne",
+                                              () {
+                                                setState(() {
+                                                  showPrimaireMath6 =
+                                                      !showPrimaireMath6;
+                                                });
+                                              },
+                                              showPrimaireFrench6,
+                                            ),
+                                            if (showPrimaireFrench6)
+                                              ...AppCubit.elevePrimaire.map((e) {
+                                                if (e["math"] == 1 && e["level"] == 6) {
+                                                  return buildItemForStudent(e["name"]);
+                                                }
+                                                return Container();
+                                              }),
+                                          ],
+                                        ),
+                                      ),
+                                  ]),
+                                  fallback: (ctx) => Container(
+                                    child: Text("Il n'y a aucun eleve"),
+                                  ),
+                                ),
                               ),
-                              buildButton(
-                                "3ere anne",
+                            buildButton(
+                              "College",
+                              () {
+                                setState(() {
+                                  showCollege = !showCollege;
+                                });
+                              },
+                              showCollege,
+                            ),
+                            buildButton("Lycce", () {
+                              setState(() {
+                                showLycces = !showLycces;
+                              });
+                            }, showLycces),
+                            buildButton("langs", () {
+                              setState(
                                 () {
-                                  setState(() {
-                                    showPrimaireArabic3 = !showPrimaireArabic3;
-                                  });
+                                  showLang = !showLang;
                                 },
-                                showPrimaireArabic3,
-                              ),
-                              buildButton(
-                                "4ere anne",
-                                () {
-                                  setState(() {
-                                    showPrimaireArabic4 = !showPrimaireArabic4;
-                                  });
-                                },
-                                showPrimaireArabic4,
-                              ),
-                              buildButton(
-                                "5ere anne",
-                                () {
-                                  setState(() {
-                                    showPrimaireArabic5 = !showPrimaireArabic5;
-                                  });
-                                },
-                                showPrimaireArabic5,
-                              ),
-                              buildButton(
-                                "6ere anne",
-                                () {
-                                  setState(() {
-                                    showPrimaireArabic6 = !showPrimaireArabic6;
-                                  });
-                                },
-                                showPrimaireArabic6,
-                              ),
-                            ],
-                          ),
-                        buildButton("Francais", () {
-                          setState(() {
-                            showPrimaireFrench = !showPrimaireFrench;
-                          });
-                        }, showPrimaireFrench),
-                        buildButton(
-                          "Math",
-                          () {
-                            setState(() {
-                              showPrimaireMath = !showPrimaireMath;
-                            });
-                          },
-                          showPrimaireMath,
+                              );
+                            }, showLang)
+                          ],
                         ),
-                      ]),
-                      fallback: (ctx) => Container(
-                        child: Text("Il n'y a aucun eleve"),
                       ),
                     ),
-                  buildButton(
-                    "College",
-                    () {
-                      setState(() {
-                        showCollege = !showCollege;
-                      });
-                    },
-                    showCollege,
                   ),
-                  buildButton("Lycce", () {
-                    setState(() {
-                      showLycces = !showLycces;
-                    });
-                  }, showLycces),
-                  -buildButton("langs", () {
-                    setState(
-                      () {
-                        showLang = !showLang;
-                      },
-                    );
-                  }, showLang)
-                ],
+                ),
               ),
-            ),
-          );
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  Navigator.of(ctx).push(
+                    MaterialPageRoute(
+                      builder: (ctx) {
+                        return AddEleve();
+                      },
+                    ),
+                  );
+                },
+                child: Icon(Icons.add),
+              ));
         },
         listener: (ctx, state) {});
   }

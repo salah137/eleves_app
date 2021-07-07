@@ -42,7 +42,7 @@ buildButton(text, ontap, value) => InkWell(
           color: Colors.grey[300], borderRadius: BorderRadius.circular(10)),
       child: Row(
         children: [
-          Text("arabe"),
+          Text("$text"),
           Spacer(),
           Icon(
             !value ? Icons.arrow_right : Icons.arrow_drop_down,
@@ -53,17 +53,36 @@ buildButton(text, ontap, value) => InkWell(
     ),
     onTap: ontap);
 
-Widget buildItemForStudent(name) => Card(
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: CircleAvatar(
-              radius: 30,
-              child: Text("${name[0]}"),
+Widget buildItemForStudent(name) => Padding(
+  padding: const EdgeInsets.symmetric(
+    horizontal: 5
+  ),
+  
+  child:   Container(
+  decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(15)
+  ),
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: Card(
+      color: Colors.grey[200],
+            
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: CircleAvatar(
+                      radius: 20,
+                      child: Text("${name[0]}"),
+                    ),
+                  ),
+                  Text('$name')
+                ],
+              ),
             ),
           ),
-          Text('$name')
-        ],
-      ),
-    );
+    ),
+  ),
+);
