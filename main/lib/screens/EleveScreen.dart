@@ -1083,11 +1083,11 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                       if (showCollegePc2)
                                         ConditionalBuilder(
                                             condition:
-                                                listCollegeMath2.length != 0,
+                                                listCollegePc2.length != 0,
                                             builder: (ctx) {
                                               return Column(
                                                 children: [
-                                                  ...listCollegeMath2.map((v) =>
+                                                  ...listCollegePc2.map((v) =>
                                                       buildItemForStudent(
                                                           v["name"]))
                                                 ],
@@ -1208,6 +1208,331 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                 showLycces = !showLycces;
                               });
                             }, showLycces),
+                            if(showLycces)
+
+                              ConditionalBuilder(
+                                condition: AppCubit.elevelycees.length != 0,
+                                builder: (ctx) {
+                                  return Column(
+                                    children: [
+                                      buildButton(
+                                        'francais',
+                                            () {
+                                          setState(() {
+                                            showLyccesFrench =
+                                            !showLyccesFrench;
+                                          });
+                                        },
+                                        showLyccesFrench,
+                                      ),
+                                      if (showLyccesFrench)
+                                        buildButton("1er ", () {
+                                          setState(() {
+                                            showLyccesFrench1 =
+                                            !showLyccesFrench1;
+                                          });
+                                        }, showLyccesFrench1),
+                                      if (showLyccesFrench1)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesFrench1.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesFrench1.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton("2er ", () {
+                                        setState(() {
+                                          showLyccesFrench2 =
+                                          !showLyccesFrench2;
+                                        });
+                                      }, showLyccesFrench2),
+                                      if (showLyccesFrench2)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesFrench2.length == 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesFrench2.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton("3er ", () {
+                                        setState(() {
+                                          showLyccesFrench3 =
+                                          !showLyccesFrench3;
+                                        });
+                                      }, showLyccesFrench3),
+                                      if (showLyccesFrench3)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesFrench3.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesFrench3.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton(
+                                        'math',
+                                            () {
+                                          setState(() {
+                                            showLyccesMath = !showLyccesMath;
+                                          });
+                                        },
+                                        showLyccesMath,
+                                      ),
+                                      if (showLyccesMath)
+                                        buildButton("1er ", () {
+                                          setState(() {
+                                            showLyccesMath1 =
+                                            !showLyccesMath1;
+                                          });
+                                        }, showLyccesMath1),
+                                      if (showCollegeMath1)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesMath1.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesMath1.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton("2er ", () {
+                                        setState(() {
+                                          showLyccesMath2 = !showLyccesMath2;
+                                        });
+                                      }, showLyccesMath2),
+                                      if (showLyccesMath2)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesMath2.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesMath2.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton("3er ", () {
+                                        setState(() {
+                                          showLyccesMath3 = !showLyccesMath3;
+                                        });
+                                      }, showLyccesMath3),
+                                      if (showLyccesMath3)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesMath3.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesMath3.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton(
+                                        'PC',
+                                            () {
+                                          setState(() {
+                                            showLyccesPc = !showLyccesPc;
+                                          });
+                                        },
+                                        showLyccesPc,
+                                      ),
+                                      if (showLyccesPc)
+                                        buildButton("1er ", () {
+                                          setState(() {
+                                            showLyccesPc1 =
+                                            !showLyccesPc1;
+                                          });
+                                        }, showLyccesPc1),
+                                      if (showLyccesPc1)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesPc1.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesPc1.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton("2er ", () {
+                                        setState(() {
+                                          showLyccesPc2 = !showLyccesPc2;
+                                        });
+                                      }, showLyccesPc2),
+                                      if (showLyccesPc2)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesPc2.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listCollegePc2.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton("3er ", () {
+                                        setState(() {
+                                          showLyccesPc3 = !showLyccesPc3;
+                                        });
+                                      }, showLyccesPc3),
+                                      if (showLyccesPc3)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesPc3.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesPc3.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton(
+                                        'Svt',
+                                            () {
+                                          setState(() {
+                                            showLyccesSvt = !showLyccesSvt;
+                                          });
+                                        },
+                                        showLyccesSvt,
+                                      ),
+                                      if (showLyccesSvt)
+                                        buildButton("1er ", () {
+                                          setState(() {
+                                            showLyccesSvt1 =
+                                            !showLyccesSvt1;
+                                          });
+                                        }, showLyccesSvt1),
+                                      if (showLyccesSvt2)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesSvt1.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesSvt1.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton("2er ", () {
+                                        setState(() {
+                                          showLyccesSvt2 = !showLyccesSvt2;
+                                        });
+                                      }, showLyccesSvt2),
+                                      if (showLyccesSvt1)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesSvt2.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesSvt2.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]))
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                      buildButton("3er ", () {
+                                        setState(() {
+                                          showLyccesSvt3 = !showLyccesSvt3;
+                                        });
+                                      }, showLyccesSvt3),
+                                      if (showLyccesSvt3)
+                                        ConditionalBuilder(
+                                            condition:
+                                            listLyccesSvt3.length != 0,
+                                            builder: (ctx) {
+                                              return Column(
+                                                children: [
+                                                  ...listLyccesSvt3.map((v) =>
+                                                      buildItemForStudent(
+                                                          v["name"]),)
+                                                ],
+                                              );
+                                            },
+                                            fallback: (ctx) => Container(
+                                              child: Text(
+                                                  "il n'y a aucun eleve"),
+                                            )),
+                                    ],
+                                  );
+                                },
+                                fallback: (ctx) => Container(
+                                  child: Text("il n'y a aucun eleve"),
+                                ),
+                              ),
                             buildButton("langs", () {
                               setState(
                                 () {
