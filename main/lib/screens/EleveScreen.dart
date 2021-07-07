@@ -111,6 +111,87 @@ class _ElevesScreenState extends State<ElevesScreen> {
                             showPrimaireArabic = !showPrimaireArabic;
                           });
                         }, showPrimaireArabic),
+                        if (showPrimaireArabic)
+                          Column(
+                            children: [
+                              buildButton(
+                                "1ere anne",
+                                () {
+                                  setState(() {
+                                    showPrimaireArabic1 = !showPrimaireArabic1;
+                                  });
+                                },
+                                showPrimaireArabic1,
+                              ),
+                                if(showPrimaireArabic1)
+                                  ...AppCubit.elevePrimaire.map((e){
+                                    if(e["arabic"] == 1 && e["level"] == 1){
+                                      return Card(
+                                        child:Row(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(5.0),
+                                              child: CircleAvatar(
+                                                radius: 30,
+                                                child: Text("${e["name"][0]}"),
+                                                
+                                              ),
+                                            ),
+                                            Text('${e["name"]}')
+                                        
+                                          ],
+                                        )
+                                      );
+                                    }
+                                    return Container();
+                                  }),
+                              buildButton(
+                                "2ere anne",
+                                () {
+                                  setState(() {
+                                    showPrimaireArabic2 = !showPrimaireArabic2;
+                                  });
+                                },
+                                showPrimaireArabic2,
+                              ),
+                              buildButton(
+                                "3ere anne",
+                                () {
+                                  setState(() {
+                                    showPrimaireArabic3 = !showPrimaireArabic3;
+                                  });
+                                },
+                                showPrimaireArabic3,
+                              ),
+                              buildButton(
+                                "4ere anne",
+                                () {
+                                  setState(() {
+                                    showPrimaireArabic4 = !showPrimaireArabic4;
+                                  });
+                                },
+                                showPrimaireArabic4,
+                              ),
+                              buildButton(
+                                "5ere anne",
+                                () {
+                                  setState(() {
+                                    showPrimaireArabic5 = !showPrimaireArabic5;
+                                  });
+                                },
+                                showPrimaireArabic5,
+                              ),
+                              buildButton(
+                                "6ere anne",
+                                () {
+                                  setState(() {
+                                    showPrimaireArabic6 = !showPrimaireArabic6;
+                                  });
+                                },
+                                showPrimaireArabic6,
+                              ),
+                            ],
+                          ),
                         buildButton("Francais", () {
                           setState(() {
                             showPrimaireFrench = !showPrimaireFrench;

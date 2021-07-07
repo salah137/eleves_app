@@ -52,3 +52,18 @@ buildButton(text, ontap, value) => InkWell(
       ),
     ),
     onTap: ontap);
+
+Widget buildItemForStudent(name) => Card(
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: CircleAvatar(
+              radius: 30,
+              child: Text("${name[0]}"),
+            ),
+          ),
+          Text('$name')
+        ],
+      ),
+    );
