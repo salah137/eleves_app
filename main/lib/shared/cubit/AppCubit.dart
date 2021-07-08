@@ -21,6 +21,7 @@ class AppCubit extends Cubit<AppState> {
   static List<Map> elevecollege = [];
   static List<Map> elevelycees = [];
   static List<Map> elevelangs = [];
+  static List<Map> elevesCalcul = [];
   static List<Map> payement = [];
 
   void createDataBase() async {
@@ -76,6 +77,9 @@ class AppCubit extends Cubit<AppState> {
     // get data for langs
     elevelangs = await db.rawQuery(
       "SELECT * FROM Elevelangs",
+    );
+    elevesCalcul = await db.rawQuery(
+      "SELECT * FROM EleveCalulate"
     );
     // get data for payments
     payement = await db.rawQuery(

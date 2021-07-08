@@ -26,8 +26,7 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-      mainAxisAlignment:MainAxisAlignment.center,
-      
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RadioListTile(
             value: 1,
@@ -53,7 +52,6 @@ class _SeletLevelPrtimairState extends State<SeletLevelPrtimair> {
             },
             title: Text("2ere anne"),
           ),
-
           RadioListTile(
             value: 3,
             groupValue: level,
@@ -137,8 +135,7 @@ class _SeletLevelCollegeState extends State<SeletCollegePrtimair> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-      mainAxisAlignment:MainAxisAlignment.center,
-      
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RadioListTile(
             value: 1,
@@ -213,8 +210,7 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-              
-      mainAxisAlignment:MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RadioListTile(
             value: 1,
@@ -240,7 +236,6 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
             },
             title: Text("2ere anne"),
           ),
-          
           RadioListTile(
             value: 3,
             groupValue: level,
@@ -259,13 +254,13 @@ class _SeletLevelLycceState extends State<SeletLevelLycce> {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (ctx)=> SelectMatiereForLycce(
-                  name: name,
-                  clas: level,
-                )
-              ),
+                  builder: (ctx) => SelectMatiereForLycce(
+                        name: name,
+                        clas: level,
+                      )),
             );
-          }, child: Icon(Icons.arrow_right)),
+          },
+          child: Icon(Icons.arrow_right)),
     );
   }
 }
@@ -287,7 +282,7 @@ class _SeletLevelLangsState extends State<SeletLevelLangs> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           RadioListTile(
             value: 1,
@@ -317,10 +312,13 @@ class _SeletLevelLangsState extends State<SeletLevelLangs> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (ctx)=>SelectMatiereForLangs(name:name,clas: level,))
-            );
-          }, child: Icon(Icons.arrow_right)),
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (ctx) => SelectMatiereForLangs(
+                      name: name,
+                      clas: level,
+                    )));
+          },
+          child: Icon(Icons.arrow_right)),
     );
   }
 }
@@ -341,48 +339,48 @@ class _SeletCalclLangsState extends State<SeletLevelLangs> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
-      builder: (ctx, state) {
-        AppCubit cubit = BlocProvider.of(ctx);
-        return Scaffold
-          (
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RadioListTile(
-                value: 1,
-                groupValue: level,
-                onChanged: (v) {
-                  setState(
-                        () {
-                      level = v;
-                    },
+        builder: (ctx, state) {
+          AppCubit cubit = BlocProvider.of(ctx);
+          return Scaffold(
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RadioListTile(
+                  value: 1,
+                  groupValue: level,
+                  onChanged: (v) {
+                    setState(
+                      () {
+                        level = v;
+                      },
+                    );
+                  },
+                  title: Text("Pour les petits enfants"),
+                ),
+                RadioListTile(
+                  value: 2,
+                  groupValue: level,
+                  onChanged: (v) {
+                    setState(
+                      () {
+                        level = v;
+                      },
+                    );
+                  },
+                  title: Text("pour les adulte"),
+                ),
+              ],
+            ),
+            floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                  cubit.addCalulateMentaal(
+                    name,
+                    level,
                   );
                 },
-                title: Text("Pour les petits enfants"),
-              ),
-              RadioListTile(
-                value: 2,
-                groupValue: level,
-                onChanged: (v) {
-                  setState(
-                        () {
-                      level = v;
-                    },
-                  );
-                },
-                title: Text("pour les adulte"),
-              ),
-            ],
-          ),
-          floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                  cubit.addCalulateMentaal(name);
-              }, child: Icon(Icons.arrow_right)),
-        );
-      },
-      listener: (ctx, state) {}
-    );
-
+                child: Icon(Icons.arrow_right)),
+          );
+        },
+        listener: (ctx, state) {});
   }
 }
-
