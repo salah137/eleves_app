@@ -46,7 +46,7 @@ class AppCubit extends Cubit<AppState> {
         db.execute(
             "CREATE TABLE Elevelangs (id INTEGER PRIMARY KEY, name TEXT, category INTEGER, english INTEGER, french INTEGER)");
         db.execute(
-            "CREATE TABLE EleveCalulate (id INTEGER PRIMARY KEY, name TEXT)");
+            "CREATE TABLE EleveCalulate (id INTEGER PRIMARY KEY, name TEXT, category INTEGER)");
         // payments
         db.execute(
             "CREATE TABLE payment (id INTEGER PRIMARY KEY, eleveName TEXT, matiere TEXT,hepaythisMonth INTEGER, payedlastmonth INTEGER, nonPayedMonths INTEGER)");
@@ -302,13 +302,17 @@ class AppCubit extends Cubit<AppState> {
     emit(ChekPayments());
   }
 
-  void addCalulateMentaal(String name) async {
+  void addCalulateMentaal(String name, int level) async {
     database!.transaction(
       (txn) async {
-        txn.rawInsert("INSERT INTO EleveCalulate(name) VALUES(?)", [name]);
         txn.rawInsert(
-            'INSERT INTO payment(eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)',
-            [name, "calculeteMentaal", 0, 1, 0]);
+          "INSERT INTO EleveCalulate(name,category) VALUES(?,?)",
+          [name, level],
+        );
+        txn.rawInsert(
+          'INSERT INTO payment(eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)',
+          [name, "calculeteMentaal", 0, 1, 0],
+        );
       },
     );
     emit(

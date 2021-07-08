@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:main/screens/SelectMatiere.dart';
+import 'package:main/shared/cubit/AppCubit.dart';
+import 'package:main/shared/cubit/AppStates.dart';
 
 class SeletLevelPrtimair extends StatefulWidget {
   final String name;
@@ -321,3 +324,65 @@ class _SeletLevelLangsState extends State<SeletLevelLangs> {
     );
   }
 }
+
+class SeletCalclLangs extends StatefulWidget {
+  final name;
+  SeletCalclLangs({Key? key, this.name}) : super(key: key);
+
+  @override
+  _SeletCalclLangsState createState() => _SeletCalclLangsState(name);
+}
+
+class _SeletCalclLangsState extends State<SeletLevelLangs> {
+  var level;
+  final name;
+
+  _SeletCalclLangsState(this.name);
+  @override
+  Widget build(BuildContext context) {
+    return BlocConsumer<AppCubit, AppState>(
+      builder: (ctx, state) {
+        AppCubit cubit = BlocProvider.of(ctx);
+        return Scaffold
+          (
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RadioListTile(
+                value: 1,
+                groupValue: level,
+                onChanged: (v) {
+                  setState(
+                        () {
+                      level = v;
+                    },
+                  );
+                },
+                title: Text("Pour les petits enfants"),
+              ),
+              RadioListTile(
+                value: 2,
+                groupValue: level,
+                onChanged: (v) {
+                  setState(
+                        () {
+                      level = v;
+                    },
+                  );
+                },
+                title: Text("pour les adulte"),
+              ),
+            ],
+          ),
+          floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                  cubit.addCalulateMentaal(name);
+              }, child: Icon(Icons.arrow_right)),
+        );
+      },
+      listener: (ctx, state) {}
+    );
+
+  }
+}
+

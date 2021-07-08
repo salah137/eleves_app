@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:main/screens/SelectLevel.dart';
 import 'package:main/screens/SelectMatiere.dart';
@@ -88,6 +86,22 @@ class SelectEleveState extends State<SelectEleve> {
               ),
               Text("Langue"),
             ],
+          ),
+          Row(
+            children: [
+              Radio(
+                  value: "Calculete Mental",
+                  groupValue: _radioval,
+                  onChanged: (v) {
+                    setState(() {
+                      _radioval = v;
+                    });
+                  }),
+              SizedBox(
+                height: 5,
+              ),
+              Text("Calculete Mental"),
+            ],
           )
         ],
       ),
@@ -99,7 +113,9 @@ class SelectEleveState extends State<SelectEleve> {
                   ? SeletCollegePrtimair(name: name)
                   : _radioval == "Lycce"
                       ? SeletLevelLycce(name: name)
-                      : SeletLevelLangs(name: name);
+                      : _radioval == "Calculete Mental"
+                          ? SeletCalclLangs(name: name)
+                          : SeletLevelLangs(name: name);
           Navigator.of(context).push(
             MaterialPageRoute(builder: (ctx) => toNavigate),
           );
