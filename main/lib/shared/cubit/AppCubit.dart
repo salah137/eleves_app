@@ -322,5 +322,6 @@ class AppCubit extends Cubit<AppState> {
     emit(
       AddCalulateMentaal(),
     );
+    getdata(database!);
   }
 }

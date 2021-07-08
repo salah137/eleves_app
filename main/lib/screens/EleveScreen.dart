@@ -110,14 +110,6 @@ class _ElevesScreenState extends State<ElevesScreen> {
               .where((element) =>
                   element["french"] == 1 && element["category"] == 1)
               .toList();
-          List listCalcBigs = AppCubit.elevelangs
-              .where((element) =>
-                  element["french"] == 1 && element["category"] == 2)
-              .toList();
-          List listCalKids = AppCubit.elevelangs
-              .where((element) =>
-                  element["french"] == 1 && element["category"] == 1)
-              .toList();
           List listPrimaireArabic1 = AppCubit.elevePrimaire
               .where(
                   (element) => element["arabic"] == 1 && element['level'] == 1)
@@ -277,11 +269,11 @@ class _ElevesScreenState extends State<ElevesScreen> {
               .where(
                   (element) => element["french"] == 1 && element["level"] == 1)
               .toList();
-          List listCalulateBigs = AppCubit.elevelangs
-              .where((element) => element["category"] == 2)
-              .toList();
-          List listCalulateKids = AppCubit.elevelangs
+          List listCalulateBigs = AppCubit.elevesCalcul
               .where((element) => element["category"] == 1)
+              .toList();
+          List listCalulateKids = AppCubit.elevesCalcul
+              .where((element) => element["category"] == 2)
               .toList();
 
           return Scaffold(
@@ -345,7 +337,8 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                     ...listPrimaireArabic1.map(
                                                       (e) =>
                                                           buildItemForStudent(
-                                                        e["name"],
+                                                        e,
+                                                            ctx
                                                       ),
                                                     ),
                                                   ],
@@ -375,7 +368,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -404,7 +397,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -426,14 +419,14 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             if (showPrimaireArabic4)
                                               ConditionalBuilder(
                                                   condition:
-                                                      listPrimaireArabic4 != 0,
+                                                      listPrimaireArabic4.length != 0,
                                                   builder: (ctx) => Column(
                                                         children: [
                                                           ...listPrimaireArabic4
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -462,7 +455,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -491,7 +484,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -534,7 +527,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -563,7 +556,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -592,7 +585,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -621,7 +614,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -650,7 +643,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -679,7 +672,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -725,7 +718,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -754,7 +747,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -783,7 +776,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -812,7 +805,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -841,7 +834,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -870,7 +863,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e["name"],
+                                                              e,ctx
                                                             ),
                                                           ),
                                                         ],
@@ -930,7 +923,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                     children: [
                                                       ...CollegeFrench1.map((v) =>
                                                           buildItemForStudent(
-                                                              v["name"]))
+                                                              v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -953,7 +946,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                     children: [
                                                       ...CollegeFrench2.map((v) =>
                                                           buildItemForStudent(
-                                                              v["name"]))
+                                                              v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -976,7 +969,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                     children: [
                                                       ...CollegeFrench3.map((v) =>
                                                           buildItemForStudent(
-                                                              v["name"]))
+                                                              v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1013,7 +1006,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       ...listCollegeMath1.map(
                                                           (v) =>
                                                               buildItemForStudent(
-                                                                  v["name"]))
+                                                                  v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1038,7 +1031,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       ...listCollegeMath2.map(
                                                           (v) =>
                                                               buildItemForStudent(
-                                                                  v["name"]))
+                                                                  v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1063,7 +1056,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       ...listCollegeMath3.map(
                                                           (v) =>
                                                               buildItemForStudent(
-                                                                  v["name"]))
+                                                                  v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1100,7 +1093,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       children: [
                                                         ...listCollegePc1.map((v) =>
                                                             buildItemForStudent(
-                                                                v["name"]))
+                                                                v,ctx))
                                                       ],
                                                     );
                                                   },
@@ -1124,7 +1117,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       children: [
                                                         ...listCollegePc2.map((v) =>
                                                             buildItemForStudent(
-                                                                v["name"]))
+                                                                v,ctx))
                                                       ],
                                                     );
                                                   },
@@ -1148,7 +1141,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       children: [
                                                         ...listCollegePc3.map((v) =>
                                                             buildItemForStudent(
-                                                                v["name"]))
+                                                                v,ctx))
                                                       ],
                                                     );
                                                   },
@@ -1175,7 +1168,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                           !showCollegeSvt1;
                                                     });
                                                   }, showCollegeSvt1),
-                                                if (showCollegeSvt2)
+                                                if (showCollegeSvt1)
                                                   ConditionalBuilder(
                                                       condition: listCollegeSvt1
                                                               .length !=
@@ -1186,7 +1179,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                             ...listCollegeSvt1
                                                                 .map((v) =>
                                                                     buildItemForStudent(
-                                                                        v["name"]))
+                                                                        v,ctx))
                                                           ],
                                                         );
                                                       },
@@ -1201,7 +1194,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                         !showCollegeSvt2;
                                                   });
                                                 }, showCollegeSvt2),
-                                                if (showCollegeSvt1)
+                                                if (showCollegeSvt2)
                                                   ConditionalBuilder(
                                                       condition: listCollegeSvt2
                                                               .length !=
@@ -1212,7 +1205,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                             ...listCollegeSvt2
                                                                 .map((v) =>
                                                                     buildItemForStudent(
-                                                                        v["name"]))
+                                                                        v,ctx))
                                                           ],
                                                         );
                                                       },
@@ -1238,7 +1231,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                           ...listCollegeSvt3
                                                               .map((v) =>
                                                                   buildItemForStudent(
-                                                                      v["name"]))
+                                                                      v,ctx))
                                                         ],
                                                       );
                                                     },
@@ -1300,7 +1293,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                         ...listLyccesFrench1
                                                             .map((v) =>
                                                                 buildItemForStudent(
-                                                                    v["name"]))
+                                                                    v,ctx))
                                                       ],
                                                     );
                                                   },
@@ -1325,7 +1318,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                         ...listLyccesFrench2
                                                             .map((v) =>
                                                                 buildItemForStudent(
-                                                                    v["name"]))
+                                                                    v,ctx))
                                                       ],
                                                     );
                                                   },
@@ -1350,7 +1343,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                         ...listLyccesFrench3
                                                             .map((v) =>
                                                                 buildItemForStudent(
-                                                                    v["name"]))
+                                                                    v,ctx))
                                                       ],
                                                     );
                                                   },
@@ -1387,7 +1380,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       ...listLyccesMath1.map(
                                                           (v) =>
                                                               buildItemForStudent(
-                                                                  v["name"]))
+                                                                  v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1411,7 +1404,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       ...listLyccesMath2.map(
                                                           (v) =>
                                                               buildItemForStudent(
-                                                                  v["name"]))
+                                                                  v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1435,7 +1428,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       ...listLyccesMath3.map(
                                                           (v) =>
                                                               buildItemForStudent(
-                                                                  v["name"]))
+                                                                  v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1469,7 +1462,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                     children: [
                                                       ...listLyccesPc1.map((v) =>
                                                           buildItemForStudent(
-                                                              v["name"]))
+                                                              v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1491,7 +1484,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                     children: [
                                                       ...listCollegePc2.map((v) =>
                                                           buildItemForStudent(
-                                                              v["name"]))
+                                                              v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1513,7 +1506,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                   children: [
                                                     ...listLyccesPc3.map((v) =>
                                                         buildItemForStudent(
-                                                            v["name"]))
+                                                            v,ctx))
                                                   ],
                                                 );
                                               },
@@ -1539,7 +1532,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showLyccesSvt1 = !showLyccesSvt1;
                                             });
                                           }, showLyccesSvt1),
-                                          if (showLyccesSvt2)
+                                          if (showLyccesSvt1)
                                             ConditionalBuilder(
                                                 condition:
                                                     listLyccesSvt1.length != 0,
@@ -1548,7 +1541,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                     children: [
                                                       ...listLyccesSvt1.map((v) =>
                                                           buildItemForStudent(
-                                                              v["name"]))
+                                                              v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1561,7 +1554,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                               showLyccesSvt2 = !showLyccesSvt2;
                                             });
                                           }, showLyccesSvt2),
-                                          if (showLyccesSvt1)
+                                          if (showLyccesSvt2)
                                             ConditionalBuilder(
                                                 condition:
                                                     listLyccesSvt2.length != 0,
@@ -1570,7 +1563,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                     children: [
                                                       ...listLyccesSvt2.map((v) =>
                                                           buildItemForStudent(
-                                                              v["name"]))
+                                                              v,ctx))
                                                     ],
                                                   );
                                                 },
@@ -1593,7 +1586,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                       ...listLyccesSvt3.map(
                                                         (v) =>
                                                             buildItemForStudent(
-                                                                v["name"]),
+                                                                v,ctx),
                                                       )
                                                     ],
                                                   );
@@ -1624,7 +1617,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                   children: [
                                     buildButton("Anglais", () {
                                       setState(() {
-                                        showLang = !showLang;
+                                        showLangEnglish = !showLangEnglish;
                                       });
                                     }, showLangEnglish),
                                     if (showLangEnglish)
@@ -1644,7 +1637,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                         ...listEnglisBigs.map(
                                                           (e) =>
                                                               buildItemForStudent(
-                                                            e["name"],
+                                                            e,ctx,
                                                           ),
                                                         ),
                                                       ],
@@ -1667,7 +1660,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                         ...listEnglisKids.map(
                                                           (e) =>
                                                               buildItemForStudent(
-                                                            e["name"],
+                                                            e,ctx,
                                                           ),
                                                         ),
                                                       ],
@@ -1690,7 +1683,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             setState(() {
                                               showFrenchBigs = !showFrenchBigs;
                                             });
-                                          }, showEnglisBigs),
+                                          }, showFrenchBigs),
                                           if (showFrenchBigs)
                                             ConditionalBuilder(
                                                 condition:
@@ -1700,7 +1693,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                         ...listFrenchBigs.map(
                                                           (e) =>
                                                               buildItemForStudent(
-                                                            e["name"],
+                                                            e,ctx
                                                           ),
                                                         ),
                                                       ],
@@ -1723,7 +1716,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                         ...listFrenchKids.map(
                                                           (e) =>
                                                               buildItemForStudent(
-                                                            e["name"],
+                                                            e,ctx,
                                                           ),
                                                         ),
                                                       ],
@@ -1754,7 +1747,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                     });
                                   },     showcal1
                                   ),
-                                  if (showFrenchBigs)
+                                  if (showcal1)
                                     ConditionalBuilder(
                                         condition:
                                         listCalulateBigs.length != 0,
@@ -1763,7 +1756,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ...listCalulateBigs.map(
                                                   (e) =>
                                                   buildItemForStudent(
-                                                    e["name"],
+                                                    e,ctx
                                                   ),
                                             ),
                                           ],
@@ -1777,7 +1770,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                       showcal2 = !showcal2;
                                     });
                                   }, showcal2),
-                                  if (showFrenchKids)
+                                  if (showcal2)
                                     ConditionalBuilder(
                                         condition:
                                         listCalulateKids.length != 0,
@@ -1786,7 +1779,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ...listCalulateKids.map(
                                                   (e) =>
                                                   buildItemForStudent(
-                                                    e["name"],
+                                                    e,ctx,
                                                   ),
                                             ),
                                           ],

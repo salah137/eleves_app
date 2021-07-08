@@ -38,6 +38,15 @@ class AddEleve extends StatelessWidget {
               ),
             ),
           ),
+          floatingActionButton: FloatingActionButton(onPressed: (){
+          
+                                Navigator.of(ctx).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => SelectEleve(controller.text),
+                        ),);
+
+          
+          },),
         );
       },
       listener: (ctx, state) {},

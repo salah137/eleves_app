@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:main/layouts/HomeLayout.dart';
 import 'package:main/screens/SelectMatiere.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 import 'package:main/shared/cubit/AppStates.dart';
@@ -331,7 +332,7 @@ class SeletCalclLangs extends StatefulWidget {
   _SeletCalclLangsState createState() => _SeletCalclLangsState(name);
 }
 
-class _SeletCalclLangsState extends State<SeletLevelLangs> {
+class _SeletCalclLangsState extends State<SeletCalclLangs> {
   var level;
   final name;
 
@@ -377,6 +378,7 @@ class _SeletCalclLangsState extends State<SeletLevelLangs> {
                     name,
                     level,
                   );
+                  Navigator.of(ctx).pushAndRemoveUntil(MaterialPageRoute(builder: (ctx)=>HomePage()), (route) => false);
                 },
                 child: Icon(Icons.arrow_right)),
           );
