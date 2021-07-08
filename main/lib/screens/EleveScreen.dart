@@ -1750,16 +1750,17 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                 children: [
                                   buildButton("Pour les enfants", () {
                                     setState(() {
-                                      showFrenchBigs = !showFrenchBigs;
+                                      showcal1 = !showcal1;
                                     });
-                                  }, showEnglisBigs),
+                                  },     showcal1
+                                  ),
                                   if (showFrenchBigs)
                                     ConditionalBuilder(
                                         condition:
-                                        listFrenchBigs.length != 0,
+                                        listCalulateBigs.length != 0,
                                         builder: (ctx) => Column(
                                           children: [
-                                            ...listFrenchBigs.map(
+                                            ...listCalulateBigs.map(
                                                   (e) =>
                                                   buildItemForStudent(
                                                     e["name"],
@@ -1773,16 +1774,16 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                         )),
                                   buildButton('Pour Les Adultes', () {
                                     setState(() {
-                                      showFrenchKids = !showFrenchKids;
+                                      showcal2 = !showcal2;
                                     });
-                                  }, showFrenchKids),
+                                  }, showcal2),
                                   if (showFrenchKids)
                                     ConditionalBuilder(
                                         condition:
-                                        listFrenchKids.length != 0,
+                                        listCalulateKids.length != 0,
                                         builder: (ctx) => Column(
                                           children: [
-                                            ...listFrenchKids.map(
+                                            ...listCalulateKids.map(
                                                   (e) =>
                                                   buildItemForStudent(
                                                     e["name"],
