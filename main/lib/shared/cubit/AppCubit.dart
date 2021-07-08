@@ -305,11 +305,14 @@ class AppCubit extends Cubit<AppState> {
   void addCalulateMentaal(String name) async {
     database!.transaction(
       (txn) async {
+        txn.rawInsert("INSERT INTO EleveCalulate(name) VALUES(?)", [name]);
         txn.rawInsert(
-            "INSERT INTO EleveCalulate(name) VALUES(?)",
-            [name]
-        );
+            'INSERT INTO payment(eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)',
+            [name, "calculeteMentaal", 0, 1, 0]);
       },
+    );
+    emit(
+      AddCalulateMentaal(),
     );
   }
 }
