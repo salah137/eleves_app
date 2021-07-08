@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (ctx) => AppCubit()..createDataBase(),
+      create: (ctx) => AppCubit()..createDataBase()..chekPayments(),
       child: BlocConsumer<AppCubit,AppState>(
         builder: (ctx, state) => MaterialApp(
           title: 'Flutter Demo',

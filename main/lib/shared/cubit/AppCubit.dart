@@ -45,6 +45,8 @@ class AppCubit extends Cubit<AppState> {
         // langs
         db.execute(
             "CREATE TABLE Elevelangs (id INTEGER PRIMARY KEY, name TEXT, category INTEGER, english INTEGER, french INTEGER)");
+        db.execute(
+            "CREATE TABLE EleveCalulate (id INTEGER PRIMARY KEY, name TEXT)");
         // payments
         db.execute(
             "CREATE TABLE payment (id INTEGER PRIMARY KEY, eleveName TEXT, matiere TEXT,hepaythisMonth INTEGER, payedlastmonth INTEGER, nonPayedMonths INTEGER)");
@@ -87,7 +89,8 @@ class AppCubit extends Cubit<AppState> {
     emit(ChangeIndexState());
   }
 
-  void addPriMairEleve(String name, bool math, bool french, bool arabic, int level) async {
+  void addPriMairEleve(
+      String name, bool math, bool french, bool arabic, int level) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int arabicisTrue = arabic ? 1 : 0;
@@ -119,7 +122,8 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void addCollegeStudent(String name, bool french, bool math, bool pc, bool svt, int level) async {
+  void addCollegeStudent(
+      String name, bool french, bool math, bool pc, bool svt, int level) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int pcisTrue = pc ? 1 : 0;
@@ -129,7 +133,7 @@ class AppCubit extends Cubit<AppState> {
       (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevecollege(name,math,french,physic,svt,level) VALUES(?,?,?,?,?,?)",
-          [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue,level],
+          [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue, level],
         );
         if (math)
           await txn.rawInsert(
@@ -157,7 +161,8 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void addLyceeStudent(String name, bool french, bool math, bool pc, bool svt, int level) async {
+  void addLyceeStudent(
+      String name, bool french, bool math, bool pc, bool svt, int level) async {
     int mathisTrue = math ? 1 : 0;
     int frenchisTrue = french ? 1 : 0;
     int pcisTrue = pc ? 1 : 0;
@@ -195,7 +200,7 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void addLangsState(String name,  isBig, bool english, bool french) async {
+  void addLangsState(String name, isBig, bool english, bool french) async {
     int isFrench = french ? 1 : 0;
     int isEnglish = english ? 1 : 0;
 
@@ -291,8 +296,20 @@ class AppCubit extends Cubit<AppState> {
           payement[i]["nonPayedMonths"] += 1;
         }
         payement[i]["hepaythisMonth"] == 0;
+        updateData(payement[i]);
       }
     }
     emit(ChekPayments());
+  }
+
+  void addCalulateMentaal(String name) async {
+    database!.transaction(
+      (txn) async {
+        txn.rawInsert(
+            "INSERT INTO EleveCalulate(name) VALUES(?)",
+            [name]
+        );
+      },
+    );
   }
 }
