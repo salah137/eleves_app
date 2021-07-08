@@ -265,6 +265,14 @@ class _ElevesScreenState extends State<ElevesScreen> {
               .where(
                   (element) => element["french"] == 1 && element["level"] == 1)
               .toList();
+          List listCalulateBigs = AppCubit.elevelangs
+              .where((element) =>
+         element["category"] == 2)
+              .toList();
+          List listCalulateKids = AppCubit.elevelangs
+              .where((element) =>
+           element["category"] == 1)
+              .toList();
 
           return Scaffold(
               body: SafeArea(
@@ -1352,7 +1360,7 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             fallback: (ctx) => Container(
                                                   child: Text(
                                                       "il n'y a aucun eleve"),
-                                                )),]),
+                                                )),],),
                                       buildButton(
                                         'math',
                                         () {
@@ -1602,7 +1610,46 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                   showLang = !showLang;
                                 },
                               );
-                            }, showLang)
+                            }, showLang),
+                            if(showLang) 
+                              ConditionalBuilder(condition: AppCubit.elevelangs.length != 0 , builder: (ctx) => Column(
+                                children: [
+                                  buildButton("Anglais", () {
+                                    setState(() {
+                                      showLang =!showLang;
+                                    });
+                                  },showLangEnglish),
+                                  if(showLangEnglish)
+                                    Column(
+                                       children: [
+                                         buildButton("Pour les enfants", () {
+                                           setState(() {
+                                             showEnglisBigs = !showEnglisBigs;
+                                           });
+                                         },showEnglisBigs),
+                                         if(showEnglisBigs)
+                                            ConditionalBuilder(condition: listEnglisBigs.length != 0, builder: (ctx)=>Column(
+                                              children: [
+                                                ...listEnglisBigs.map((e) => buildItemForStudent(e["name"],),),
+                                              ],
+                                            ), fallback: (ctx)=>Container(child: Text("Il n' y a  pas aucun eleve"),)),
+                                         buildButton('Pour Les Adultes', (){
+                                           setState(() {
+                                             showEnglisKids = !showEnglisKids;
+                                           });
+                                         }, showEnglisKids),
+                                         if(showEnglisKids)
+                                           ConditionalBuilder(condition: listEnglisKids.length != 0, builder: (ctx)=>Column(
+                                             children: [
+                                               ...listEnglisKids.map((e) => buildItemForStudent(e["name"],),),
+                                             ],
+                                           ), fallback: (ctx)=>Container(child: Text("Il n' y a  pas aucun eleve"),)),
+
+                                       ],
+                                    )
+                                ],
+                                
+                              ), fallback: (ctx) => Container(child: Text("Il n' y a aucun eleve"),))
                           ],
                         ),
                       ),
