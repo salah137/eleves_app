@@ -14,6 +14,8 @@ class ElevesScreen extends StatefulWidget {
 }
 
 class _ElevesScreenState extends State<ElevesScreen> {
+  GlobalKey<ScaffoldState> skey = GlobalKey<ScaffoldState>();
+
   // langs settings
   bool showLang = false;
   bool showLangEnglish = false;
@@ -94,189 +96,9 @@ class _ElevesScreenState extends State<ElevesScreen> {
     return BlocConsumer<AppCubit, AppState>(
         builder: (ctx, state) {
           AppCubit cubit = BlocProvider.of(ctx);
-          List listEnglisBigs = AppCubit.elevelangs
-              .where((element) =>
-                  element["english"] == 1 && element["category"] == 2)
-              .toList();
-          List listEnglisKids = AppCubit.elevelangs
-              .where((element) =>
-                  element["english"] == 1 && element["category"] == 1)
-              .toList();
-          List listFrenchBigs = AppCubit.elevelangs
-              .where((element) =>
-                  element["french"] == 1 && element["category"] == 2)
-              .toList();
-          List listFrenchKids = AppCubit.elevelangs
-              .where((element) =>
-                  element["french"] == 1 && element["category"] == 1)
-              .toList();
-          List listPrimaireArabic1 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["arabic"] == 1 && element['level'] == 1)
-              .toList();
-          List listPrimaireArabic2 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["arabic"] == 1 && element['level'] == 2)
-              .toList();
-          List listPrimaireArabic3 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["arabic"] == 1 && element['level'] == 3)
-              .toList();
-          List listPrimaireArabic4 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["arabic"] == 1 && element['level'] == 4)
-              .toList();
-          List listPrimaireArabic5 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["arabic"] == 1 && element['level'] == 5)
-              .toList();
-          ;
-          List listPrimaireArabic6 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["arabic"] == 1 && element['level'] == 6)
-              .toList();
-          List listPrimaireFrench1 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element['level'] == 1)
-              .toList();
-          List listPrimaireFrench2 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element['level'] == 2)
-              .toList();
-          List listPrimaireFrench3 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element['level'] == 3)
-              .toList();
-          List listPrimaireFrench4 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element['level'] == 4)
-              .toList();
-          List listPrimaireFrench5 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element['level'] == 5)
-              .toList();
-          List listPrimaireFrench6 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element['level'] == 6)
-              .toList();
-          List listPrimaireMath1 = AppCubit.elevePrimaire
-              .where((element) => element["math"] == 1 && element['level'] == 1)
-              .toList();
-          List listPrimaireMath2 = AppCubit.elevePrimaire
-              .where((element) => element["math"] == 1 && element['level'] == 2)
-              .toList();
-          List listPrimaireMath3 = AppCubit.elevePrimaire
-              .where((element) => element["math"] == 1 && element['level'] == 3)
-              .toList();
-          List listPrimaireMath4 = AppCubit.elevePrimaire
-              .where((element) => element["math"] == 1 && element['level'] == 4)
-              .toList();
-          List listPrimaireMath5 = AppCubit.elevePrimaire
-              .where((element) => element["math"] == 1 && element['level'] == 5)
-              .toList();
-          List listPrimaireMath6 = AppCubit.elevePrimaire
-              .where((element) => element["math"] == 1 && element['level'] == 6)
-              .toList();
-
-          List CollegeFrench1 = AppCubit.elevecollege
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List CollegeFrench2 = AppCubit.elevecollege
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 2)
-              .toList();
-          List CollegeFrench3 = AppCubit.elevecollege
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 3)
-              .toList();
-          List listCollegeMath1 = AppCubit.elevecollege
-              .where((element) => element["math"] == 1 && element["level"] == 1)
-              .toList();
-          List listCollegeMath2 = AppCubit.elevecollege
-              .where((element) => element["math"] == 1 && element["level"] == 2)
-              .toList();
-          List listCollegeMath3 = AppCubit.elevecollege
-              .where((element) => element["math"] == 1 && element["level"] == 3)
-              .toList();
-          List listCollegePc1 = AppCubit.elevecollege
-              .where(
-                  (element) => element["physic"] == 1 && element["level"] == 1)
-              .toList();
-          List listCollegePc2 = AppCubit.elevecollege
-              .where(
-                  (element) => element["physic"] == 1 && element["level"] == 2)
-              .toList();
-          List listCollegePc3 = AppCubit.elevecollege
-              .where(
-                  (element) => element["physic"] == 1 && element["level"] == 3)
-              .toList();
-          List listCollegeSvt1 = AppCubit.elevecollege
-              .where((element) => element["svt"] == 1 && element["level"] == 1)
-              .toList();
-          List listCollegeSvt2 = AppCubit.elevecollege
-              .where((element) => element["svt"] == 1 && element["level"] == 2)
-              .toList();
-          List listCollegeSvt3 = AppCubit.elevecollege
-              .where((element) => element["svt"] == 1 && element["level"] == 3)
-              .toList();
-          // LyccE
-          List listLyccesFrench1 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesFrench2 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesFrench3 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesMath1 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesMath2 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesMath3 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesPc1 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesPc2 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesPc3 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesSvt1 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesSvt2 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listLyccesSvt3 = AppCubit.elevePrimaire
-              .where(
-                  (element) => element["french"] == 1 && element["level"] == 1)
-              .toList();
-          List listCalulateBigs = AppCubit.elevesCalcul
-              .where((element) => element["category"] == 1)
-              .toList();
-          List listCalulateKids = AppCubit.elevesCalcul
-              .where((element) => element["category"] == 2)
-              .toList();
 
           return Scaffold(
+              key: skey,
               body: SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.all(10),
@@ -330,15 +152,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireArabic1)
                                               ConditionalBuilder(
-                                                condition:
-                                                    listPrimaireArabic1 != 0,
+                                                condition: AppCubit
+                                                        .listPrimaireArabic1
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) => Column(
                                                   children: [
-                                                    ...listPrimaireArabic1.map(
+                                                    ...AppCubit
+                                                        .listPrimaireArabic1
+                                                        .map(
                                                       (e) =>
                                                           buildItemForStudent(
                                                         e,
-                                                            ctx
+                                                        ctx,
                                                       ),
                                                     ),
                                                   ],
@@ -360,15 +186,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireArabic2)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireArabic2 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireArabic2
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireArabic2
+                                                          ...AppCubit
+                                                              .listPrimaireArabic2
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -389,15 +219,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireArabic3)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireArabic3 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireArabic3
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireArabic3
+                                                          ...AppCubit
+                                                              .listPrimaireArabic3
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -418,15 +252,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireArabic4)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireArabic4.length != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireArabic4
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireArabic4
+                                                          ...AppCubit
+                                                              .listPrimaireArabic4
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -447,15 +285,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireArabic5)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireArabic5 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireArabic5
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireArabic5
+                                                          ...AppCubit
+                                                              .listPrimaireArabic5
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -476,15 +318,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireArabic6)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireArabic6 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireArabic6
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireArabic6
+                                                          ...AppCubit
+                                                              .listPrimaireArabic6
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -519,15 +365,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireFrench1)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireFrench1 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireFrench1
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireFrench1
+                                                          ...AppCubit
+                                                              .listPrimaireFrench1
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -548,15 +398,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireFrench2)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireFrench2 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireFrench2
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireFrench2
+                                                          ...AppCubit
+                                                              .listPrimaireFrench2
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -577,15 +431,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireFrench3)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireFrench3 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireFrench3
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireFrench3
+                                                          ...AppCubit
+                                                              .listPrimaireFrench3
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -606,15 +464,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireArabic4)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireFrench4 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireFrench4
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireFrench4
+                                                          ...AppCubit
+                                                              .listPrimaireFrench4
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -635,15 +497,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireFrench5)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireFrench5 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireFrench5
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireFrench5
+                                                          ...AppCubit
+                                                              .listPrimaireFrench5
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -664,15 +530,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireFrench6)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireFrench6 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireFrench6
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireFrench6
+                                                          ...AppCubit
+                                                              .listPrimaireFrench6
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -710,15 +580,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireMath1)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireMath1 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireMath1
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireMath1
+                                                          ...AppCubit
+                                                              .listPrimaireMath1
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -739,15 +613,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireMath2)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireMath2 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireMath2
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireMath2
+                                                          ...AppCubit
+                                                              .listPrimaireMath2
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -768,15 +646,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireMath3)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireMath1 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireMath1
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireMath1
+                                                          ...AppCubit
+                                                              .listPrimaireMath1
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -797,15 +679,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireMath4)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireMath4 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireMath4
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireMath4
+                                                          ...AppCubit
+                                                              .listPrimaireMath4
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -826,15 +712,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireMath5)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireMath5 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireMath5
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireMath5
+                                                          ...AppCubit
+                                                              .listPrimaireMath5
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -855,15 +745,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             ),
                                             if (showPrimaireMath6)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listPrimaireMath6 != 0,
+                                                  condition: AppCubit
+                                                          .listPrimaireMath6
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) => Column(
                                                         children: [
-                                                          ...listPrimaireMath6
+                                                          ...AppCubit
+                                                              .listPrimaireMath6
                                                               .map(
                                                             (e) =>
                                                                 buildItemForStudent(
-                                                              e,ctx
+                                                              e,
+                                                              ctx,
                                                             ),
                                                           ),
                                                         ],
@@ -916,14 +810,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showCollegeFrench1),
                                           if (showCollegeFrench1)
                                             ConditionalBuilder(
-                                                condition:
-                                                    CollegeFrench1.length != 0,
+                                                condition: AppCubit
+                                                        .CollegeFrench1
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...CollegeFrench1.map((v) =>
-                                                          buildItemForStudent(
-                                                              v,ctx))
+                                                      ...AppCubit.CollegeFrench1
+                                                          .map((v) =>
+                                                              buildItemForStudent(
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -939,14 +838,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showCollegeFrench2),
                                           if (showCollegeFrench2)
                                             ConditionalBuilder(
-                                                condition:
-                                                    CollegeFrench2.length == 0,
+                                                condition: AppCubit
+                                                        .CollegeFrench2
+                                                        .length ==
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...CollegeFrench2.map((v) =>
-                                                          buildItemForStudent(
-                                                              v,ctx))
+                                                      ...AppCubit.CollegeFrench2
+                                                          .map((v) =>
+                                                              buildItemForStudent(
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -962,14 +866,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showCollegeFrench3),
                                           if (showCollegeFrench3)
                                             ConditionalBuilder(
-                                                condition:
-                                                    CollegeFrench3.length != 0,
+                                                condition: AppCubit
+                                                        .CollegeFrench3
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...CollegeFrench3.map((v) =>
-                                                          buildItemForStudent(
-                                                              v,ctx))
+                                                      ...AppCubit.CollegeFrench3
+                                                          .map((v) =>
+                                                              buildItemForStudent(
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -997,16 +906,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showCollegeMath1),
                                           if (showCollegeMath1)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listCollegeMath1.length !=
-                                                        0,
+                                                condition: AppCubit
+                                                        .listCollegeMath1
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listCollegeMath1.map(
-                                                          (v) =>
+                                                      ...AppCubit
+                                                          .listCollegeMath1
+                                                          .map((v) =>
                                                               buildItemForStudent(
-                                                                  v,ctx))
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1022,16 +935,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showCollegeMath2),
                                           if (showCollegeMath2)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listCollegeMath2.length !=
-                                                        0,
+                                                condition: AppCubit
+                                                        .listCollegeMath2
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listCollegeMath2.map(
-                                                          (v) =>
+                                                      ...AppCubit
+                                                          .listCollegeMath2
+                                                          .map((v) =>
                                                               buildItemForStudent(
-                                                                  v,ctx))
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1047,16 +964,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showCollegeMath3),
                                           if (showCollegeMath3)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listCollegeMath3.length !=
-                                                        0,
+                                                condition: AppCubit
+                                                        .listCollegeMath3
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listCollegeMath3.map(
-                                                          (v) =>
+                                                      ...AppCubit
+                                                          .listCollegeMath3
+                                                          .map((v) =>
                                                               buildItemForStudent(
-                                                                  v,ctx))
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1085,15 +1006,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             }, showCollegePc1),
                                             if (showCollegePc1)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listCollegePc1.length !=
-                                                          0,
+                                                  condition: AppCubit
+                                                          .listCollegePc1
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) {
                                                     return Column(
                                                       children: [
-                                                        ...listCollegePc1.map((v) =>
-                                                            buildItemForStudent(
-                                                                v,ctx))
+                                                        ...AppCubit
+                                                            .listCollegePc1
+                                                            .map((v) =>
+                                                                buildItemForStudent(
+                                                                  v,
+                                                                  ctx,
+                                                                ))
                                                       ],
                                                     );
                                                   },
@@ -1109,15 +1035,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             }, showCollegePc2),
                                             if (showCollegePc2)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listCollegePc2.length !=
-                                                          0,
+                                                  condition: AppCubit
+                                                          .listCollegePc2
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) {
                                                     return Column(
                                                       children: [
-                                                        ...listCollegePc2.map((v) =>
-                                                            buildItemForStudent(
-                                                                v,ctx))
+                                                        ...AppCubit
+                                                            .listCollegePc2
+                                                            .map((v) =>
+                                                                buildItemForStudent(
+                                                                  v,
+                                                                  ctx,
+                                                                ))
                                                       ],
                                                     );
                                                   },
@@ -1133,22 +1064,28 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             }, showCollegePc3),
                                             if (showCollegePc3)
                                               ConditionalBuilder(
-                                                  condition:
-                                                      listCollegePc3.length !=
-                                                          0,
+                                                  condition: AppCubit
+                                                          .listCollegePc3
+                                                          .length !=
+                                                      0,
                                                   builder: (ctx) {
                                                     return Column(
                                                       children: [
-                                                        ...listCollegePc3.map((v) =>
-                                                            buildItemForStudent(
-                                                                v,ctx))
+                                                        ...AppCubit
+                                                            .listCollegePc3
+                                                            .map((v) =>
+                                                                buildItemForStudent(
+                                                                  v,
+                                                                  ctx,
+                                                                ))
                                                       ],
                                                     );
                                                   },
                                                   fallback: (ctx) => Container(
                                                         child: Text(
                                                             "il n'y a aucun eleve"),
-                                                      )),
+                                                      )), ],
+                                        ),
                                             Column(
                                               children: [
                                                 buildButton(
@@ -1162,89 +1099,104 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                                   showCollegeSvt,
                                                 ),
                                                 if (showCollegeSvt)
-                                                  buildButton("1er ", () {
-                                                    setState(() {
-                                                      showCollegeSvt1 =
-                                                          !showCollegeSvt1;
-                                                    });
-                                                  }, showCollegeSvt1),
-                                                if (showCollegeSvt1)
-                                                  ConditionalBuilder(
-                                                      condition: listCollegeSvt1
-                                                              .length !=
-                                                          0,
-                                                      builder: (ctx) {
-                                                        return Column(
-                                                          children: [
-                                                            ...listCollegeSvt1
-                                                                .map((v) =>
-                                                                    buildItemForStudent(
-                                                                        v,ctx))
-                                                          ],
-                                                        );
-                                                      },
-                                                      fallback: (ctx) =>
-                                                          Container(
+                                                  Column(
+                                                    children: [
+                                                      buildButton("1er ", () {
+                                                        setState(() {
+                                                          showCollegeSvt1 =
+                                                              !showCollegeSvt1;
+                                                        });
+                                                      }, showCollegeSvt1),
+                                                      if (showCollegeSvt1)
+                                                        ConditionalBuilder(
+                                                            condition: AppCubit
+                                                                    .listCollegeSvt1
+                                                                    .length !=
+                                                                0,
+                                                            builder: (ctx) {
+                                                              return Column(
+                                                                children: [
+                                                                  ...AppCubit
+                                                                      .listCollegeSvt1
+                                                                      .map((v) =>
+                                                                          buildItemForStudent(
+                                                                            v,
+                                                                            ctx,
+                                                                          ))
+                                                                ],
+                                                              );
+                                                            },
+                                                            fallback: (ctx) =>
+                                                                Container(
+                                                                  child: Text(
+                                                                      "il n'y a aucun eleve"),
+                                                                )),
+                                                      buildButton("2er ", () {
+                                                        setState(() {
+                                                          showCollegeSvt2 =
+                                                              !showCollegeSvt2;
+                                                        });
+                                                      }, showCollegeSvt2),
+                                                      if (showCollegeSvt2)
+                                                        ConditionalBuilder(
+                                                            condition: AppCubit
+                                                                    .listCollegeSvt2
+                                                                    .length !=
+                                                                0,
+                                                            builder: (ctx) {
+                                                              return Column(
+                                                                children: [
+                                                                  ...AppCubit
+                                                                      .listCollegeSvt2
+                                                                      .map((v) =>
+                                                                          buildItemForStudent(
+                                                                            v,
+                                                                            ctx,
+                                                                          ))
+                                                                ],
+                                                              );
+                                                            },
+                                                            fallback: (ctx) =>
+                                                                Container(
+                                                                  child: Text(
+                                                                      "il n'y a aucun eleve"),
+                                                                )),
+                                                      buildButton("3er ", () {
+                                                        setState(() {
+                                                          showCollegeSvt3 =
+                                                              !showCollegeSvt3;
+                                                        });
+                                                      }, showCollegeSvt3),
+                                                      if (showCollegeSvt3)
+                                                        ConditionalBuilder(
+                                                          condition: AppCubit
+                                                                  .listCollegeSvt3
+                                                                  .length !=
+                                                              0,
+                                                          builder: (ctx) {
+                                                            return Column(
+                                                              children: [
+                                                                ...AppCubit
+                                                                    .listCollegeSvt3
+                                                                    .map((v) =>
+                                                                        buildItemForStudent(
+                                                                          v,
+                                                                          ctx,
+                                                                        ))
+                                                              ],
+                                                            );
+                                                          },
+                                                          fallback: (ctx) =>
+                                                              Container(
                                                             child: Text(
                                                                 "il n'y a aucun eleve"),
-                                                          )),
-                                                buildButton("2er ", () {
-                                                  setState(() {
-                                                    showCollegeSvt2 =
-                                                        !showCollegeSvt2;
-                                                  });
-                                                }, showCollegeSvt2),
-                                                if (showCollegeSvt2)
-                                                  ConditionalBuilder(
-                                                      condition: listCollegeSvt2
-                                                              .length !=
-                                                          0,
-                                                      builder: (ctx) {
-                                                        return Column(
-                                                          children: [
-                                                            ...listCollegeSvt2
-                                                                .map((v) =>
-                                                                    buildItemForStudent(
-                                                                        v,ctx))
-                                                          ],
-                                                        );
-                                                      },
-                                                      fallback: (ctx) =>
-                                                          Container(
-                                                            child: Text(
-                                                                "il n'y a aucun eleve"),
-                                                          )),
-                                                buildButton("3er ", () {
-                                                  setState(() {
-                                                    showCollegeSvt3 =
-                                                        !showCollegeSvt3;
-                                                  });
-                                                }, showCollegeSvt3),
-                                                if (showCollegeSvt3)
-                                                  ConditionalBuilder(
-                                                    condition: listCollegeSvt3
-                                                            .length !=
-                                                        0,
-                                                    builder: (ctx) {
-                                                      return Column(
-                                                        children: [
-                                                          ...listCollegeSvt3
-                                                              .map((v) =>
-                                                                  buildItemForStudent(
-                                                                      v,ctx))
-                                                        ],
-                                                      );
-                                                    },
-                                                    fallback: (ctx) =>
-                                                        Container(
-                                                      child: Text(
-                                                          "il n'y a aucun eleve"),
-                                                    ),
+                                                          ),
+                                                        ),
+                                                    ],
                                                   ),
                                               ],
                                             ),
-                                          ],
-                                        ),
+                                         
                                     ],
                                   );
                                 },
@@ -1284,16 +1236,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             }, showLyccesFrench1),
                                             if (showLyccesFrench1)
                                               ConditionalBuilder(
-                                                  condition: listLyccesFrench1
+                                                  condition: AppCubit
+                                                          .listLyccesFrench1
                                                           .length !=
                                                       0,
                                                   builder: (ctx) {
                                                     return Column(
                                                       children: [
-                                                        ...listLyccesFrench1
+                                                        ...AppCubit
+                                                            .listLyccesFrench1
                                                             .map((v) =>
                                                                 buildItemForStudent(
-                                                                    v,ctx))
+                                                                  v,
+                                                                  ctx,
+                                                                ))
                                                       ],
                                                     );
                                                   },
@@ -1309,16 +1265,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             }, showLyccesFrench2),
                                             if (showLyccesFrench2)
                                               ConditionalBuilder(
-                                                  condition: listLyccesFrench2
+                                                  condition: AppCubit
+                                                          .listLyccesFrench2
                                                           .length ==
                                                       0,
                                                   builder: (ctx) {
                                                     return Column(
                                                       children: [
-                                                        ...listLyccesFrench2
+                                                        ...AppCubit
+                                                            .listLyccesFrench2
                                                             .map((v) =>
                                                                 buildItemForStudent(
-                                                                    v,ctx))
+                                                                  v,
+                                                                  ctx,
+                                                                ))
                                                       ],
                                                     );
                                                   },
@@ -1334,16 +1294,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                             }, showLyccesFrench3),
                                             if (showLyccesFrench3)
                                               ConditionalBuilder(
-                                                  condition: listLyccesFrench3
+                                                  condition: AppCubit
+                                                          .listLyccesFrench3
                                                           .length !=
                                                       0,
                                                   builder: (ctx) {
                                                     return Column(
                                                       children: [
-                                                        ...listLyccesFrench3
+                                                        ...AppCubit
+                                                            .listLyccesFrench3
                                                             .map((v) =>
                                                                 buildItemForStudent(
-                                                                    v,ctx))
+                                                                  v,
+                                                                  ctx,
+                                                                ))
                                                       ],
                                                     );
                                                   },
@@ -1372,15 +1336,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showLyccesMath1),
                                           if (showCollegeMath1)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listLyccesMath1.length != 0,
+                                                condition: AppCubit
+                                                        .listLyccesMath1
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listLyccesMath1.map(
-                                                          (v) =>
+                                                      ...AppCubit
+                                                          .listLyccesMath1
+                                                          .map((v) =>
                                                               buildItemForStudent(
-                                                                  v,ctx))
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1396,15 +1365,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showLyccesMath2),
                                           if (showLyccesMath2)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listLyccesMath2.length != 0,
+                                                condition: AppCubit
+                                                        .listLyccesMath2
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listLyccesMath2.map(
-                                                          (v) =>
+                                                      ...AppCubit
+                                                          .listLyccesMath2
+                                                          .map((v) =>
                                                               buildItemForStudent(
-                                                                  v,ctx))
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1420,15 +1394,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showLyccesMath3),
                                           if (showLyccesMath3)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listLyccesMath3.length != 0,
+                                                condition: AppCubit
+                                                        .listLyccesMath3
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listLyccesMath3.map(
-                                                          (v) =>
+                                                      ...AppCubit
+                                                          .listLyccesMath3
+                                                          .map((v) =>
                                                               buildItemForStudent(
-                                                                  v,ctx))
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1455,14 +1434,18 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showLyccesPc1),
                                           if (showLyccesPc1)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listLyccesPc1.length != 0,
+                                                condition: AppCubit
+                                                        .listLyccesPc1.length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listLyccesPc1.map((v) =>
-                                                          buildItemForStudent(
-                                                              v,ctx))
+                                                      ...AppCubit.listLyccesPc1
+                                                          .map((v) =>
+                                                              buildItemForStudent(
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1477,14 +1460,18 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showLyccesPc2),
                                           if (showLyccesPc2)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listLyccesPc2.length != 0,
+                                                condition: AppCubit
+                                                        .listLyccesPc2.length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listCollegePc2.map((v) =>
-                                                          buildItemForStudent(
-                                                              v,ctx))
+                                                      ...AppCubit.listCollegePc2
+                                                          .map((v) =>
+                                                              buildItemForStudent(
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1499,14 +1486,18 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showLyccesPc3),
                                           if (showLyccesPc3)
                                             ConditionalBuilder(
-                                              condition:
-                                                  listLyccesPc3.length != 0,
+                                              condition: AppCubit
+                                                      .listLyccesPc3.length !=
+                                                  0,
                                               builder: (ctx) {
                                                 return Column(
                                                   children: [
-                                                    ...listLyccesPc3.map((v) =>
-                                                        buildItemForStudent(
-                                                            v,ctx))
+                                                    ...AppCubit.listLyccesPc3
+                                                        .map((v) =>
+                                                            buildItemForStudent(
+                                                              v,
+                                                              ctx,
+                                                            ))
                                                   ],
                                                 );
                                               },
@@ -1534,14 +1525,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showLyccesSvt1),
                                           if (showLyccesSvt1)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listLyccesSvt1.length != 0,
+                                                condition: AppCubit
+                                                        .listLyccesSvt1
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listLyccesSvt1.map((v) =>
-                                                          buildItemForStudent(
-                                                              v,ctx))
+                                                      ...AppCubit.listLyccesSvt1
+                                                          .map((v) =>
+                                                              buildItemForStudent(
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1556,14 +1552,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showLyccesSvt2),
                                           if (showLyccesSvt2)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listLyccesSvt2.length != 0,
+                                                condition: AppCubit
+                                                        .listLyccesSvt2
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listLyccesSvt2.map((v) =>
-                                                          buildItemForStudent(
-                                                              v,ctx))
+                                                      ...AppCubit.listLyccesSvt2
+                                                          .map((v) =>
+                                                              buildItemForStudent(
+                                                                v,
+                                                                ctx,
+                                                              ))
                                                     ],
                                                   );
                                                 },
@@ -1578,15 +1579,20 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showLyccesSvt3),
                                           if (showLyccesSvt3)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listLyccesSvt3.length != 0,
+                                                condition: AppCubit
+                                                        .listLyccesSvt3
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) {
                                                   return Column(
                                                     children: [
-                                                      ...listLyccesSvt3.map(
+                                                      ...AppCubit.listLyccesSvt3
+                                                          .map(
                                                         (v) =>
                                                             buildItemForStudent(
-                                                                v,ctx),
+                                                          v,
+                                                          ctx,
+                                                        ),
                                                       )
                                                     ],
                                                   );
@@ -1630,14 +1636,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showEnglisBigs),
                                           if (showEnglisBigs)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listEnglisBigs.length != 0,
+                                                condition: AppCubit
+                                                        .listEnglisBigs
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) => Column(
                                                       children: [
-                                                        ...listEnglisBigs.map(
+                                                        ...AppCubit
+                                                            .listEnglisBigs
+                                                            .map(
                                                           (e) =>
                                                               buildItemForStudent(
-                                                            e,ctx,
+                                                            e,
+                                                            ctx,
                                                           ),
                                                         ),
                                                       ],
@@ -1653,14 +1664,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showEnglisKids),
                                           if (showEnglisKids)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listEnglisKids.length != 0,
+                                                condition: AppCubit
+                                                        .listEnglisKids
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) => Column(
                                                       children: [
-                                                        ...listEnglisKids.map(
+                                                        ...AppCubit
+                                                            .listEnglisKids
+                                                            .map(
                                                           (e) =>
                                                               buildItemForStudent(
-                                                            e,ctx,
+                                                            e,
+                                                            ctx,
                                                           ),
                                                         ),
                                                       ],
@@ -1686,14 +1702,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showFrenchBigs),
                                           if (showFrenchBigs)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listFrenchBigs.length != 0,
+                                                condition: AppCubit
+                                                        .listFrenchBigs
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) => Column(
                                                       children: [
-                                                        ...listFrenchBigs.map(
+                                                        ...AppCubit
+                                                            .listFrenchBigs
+                                                            .map(
                                                           (e) =>
                                                               buildItemForStudent(
-                                                            e,ctx
+                                                            e,
+                                                            ctx,
                                                           ),
                                                         ),
                                                       ],
@@ -1709,14 +1730,19 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                           }, showFrenchKids),
                                           if (showFrenchKids)
                                             ConditionalBuilder(
-                                                condition:
-                                                    listFrenchKids.length != 0,
+                                                condition: AppCubit
+                                                        .listFrenchKids
+                                                        .length !=
+                                                    0,
                                                 builder: (ctx) => Column(
                                                       children: [
-                                                        ...listFrenchKids.map(
+                                                        ...AppCubit
+                                                            .listFrenchKids
+                                                            .map(
                                                           (e) =>
                                                               buildItemForStudent(
-                                                            e,ctx,
+                                                            e,
+                                                            ctx,
                                                           ),
                                                         ),
                                                       ],
@@ -1733,63 +1759,74 @@ class _ElevesScreenState extends State<ElevesScreen> {
                                   child: Text("Il n' y a aucun eleve"),
                                 ),
                               ),
-                            buildButton("calcule mental", (){
-                              setState(() {
-                                showcal = !showcal;
-                              },);
+                            buildButton("calcule mental", () {
+                              setState(
+                                () {
+                                  showcal = !showcal;
+                                },
+                              );
                             }, showcal),
-                            if(showcal)
-                              ConditionalBuilder(condition: AppCubit.elevesCalcul.length != 0, builder: (ctx) => Column(
-                                children: [
-                                  buildButton("Pour les enfants", () {
-                                    setState(() {
-                                      showcal1 = !showcal1;
-                                    });
-                                  },     showcal1
-                                  ),
-                                  if (showcal1)
-                                    ConditionalBuilder(
-                                        condition:
-                                        listCalulateBigs.length != 0,
-                                        builder: (ctx) => Column(
-                                          children: [
-                                            ...listCalulateBigs.map(
-                                                  (e) =>
-                                                  buildItemForStudent(
-                                                    e,ctx
+                            if (showcal)
+                              ConditionalBuilder(
+                                condition: AppCubit.elevesCalcul.length != 0,
+                                builder: (ctx) => Column(
+                                  children: [
+                                    buildButton("Pour les enfants", () {
+                                      setState(() {
+                                        showcal1 = !showcal1;
+                                      });
+                                    }, showcal1),
+                                    if (showcal1)
+                                      ConditionalBuilder(
+                                          condition: AppCubit
+                                                  .listCalulateBigs.length !=
+                                              0,
+                                          builder: (ctx) => Column(
+                                                children: [
+                                                  ...AppCubit.listCalulateBigs
+                                                      .map(
+                                                    (e) => buildItemForStudent(
+                                                      e,
+                                                      ctx,
+                                                    ),
                                                   ),
-                                            ),
-                                          ],
-                                        ),
-                                        fallback: (ctx) => Container(
-                                          child: Text(
-                                              "Il n' y a  pas aucun eleve"),
-                                        )),
-                                  buildButton('Pour Les Adultes', () {
-                                    setState(() {
-                                      showcal2 = !showcal2;
-                                    });
-                                  }, showcal2),
-                                  if (showcal2)
-                                    ConditionalBuilder(
-                                        condition:
-                                        listCalulateKids.length != 0,
-                                        builder: (ctx) => Column(
-                                          children: [
-                                            ...listCalulateKids.map(
-                                                  (e) =>
-                                                  buildItemForStudent(
-                                                    e,ctx,
+                                                ],
+                                              ),
+                                          fallback: (ctx) => Container(
+                                                child: Text(
+                                                    "Il n' y a  pas aucun eleve"),
+                                              )),
+                                    buildButton('Pour Les Adultes', () {
+                                      setState(() {
+                                        showcal2 = !showcal2;
+                                      });
+                                    }, showcal2),
+                                    if (showcal2)
+                                      ConditionalBuilder(
+                                          condition: AppCubit
+                                                  .listCalulateKids.length !=
+                                              0,
+                                          builder: (ctx) => Column(
+                                                children: [
+                                                  ...AppCubit.listCalulateKids
+                                                      .map(
+                                                    (e) => buildItemForStudent(
+                                                      e,
+                                                      ctx,
+                                                    ),
                                                   ),
-                                            ),
-                                          ],
-                                        ),
-                                        fallback: (ctx) => Container(
-                                          child: Text(
-                                              "Il n' y a  pas aucun eleve"),
-                                        )),
-                                ],
-                              ), fallback: (ctx)=>Container(child: Text("Il n' y a aucun eleve"),),)
+                                                ],
+                                              ),
+                                          fallback: (ctx) => Container(
+                                                child: Text(
+                                                    "Il n' y a  pas aucun eleve"),
+                                              )),
+                                  ],
+                                ),
+                                fallback: (ctx) => Container(
+                                  child: Text("Il n' y a aucun eleve"),
+                                ),
+                              )
                           ],
                         ),
                       ),

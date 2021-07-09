@@ -23,3 +23,4 @@ class UpdateData extends AppState{}
 class DeleteData extends AppState{}
 
 class AddCalulateMentaal extends AppState{}
+

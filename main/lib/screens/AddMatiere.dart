@@ -103,7 +103,8 @@ class _AddMatiereState extends State<AddMatiere> {
                                 mahC = v!;
                                 model["svt"] = svtC ? 1 : 0;
                               });
-                            }),
+                            },                          title: Text("Svt")
+                        ),
                       if (model["physic"] == 0)
                         CheckboxListTile(
                             value: PcC,
@@ -112,7 +113,9 @@ class _AddMatiereState extends State<AddMatiere> {
                                 mahC = v!;
                                 model["physic"] = PcC ? 1 : 0;
                               });
-                            }),
+                            },
+                          title: Text("physic")
+                            ),
                     ],
                   ),
                 if(AppCubit.elevelangsNames.contains(model["name"]))

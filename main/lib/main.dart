@@ -4,7 +4,11 @@ import 'package:main/screens/splachScreen.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 import 'package:main/shared/cubit/AppStates.dart';
 
+import 'observer.dart';
+
 void main() {
+  Bloc.observer = MyBlocObserver();
+
   runApp(MyApp());
 }
 

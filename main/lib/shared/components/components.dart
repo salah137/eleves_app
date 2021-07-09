@@ -55,7 +55,7 @@ buildButton(text, ontap, value) => InkWell(
     ),
     onTap: ontap);
 
-Widget buildItemForStudent(Map model, BuildContext ctx) {
+Widget buildItemForStudent(Map model, BuildContext ctx, ) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 5),
     child: Container(

@@ -6,35 +6,43 @@ import 'package:main/shared/components/components.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 import 'package:main/shared/cubit/AppStates.dart';
 
-class EleveInfo extends StatelessWidget {
+class EleveInfo extends StatefulWidget {
   Map element;
   EleveInfo(this.element);
+
+  @override
+  _EleveInfoState createState() => _EleveInfoState(element);
+}
+
+class _EleveInfoState extends State<EleveInfo> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final element;
+  _EleveInfoState(this.element);
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
         builder: (ctx, state) {
           AppCubit cubit = BlocProvider.of(ctx);
           bool showCalcullate =
-              AppCubit.elevesCalculNames.contains(element["name"]);
-          bool showPrimair = AppCubit.elevePrimaire.contains(element);
+              AppCubit.elevesCalculNames.contains(widget.element["name"]);
+          bool showPrimair = AppCubit.elevePrimaire.contains(widget.element);
           buildBottomSheet(String matiere) {
-            scaffoldKey.currentState!.showBottomSheet((ctx) {
-              return Container(
-                child: MaterialButton(
-                  onPressed: () {
-                    if(matiere ==  "CM"){
-
-                    }
-                    else {
-                      element["$matiere"] = 0;
-                      cubit.updateData(element);
-                    }
-                  },
-                  child: Text("Suprimer Cette Matiere Pour ${element["name"]}"),
-                ),
-              );
-            });
+          showModalBottomSheet(context: ctx, builder: (ctx)=> Container(
+              child: MaterialButton(
+              onPressed: () {
+            if(matiere ==  "CM"){
+              AppCubit().deleteData(element);
+            }
+            else {
+              widget.element["$matiere"] = 0;
+              AppCubit().updateData(widget.element);
+            }
+          },
+            child: Text("Suprimer Cette Matiere Pour ${widget.element["name"]}"),
+            ),
+            )
+          );
           }
           return Scaffold(
             body: SafeArea(
@@ -60,7 +68,7 @@ class EleveInfo extends StatelessWidget {
                           CircleAvatar(
                             radius: 80,
                             child: Text(
-                              '${element["name"][0]}',
+                              '${widget.element["name"][0]}',
                               style: TextStyle(fontSize: 50),
                             ),
                           ),
@@ -68,92 +76,92 @@ class EleveInfo extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
-                            element["name"],
+                            widget.element["name"],
                             style: TextStyle(fontSize: 50),
                           )
                         ],
                       ),
                     ),
-                    if (AppCubit.elevePrimaire.contains(element))
+                    if (AppCubit.elevePrimaire.contains(widget.element))
                       SingleChildScrollView(
                         child: Column(
                           children: [
-                            if (element["math"] == 1)
+                            if (widget.element["math"] == 1)
                               buildMatiereItem(text: "Math", ontap: () {
                                 buildBottomSheet("math");
                               }),
-                            if (element["french"] == 1)
+                            if (widget.element["french"] == 1)
                               buildMatiereItem(text: "francais", ontap: () {
                                 buildBottomSheet("french");
                               }),
-                            if (element["arabic"] == 1)
+                            if (widget.element["arabic"] == 1)
                               buildMatiereItem(text: "Arabic", ontap: () {
                                 buildBottomSheet('arabic');
                               }),
                           ],
                         ),
                       ),
-                    if (AppCubit.elevecollegeNames.contains(element["name"]))
+                    if (AppCubit.elevecollegeNames.contains(widget.element["name"]))
                       Column(
                         children: [
-                          if (element["math"] == 1)
+                          if (widget.element["math"] == 1)
                             buildMatiereItem(text: "Math", ontap: () {
                               buildBottomSheet("math");
                             }),
-                          if (element["french"] == 1)
+                          if (widget.element["french"] == 1)
                             buildMatiereItem(text: "francais", ontap: () {
                               buildBottomSheet("french");
                             }),
-                          if (element['physic'] == 1)
+                          if (widget.element['physic'] == 1)
                             buildMatiereItem(text: "physic", ontap: () {
                               buildBottomSheet("physic");
                             }),
-                          if (element["svt"] == 1)
+                          if (widget.element["svt"] == 1)
                             buildMatiereItem(text: 'SVT', ontap: () {
                               buildBottomSheet("svt");
                             })
                         ],
                       ),
-                    if (AppCubit.elevelyceesNames.contains(element["name"]))
+                    if (AppCubit.elevelyceesNames.contains(widget.element["name"]))
                       Column(
                         children: [
-                          if (element["math"] == 1)
+                          if (widget.element["math"] == 1)
                             buildMatiereItem(text: "Math", ontap: () {
                               buildBottomSheet("math");
                             }),
-                          if (element["french"] == 1)
+                          if (widget.element["french"] == 1)
                             buildMatiereItem(text: "francais", ontap: () {
                               buildBottomSheet("french");
                             }),
-                          if (element['physic'] == 1)
+                          if (widget.element['physic'] == 1)
                             buildMatiereItem(text: "physic", ontap: () {
                               buildBottomSheet("physic");
                             }),
-                          if (element["svt"] == 1)
+                          if (widget.element["svt"] == 1)
                             buildMatiereItem(text: 'SVT', ontap: () {
                               buildBottomSheet("svt");
                             })
                         ],
                       ),
-                    if (AppCubit.elevelangsNames.contains(element["name"]))
+                    if (AppCubit.elevelangsNames.contains(widget.element["name"]))
                       Column(
                         children: [
-                          if (element["french"] == 1 ||
+                          if (widget.element["french"] == 1 ||
                               AppCubit.elevelangs[AppCubit.elevelangsNames
-                                      .indexOf(element["name"])]["french"] ==
+                                      .indexOf(widget.element["name"])]["french"] ==
                                   1)
                             buildMatiereItem(text: "french", ontap: () {
                               buildBottomSheet("french");
                             }),
-                          if (element["english"] == 1 ||
+                          if (widget.element["english"] == 1 ||
                               AppCubit.elevelangs[AppCubit.elevelangsNames
-                                      .indexOf(element["name"])]["english"] ==
+                                      .indexOf(widget.element["name"])]["english"] ==
                                   1)
                             buildMatiereItem(text: "english", ontap: () {
                               buildBottomSheet("english");                            }),
                         ],
                       ),
-                    if (AppCubit.elevesCalculNames.contains(element["name"]))
+                    if (AppCubit.elevesCalculNames.contains(widget.element["name"]))
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -175,7 +183,7 @@ class EleveInfo extends StatelessWidget {
                 Navigator.of(ctx).push(
                   MaterialPageRoute(
                     builder: (ctx) => AddMatiere(
-                      model: element,
+                      model: widget.element,
                     ),
                   ),
                 );
