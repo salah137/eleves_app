@@ -18,6 +18,7 @@ class _AddMatiereState extends State<AddMatiere> {
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
         builder: (ctx, state) {
+          AppCubit cubit = BlocProvider.of(ctx);
           bool maxdepth = false;
           bool arabic = false;
           bool frenchP = false;
@@ -135,6 +136,12 @@ class _AddMatiereState extends State<AddMatiere> {
                   )
               ],
             ),
+            floatingActionButton: FloatingActionButton(
+              onPressed: (){
+                cubit.updateData(model);
+              },
+              child: Icon(Icons.done),
+            )
           );
         },
         listener: (ctx, state) {});
