@@ -24,6 +24,12 @@ class AppCubit extends Cubit<AppState> {
   static List<Map> elevesCalcul = [];
   static List<Map> payement = [];
 
+  static List<String> elevePrimaireNames = [];
+  static List<String>  elevecollegeNames = [];
+  static List<String>   elevelyceesNames = [];
+  static List<String>    elevelangsNames = [];
+  static List<String>  elevesCalculNames = [];
+
   void createDataBase() async {
     database = await openDatabase(
       "mydata.db",
@@ -85,6 +91,27 @@ class AppCubit extends Cubit<AppState> {
     payement = await db.rawQuery(
       "SELECT * FROM payment",
     );
+
+    for (int i = 0; i <elevePrimaire.length; i++){
+                       elevePrimaireNames.add(elevePrimaire[i]["name"]);
+    }
+
+    for (int i = 0; i <elevelycees.length; i++){
+      elevelyceesNames.add(elevelycees[i]["name"]);
+    }
+
+    for (int i = 0; i <elevecollege.length; i++){
+      elevecollegeNames.add(elevecollege[i]["name"]);
+    }
+
+    for (int i = 0; i <elevelangs.length; i++){
+      elevelangsNames.add(elevelangs[i]["name"]);
+    }
+
+    for (int i = 0; i <elevesCalcul.length; i++){
+      elevesCalculNames.add(elevesCalcul[i]["name"]);
+    }
+
     emit(GetDataState());
   }
 

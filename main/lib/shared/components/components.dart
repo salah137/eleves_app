@@ -1,4 +1,5 @@
-import'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:main/screens/ELeveInfoScreen.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 
 Widget itemBuilder(context, name, matiere, isPayed, nonPayedMonths) => Card(
@@ -55,42 +56,58 @@ buildButton(text, ontap, value) => InkWell(
     onTap: ontap);
 
 Widget buildItemForStudent(Map model, BuildContext ctx) {
-
   return Padding(
-    padding: const EdgeInsets.symmetric(
-      horizontal: 5
-    ),
-    
-    child:   Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15)
-    ),
+    padding: const EdgeInsets.symmetric(horizontal: 5),
+    child: Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
         child: InkWell(
-          onTap: (){
-            Navigator.of(ctx).push(MaterialPageRoute(builder: (ctx)=>Scaffold()));
+          onTap: () {
+            Navigator.of(ctx)
+                .push(MaterialPageRoute(builder: (ctx) => EleveInfo(model)));
           },
           child: Card(
-          color: Colors.grey[200],
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: CircleAvatar(
-                          radius: 20,
-                          child: Text("${model ["name"][0]}"),
-                        ),
-                      ),
-                      Text('${model ["name"]}')
-                    ],
+            color: Colors.grey[200],
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: CircleAvatar(
+                      radius: 20,
+                      child: Text("${model["name"][0]}"),
+                    ),
                   ),
-                ),
+                  Text('${model["name"]}')
+                ],
               ),
+            ),
+          ),
         ),
       ),
     ),
   );
 }
+
+Widget buildMatiereItem(
+        {required String text, required GestureTapCallback ontap}) =>
+    InkWell(
+      borderRadius: BorderRadius.circular(15),
+      onTap: ontap,
+      child:
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.pink.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(15)),
+            padding: const EdgeInsets.all(20),
+            child: Text(
+              "$text",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ),
+    );

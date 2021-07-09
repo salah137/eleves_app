@@ -9,7 +9,7 @@ class Splash extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SplashScreen(
-        seconds: 2,
+        seconds: 5,
         navigateAfterSeconds: HomePage(),
         image: Image(
           image: AssetImage("assets/images/209290103_1798394810347180_7350979293146039910_n.jpg"),
