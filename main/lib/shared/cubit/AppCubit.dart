@@ -351,4 +351,32 @@ class AppCubit extends Cubit<AppState> {
     );
     getdata(database!);
   }
+  void deleteData(model) async {
+        if(elevePrimaireNames.contains(model["name"]))
+        database!.rawDelete(
+            'DELETE FROM Eleveprimaire WHERE id = ?',
+             [model["id"]]
+        );
+        if(elevecollegeNames.contains(model["name"]))
+          database!.rawDelete(
+              'DELETE FROM Elevecollege WHERE id = ?',
+              [model["id"]]
+          );
+        if(elevelyceesNames.contains(model["name"]))
+          database!.rawDelete(
+              'DELETE FROM Elevelycee WHERE id = ?',
+              [model["id"]]
+          );
+        if(elevelangsNames.contains(model["name"]))
+          database!.rawDelete(
+              'DELETE FROM Elevelangs WHERE id = ?',
+              [model["id"]]
+          );
+        if(elevelangsNames.contains(model["name"]))
+          database!.rawDelete(
+              'DELETE FROM EleveCalulate WHERE id = ?',
+              [model["id"]]
+          );
+
+  }
 }

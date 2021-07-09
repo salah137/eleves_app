@@ -9,14 +9,33 @@ import 'package:main/shared/cubit/AppStates.dart';
 class EleveInfo extends StatelessWidget {
   Map element;
   EleveInfo(this.element);
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
         builder: (ctx, state) {
+          AppCubit cubit = BlocProvider.of(ctx);
           bool showCalcullate =
               AppCubit.elevesCalculNames.contains(element["name"]);
           bool showPrimair = AppCubit.elevePrimaire.contains(element);
+          buildBottomSheet(String matiere) {
+            scaffoldKey.currentState!.showBottomSheet((ctx) {
+              return Container(
+                child: MaterialButton(
+                  onPressed: () {
+                    if(matiere ==  "CM"){
 
+                    }
+                    else {
+                      element["$matiere"] = 0;
+                      cubit.updateData(element);
+                    }
+                  },
+                  child: Text("Suprimer Cette Matiere Pour ${element["name"]}"),
+                ),
+              );
+            });
+          }
           return Scaffold(
             body: SafeArea(
               child: SingleChildScrollView(
@@ -26,10 +45,12 @@ class EleveInfo extends StatelessWidget {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                          color: Colors.pink,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(15),
-                              bottomRight: Radius.circular(15))),
+                        color: Colors.pink,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15),
+                        ),
+                      ),
                       width: double.infinity,
                       height: 400,
                       child: Column(
@@ -58,11 +79,17 @@ class EleveInfo extends StatelessWidget {
                         child: Column(
                           children: [
                             if (element["math"] == 1)
-                              buildMatiereItem(text: "Math", ontap: () {}),
+                              buildMatiereItem(text: "Math", ontap: () {
+                                buildBottomSheet("math");
+                              }),
                             if (element["french"] == 1)
-                              buildMatiereItem(text: "francais", ontap: () {}),
+                              buildMatiereItem(text: "francais", ontap: () {
+                                buildBottomSheet("french");
+                              }),
                             if (element["arabic"] == 1)
-                              buildMatiereItem(text: "Arabic", ontap: () {})
+                              buildMatiereItem(text: "Arabic", ontap: () {
+                                buildBottomSheet('arabic');
+                              }),
                           ],
                         ),
                       ),
@@ -70,26 +97,42 @@ class EleveInfo extends StatelessWidget {
                       Column(
                         children: [
                           if (element["math"] == 1)
-                            buildMatiereItem(text: "Math", ontap: () {}),
+                            buildMatiereItem(text: "Math", ontap: () {
+                              buildBottomSheet("math");
+                            }),
                           if (element["french"] == 1)
-                            buildMatiereItem(text: "francais", ontap: () {}),
+                            buildMatiereItem(text: "francais", ontap: () {
+                              buildBottomSheet("french");
+                            }),
                           if (element['physic'] == 1)
-                            buildMatiereItem(text: "physic", ontap: () {}),
+                            buildMatiereItem(text: "physic", ontap: () {
+                              buildBottomSheet("physic");
+                            }),
                           if (element["svt"] == 1)
-                            buildMatiereItem(text: 'SVT', ontap: () {})
+                            buildMatiereItem(text: 'SVT', ontap: () {
+                              buildBottomSheet("svt");
+                            })
                         ],
                       ),
                     if (AppCubit.elevelyceesNames.contains(element["name"]))
                       Column(
                         children: [
                           if (element["math"] == 1)
-                            buildMatiereItem(text: "Math", ontap: () {}),
+                            buildMatiereItem(text: "Math", ontap: () {
+                              buildBottomSheet("math");
+                            }),
                           if (element["french"] == 1)
-                            buildMatiereItem(text: "francais", ontap: () {}),
+                            buildMatiereItem(text: "francais", ontap: () {
+                              buildBottomSheet("french");
+                            }),
                           if (element['physic'] == 1)
-                            buildMatiereItem(text: "physic", ontap: () {}),
+                            buildMatiereItem(text: "physic", ontap: () {
+                              buildBottomSheet("physic");
+                            }),
                           if (element["svt"] == 1)
-                            buildMatiereItem(text: 'SVT', ontap: () {})
+                            buildMatiereItem(text: 'SVT', ontap: () {
+                              buildBottomSheet("svt");
+                            })
                         ],
                       ),
                     if (AppCubit.elevelangsNames.contains(element["name"]))
@@ -99,12 +142,15 @@ class EleveInfo extends StatelessWidget {
                               AppCubit.elevelangs[AppCubit.elevelangsNames
                                       .indexOf(element["name"])]["french"] ==
                                   1)
-                            buildMatiereItem(text: "french", ontap: () {}),
+                            buildMatiereItem(text: "french", ontap: () {
+                              buildBottomSheet("french");
+                            }),
                           if (element["english"] == 1 ||
                               AppCubit.elevelangs[AppCubit.elevelangsNames
                                       .indexOf(element["name"])]["english"] ==
                                   1)
-                            buildMatiereItem(text: "english", ontap: () {}),
+                            buildMatiereItem(text: "english", ontap: () {
+                              buildBottomSheet("english");                            }),
                         ],
                       ),
                     if (AppCubit.elevesCalculNames.contains(element["name"]))
@@ -113,7 +159,9 @@ class EleveInfo extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           buildMatiereItem(
-                              text: "Calcule Mentale", ontap: () {}),
+                              text: "Calcule Mentale", ontap: () {
+                                buildBottomSheet("CM");
+                          }),
                         ],
                       ),
                   ],
@@ -134,6 +182,7 @@ class EleveInfo extends StatelessWidget {
               },
             ),
           );
+
         },
         listener: (ctx, state) {});
   }
