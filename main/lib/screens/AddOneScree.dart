@@ -6,7 +6,7 @@ import 'package:main/shared/cubit/AppStates.dart';
 
 class AddEleve extends StatelessWidget {
   TextEditingController controller = new TextEditingController();
-  GlobalKey<FormState> formkey = new GlobalKey<FormState>()
+  GlobalKey<FormState> formkey = new GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
@@ -26,10 +26,8 @@ class AddEleve extends StatelessWidget {
                     ),
                     TextFormField(
                       validator: (v){
-                        if(v!.isEmpty || v == null)
+                        if( v == null)
                           return "Entrer Un Nome";
-                        else if(AppCubit.elevecollegeNames.contains(v!) || AppCubit.elevelangsNames.contains(v!) || AppCubit.elevePrimaireNames.contains(v!) || AppCubit.elevelyceesNames.contains(v!) || AppCubit.elevesCalculNames.contains(v!))
-                          return "Ce nome est deja enregistrer, entrer un autre nome";
                         return null;
                       },
                       controller: controller,

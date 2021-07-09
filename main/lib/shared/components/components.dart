@@ -97,16 +97,19 @@ Widget buildMatiereItem(
       borderRadius: BorderRadius.circular(15),
       onTap: ontap,
       child:
-          Container(
-            decoration: BoxDecoration(
-                color: Colors.pink.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(15)),
-            padding: const EdgeInsets.all(20),
-            child: Text(
-              "$text",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.pink.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(15)),
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                "$text",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
             ),
           ),
