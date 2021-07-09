@@ -16,7 +16,7 @@ class EleveInfo extends StatefulWidget {
 
 class _EleveInfoState extends State<EleveInfo> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  final element;
+  Map element;
   _EleveInfoState(this.element);
 
   @override
@@ -27,24 +27,19 @@ class _EleveInfoState extends State<EleveInfo> {
           bool showCalcullate =
               AppCubit.elevesCalculNames.contains(widget.element["name"]);
           bool showPrimair = AppCubit.elevePrimaire.contains(widget.element);
-          buildBottomSheet(String matiere) {
-          showModalBottomSheet(context: ctx, builder: (ctx)=> Container(
-              child: MaterialButton(
-              onPressed: () {
-            if(matiere ==  "CM"){
+         void buildBottomSheet(String matiere) {
+          setState(() {
+              if (matiere == "CM") {
               AppCubit().deleteData(element);
+            } else {
+              element["$matiere"] = 0;
+              AppCubit().updateData(element);
             }
-            else {
-              widget.element["$matiere"] = 0;
-              AppCubit().updateData(widget.element);
-            }
-          },
-            child: Text("Suprimer Cette Matiere Pour ${widget.element["name"]}"),
-            ),
-            )
-          );
+      });
           }
+
           return Scaffold(
+          key: scaffoldKey,
             body: SafeArea(
               child: SingleChildScrollView(
                 child: Column(
@@ -68,7 +63,7 @@ class _EleveInfoState extends State<EleveInfo> {
                           CircleAvatar(
                             radius: 80,
                             child: Text(
-                              '${widget.element["name"][0]}',
+                              '${element["name"][0]}',
                               style: TextStyle(fontSize: 50),
                             ),
                           ),
@@ -86,90 +81,247 @@ class _EleveInfoState extends State<EleveInfo> {
                       SingleChildScrollView(
                         child: Column(
                           children: [
-                            if (widget.element["math"] == 1)
-                              buildMatiereItem(text: "Math", ontap: () {
-                                buildBottomSheet("math");
-                              }),
-                            if (widget.element["french"] == 1)
-                              buildMatiereItem(text: "francais", ontap: () {
-                                buildBottomSheet("french");
-                              }),
-                            if (widget.element["arabic"] == 1)
-                              buildMatiereItem(text: "Arabic", ontap: () {
-                                buildBottomSheet('arabic');
-                              }),
+                            if (element["math"] == 1)
+                              buildMatiereItem(
+                                  text: "Math",
+                                  ontap: () {
+                                    scaffoldKey.currentState!
+                                        .showBottomSheet((ctx) => Container(
+                                              child: MaterialButton(
+                                                onPressed: () {
+                                                  buildBottomSheet("math");
+                                                },
+                                                child: Text(
+                                                    "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                              ),
+                                            ));
+                                  }),
+                            if (element["french"] == 1)
+                              buildMatiereItem(
+                                  text: "francais",
+                                  ontap: () {
+                                    scaffoldKey.currentState!
+                                        .showBottomSheet((ctx) => Container(
+                                              child: MaterialButton(
+                                                onPressed: () {
+                                                  buildBottomSheet("french");
+                                                },
+                                                child: Text(
+                                                    "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                              ),
+                                            ));
+                                  }),
+                            if (element["arabic"] == 1)
+                              buildMatiereItem(
+                                  text: "Arabic",
+                                  ontap: () {
+                                    scaffoldKey.currentState!
+                                        .showBottomSheet((ctx) => Container(
+                                              child: MaterialButton(
+                                                onPressed: () {
+                                                  buildBottomSheet("arabic");
+                                                },
+                                                child: Text(
+                                                    "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                              ),
+                                            ));
+                                  }),
                           ],
                         ),
                       ),
-                    if (AppCubit.elevecollegeNames.contains(widget.element["name"]))
+                    if (AppCubit.elevecollegeNames.contains(element["name"]))
                       Column(
                         children: [
-                          if (widget.element["math"] == 1)
-                            buildMatiereItem(text: "Math", ontap: () {
-                              buildBottomSheet("math");
-                            }),
-                          if (widget.element["french"] == 1)
-                            buildMatiereItem(text: "francais", ontap: () {
-                              buildBottomSheet("french");
-                            }),
-                          if (widget.element['physic'] == 1)
-                            buildMatiereItem(text: "physic", ontap: () {
-                              buildBottomSheet("physic");
-                            }),
-                          if (widget.element["svt"] == 1)
-                            buildMatiereItem(text: 'SVT', ontap: () {
-                              buildBottomSheet("svt");
-                            })
+                          if (element["math"] == 1)
+                            buildMatiereItem(
+                              text: "Math",
+                              ontap: () {
+                                scaffoldKey.currentState!.showBottomSheet(
+                                  (ctx) => Container(
+                                    child: MaterialButton(
+                                      onPressed: () {
+                                        buildBottomSheet("math");
+                                      },
+                                      child: Text(
+                                          "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          if (element["french"] == 1)
+                            buildMatiereItem(
+                                text: "francais",
+                                ontap: () {
+                                  scaffoldKey.currentState!
+                                      .showBottomSheet((ctx) => Container(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                buildBottomSheet("french");
+                                              },
+                                              child: Text(
+                                                  "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                            ),
+                                          ));
+                                }),
+                          if (element['physic'] == 1)
+                            buildMatiereItem(
+                                text: "physic",
+                                ontap: () {
+                                  scaffoldKey.currentState!.showBottomSheet(
+                                    (ctx) => Container(
+                                      child: MaterialButton(
+                                        onPressed: () {
+                                          buildBottomSheet("physic");
+                                        },
+                                        child: Text(
+                                            "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                      ),
+                                    ),
+                                  );
+                                }),
+                          if (element["svt"] == 1)
+                            buildMatiereItem(
+                                text: 'SVT',
+                                ontap: () {
+                                  scaffoldKey.currentState!
+                                      .showBottomSheet((ctx) => Container(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                buildBottomSheet("svt");
+                                              },
+                                              child: Text(
+                                                  "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                            ),
+                                          ));
+                                })
                         ],
                       ),
-                    if (AppCubit.elevelyceesNames.contains(widget.element["name"]))
+                    if (AppCubit.elevelyceesNames.contains(element["name"]))
                       Column(
                         children: [
-                          if (widget.element["math"] == 1)
-                            buildMatiereItem(text: "Math", ontap: () {
-                              buildBottomSheet("math");
-                            }),
-                          if (widget.element["french"] == 1)
-                            buildMatiereItem(text: "francais", ontap: () {
-                              buildBottomSheet("french");
-                            }),
-                          if (widget.element['physic'] == 1)
-                            buildMatiereItem(text: "physic", ontap: () {
-                              buildBottomSheet("physic");
-                            }),
-                          if (widget.element["svt"] == 1)
-                            buildMatiereItem(text: 'SVT', ontap: () {
-                              buildBottomSheet("svt");
-                            })
+                          if (element["math"] == 1)
+                            buildMatiereItem(
+                                text: "Math",
+                                ontap: () {
+                                  scaffoldKey.currentState!
+                                      .showBottomSheet((ctx) => Container(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                buildBottomSheet("math");
+                                              },
+                                              child: Text(
+                                                  "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                            ),
+                                          ));
+                                }),
+                          if (element["french"] == 1)
+                            buildMatiereItem(
+                                text: "francais",
+                                ontap: () {
+                                  scaffoldKey.currentState!
+                                      .showBottomSheet((ctx) => Container(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                buildBottomSheet("french");
+                                              },
+                                              child: Text(
+                                                  "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                            ),
+                                          ));
+                                }),
+                          if (element['physic'] == 1)
+                            buildMatiereItem(
+                                text: "physic",
+                                ontap: () {
+                                  scaffoldKey.currentState!
+                                      .showBottomSheet((ctx) => Container(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                buildBottomSheet("physic");
+                                              },
+                                              child: Text(
+                                                  "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                            ),
+                                          ));
+                                }),
+                          if (element["svt"] == 1)
+                            buildMatiereItem(
+                                text: 'SVT',
+                                ontap: () {
+                                  scaffoldKey.currentState!
+                                      .showBottomSheet((ctx) => Container(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                buildBottomSheet("svt");
+                                              },
+                                              child: Text(
+                                                  "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                            ),
+                                          ));
+                                })
                         ],
                       ),
-                    if (AppCubit.elevelangsNames.contains(widget.element["name"]))
+                    if (AppCubit.elevelangsNames.contains(element["name"]))
                       Column(
                         children: [
-                          if (widget.element["french"] == 1 ||
+                          if (element["french"] == 1 ||
                               AppCubit.elevelangs[AppCubit.elevelangsNames
-                                      .indexOf(widget.element["name"])]["french"] ==
+                                      .indexOf(element["name"])]["french"] ==
                                   1)
-                            buildMatiereItem(text: "french", ontap: () {
-                              buildBottomSheet("french");
-                            }),
-                          if (widget.element["english"] == 1 ||
+                            buildMatiereItem(
+                                text: "french",
+                                ontap: () {
+                                  scaffoldKey.currentState!
+                                      .showBottomSheet((ctx) => Container(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                buildBottomSheet("french");
+                                              },
+                                              child: Text(
+                                                  "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                            ),
+                                          ));
+                                }),
+                          if (element["english"] == 1 ||
                               AppCubit.elevelangs[AppCubit.elevelangsNames
-                                      .indexOf(widget.element["name"])]["english"] ==
+                                      .indexOf(element["name"])]["english"] ==
                                   1)
-                            buildMatiereItem(text: "english", ontap: () {
-                              buildBottomSheet("english");                            }),
+                            buildMatiereItem(
+                                text: "english",
+                                ontap: () {
+                                  scaffoldKey.currentState!
+                                      .showBottomSheet((ctx) => Container(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                buildBottomSheet("english");
+                                              },
+                                              child: Text(
+                                                  "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                            ),
+                                          ));
+                                }),
                         ],
                       ),
-                    if (AppCubit.elevesCalculNames.contains(widget.element["name"]))
+                    if (AppCubit.elevesCalculNames.contains(element["name"]))
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           buildMatiereItem(
-                              text: "Calcule Mentale", ontap: () {
-                                buildBottomSheet("CM");
-                          }),
+                              text: "Calcule Mentale",
+                              ontap: () {
+                                scaffoldKey.currentState!
+                                    .showBottomSheet((ctx) => Container(
+                                          child: MaterialButton(
+                                            onPressed: () {
+                                              buildBottomSheet("CM");
+                                            },
+                                            child: Text(
+                                                "Suprimer Cette Matiere Pour ${element["name"]}"),
+                                          ),
+                                        ));
+                              }),
                         ],
                       ),
                   ],
@@ -183,14 +335,13 @@ class _EleveInfoState extends State<EleveInfo> {
                 Navigator.of(ctx).push(
                   MaterialPageRoute(
                     builder: (ctx) => AddMatiere(
-                      model: widget.element,
+                      model: element,
                     ),
                   ),
                 );
               },
             ),
           );
-
         },
         listener: (ctx, state) {});
   }
