@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:main/screens/AddMatiere.dart';
 import 'package:main/shared/components/components.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 import 'package:main/shared/cubit/AppStates.dart';
@@ -122,7 +123,15 @@ class EleveInfo extends StatelessWidget {
             floatingActionButton: FloatingActionButton.extended(
               icon: Icon(Icons.add),
               label: Text('Ajouter Une Matiere'),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(ctx).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => AddMatiere(
+                      model: element,
+                    ),
+                  ),
+                );
+              },
             ),
           );
         },
