@@ -224,19 +224,19 @@ class AppCubit extends Cubit<AppState> {
       "SELECT * FROM Eleveprimaire",
     );
     elevePrimaireForUsing = List<Map>.from(elevePrimaire);
-    
+
     // get data for college
     elevecollege = await db.rawQuery(
       "SELECT * FROM Elevecollege",
     );
-  
+
     // get data for lyce
     elevelycees = await db.rawQuery(
       "SELECT * FROM Elevelycee",
     );
-    elevelyceesForUsing = List<Map>.from(elevelycees);    
+    elevelyceesForUsing = List<Map>.from(elevelycees);
     elevecollegeForUsing = List<Map>.from(elevecollege);
-    
+
     // get data for langs
     elevelangs = await db.rawQuery(
       "SELECT * FROM Elevelangs",
@@ -248,151 +248,152 @@ class AppCubit extends Cubit<AppState> {
     payement = await db.rawQuery(
       "SELECT * FROM payment",
     );
-    listEnglisBigs = AppCubit.elevelangs
+    payementForUsing = List<Map>.from(payement);
+    listEnglisBigs = AppCubit.elevelangsForUsing
         .where((element) => element["english"] == 1 && element["category"] == 2)
         .toList();
-    listEnglisKids = AppCubit.elevelangs
+    listEnglisKids = AppCubit.elevelangsForUsing
         .where((element) => element["english"] == 1 && element["category"] == 1)
         .toList();
-    listFrenchBigs = AppCubit.elevelangs
+    listFrenchBigs = AppCubit.elevelangsForUsing
         .where((element) => element["french"] == 1 && element["category"] == 2)
         .toList();
-    listFrenchKids = AppCubit.elevelangs
+    listFrenchKids = AppCubit.elevelangsForUsing
         .where((element) => element["french"] == 1 && element["category"] == 1)
         .toList();
-    listPrimaireArabic1 = AppCubit.elevePrimaire
+    listPrimaireArabic1 = AppCubit.elevePrimaireForUsing
         .where((element) => element["arabic"] == 1 && element['level'] == 1)
         .toList();
-    listPrimaireArabic2 = AppCubit.elevePrimaire
+    listPrimaireArabic2 = AppCubit.elevePrimaireForUsing
         .where((element) => element["arabic"] == 1 && element['level'] == 2)
         .toList();
-    listPrimaireArabic3 = AppCubit.elevePrimaire
+    listPrimaireArabic3 = AppCubit.elevePrimaireForUsing
         .where((element) => element["arabic"] == 1 && element['level'] == 3)
         .toList();
-    listPrimaireArabic4 = AppCubit.elevePrimaire
+    listPrimaireArabic4 = AppCubit.elevePrimaireForUsing
         .where((element) => element["arabic"] == 1 && element['level'] == 4)
         .toList();
-    listPrimaireArabic5 = AppCubit.elevePrimaire
+    listPrimaireArabic5 = AppCubit.elevePrimaireForUsing
         .where((element) => element["arabic"] == 1 && element['level'] == 5)
         .toList();
 
-    listPrimaireArabic6 = AppCubit.elevePrimaire
+    listPrimaireArabic6 = AppCubit.elevePrimaireForUsing
         .where((element) => element["arabic"] == 1 && element['level'] == 6)
         .toList();
-    listPrimaireFrench1 = AppCubit.elevePrimaire
+    listPrimaireFrench1 = AppCubit.elevePrimaireForUsing
         .where((element) => element["french"] == 1 && element['level'] == 1)
         .toList();
-    listPrimaireFrench2 = AppCubit.elevePrimaire
+    listPrimaireFrench2 = AppCubit.elevePrimaireForUsing
         .where((element) => element["french"] == 1 && element['level'] == 2)
         .toList();
-    listPrimaireFrench3 = AppCubit.elevePrimaire
+    listPrimaireFrench3 = AppCubit.elevePrimaireForUsing
         .where((element) => element["french"] == 1 && element['level'] == 3)
         .toList();
-    listPrimaireFrench4 = AppCubit.elevePrimaire
+    listPrimaireFrench4 = AppCubit.elevePrimaireForUsing
         .where((element) => element["french"] == 1 && element['level'] == 4)
         .toList();
-    listPrimaireFrench5 = AppCubit.elevePrimaire
+    listPrimaireFrench5 = AppCubit.elevePrimaireForUsing
         .where((element) => element["french"] == 1 && element['level'] == 5)
         .toList();
-    listPrimaireFrench6 = AppCubit.elevePrimaire
+    listPrimaireFrench6 = AppCubit.elevePrimaireForUsing
         .where((element) => element["french"] == 1 && element['level'] == 6)
         .toList();
-    listPrimaireMath1 = AppCubit.elevePrimaire
+    listPrimaireMath1 = AppCubit.elevePrimaireForUsing
         .where((element) => element["math"] == 1 && element['level'] == 1)
         .toList();
-    listPrimaireMath2 = AppCubit.elevePrimaire
+    listPrimaireMath2 = AppCubit.elevePrimaireForUsing
         .where((element) => element["math"] == 1 && element['level'] == 2)
         .toList();
-    listPrimaireMath3 = AppCubit.elevePrimaire
+    listPrimaireMath3 = AppCubit.elevePrimaireForUsing
         .where((element) => element["math"] == 1 && element['level'] == 3)
         .toList();
-    listPrimaireMath4 = AppCubit.elevePrimaire
+    listPrimaireMath4 = AppCubit.elevePrimaireForUsing
         .where((element) => element["math"] == 1 && element['level'] == 4)
         .toList();
-    listPrimaireMath5 = AppCubit.elevePrimaire
+    listPrimaireMath5 = AppCubit.elevePrimaireForUsing
         .where((element) => element["math"] == 1 && element['level'] == 5)
         .toList();
-    listPrimaireMath6 = AppCubit.elevePrimaire
+    listPrimaireMath6 = AppCubit.elevePrimaireForUsing
         .where((element) => element["math"] == 1 && element['level'] == 6)
         .toList();
 
-    CollegeFrench1 = AppCubit.elevecollege
+    CollegeFrench1 = AppCubit.elevecollegeForUsing
         .where((element) => element["french"] == 1 && element["level"] == 1)
         .toList();
-    CollegeFrench2 = AppCubit.elevecollege
+    CollegeFrench2 = AppCubit.elevecollegeForUsing
         .where((element) => element["french"] == 1 && element["level"] == 2)
         .toList();
-    CollegeFrench3 = AppCubit.elevecollege
+    CollegeFrench3 = AppCubit.elevecollegeForUsing
         .where((element) => element["french"] == 1 && element["level"] == 3)
         .toList();
-    listCollegeMath1 = AppCubit.elevecollege
+    listCollegeMath1 = AppCubit.elevecollegeForUsing
         .where((element) => element["math"] == 1 && element["level"] == 1)
         .toList();
-    listCollegeMath2 = AppCubit.elevecollege
+    listCollegeMath2 = AppCubit.elevecollegeForUsing
         .where((element) => element["math"] == 1 && element["level"] == 2)
         .toList();
-    listCollegeMath3 = AppCubit.elevecollege
+    listCollegeMath3 = AppCubit.elevecollegeForUsing
         .where((element) => element["math"] == 1 && element["level"] == 3)
         .toList();
-    listCollegePc1 = AppCubit.elevecollege
+    listCollegePc1 = AppCubit.elevecollegeForUsing
         .where((element) => element["physic"] == 1 && element["level"] == 1)
         .toList();
-    listCollegePc2 = AppCubit.elevecollege
+    listCollegePc2 = AppCubit.elevecollegeForUsing
         .where((element) => element["physic"] == 1 && element["level"] == 2)
         .toList();
-    listCollegePc3 = AppCubit.elevecollege
+    listCollegePc3 = AppCubit.elevecollegeForUsing
         .where((element) => element["physic"] == 1 && element["level"] == 3)
         .toList();
-    listCollegeSvt1 = AppCubit.elevecollege
+    listCollegeSvt1 = AppCubit.elevecollegeForUsing
         .where((element) => element["svt"] == 1 && element["level"] == 1)
         .toList();
-    listCollegeSvt2 = AppCubit.elevecollege
+    listCollegeSvt2 = AppCubit.elevecollegeForUsing
         .where((element) => element["svt"] == 1 && element["level"] == 2)
         .toList();
-    listCollegeSvt3 = AppCubit.elevecollege
+    listCollegeSvt3 = AppCubit.elevecollegeForUsing
         .where((element) => element["svt"] == 1 && element["level"] == 3)
         .toList();
 
-    listLyccesFrench1 = AppCubit.elevePrimaire
+    listLyccesFrench1 = AppCubit.elevelyceesForUsing
         .where((element) => element["french"] == 1 && element["level"] == 1)
         .toList();
-    listLyccesFrench2 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesFrench2 = AppCubit.elevePrimaireForUsing
+        .where((element) => element["french"] == 1 && element["level"] == 2)
         .toList();
-    listLyccesFrench3 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesFrench3 = AppCubit.elevelyceesForUsing
+        .where((element) => element["french"] == 1 && element["level"] == 3)
         .toList();
-    listLyccesMath1 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesMath1 = AppCubit.elevelyceesForUsing
+        .where((element) => element["math"] == 1 && element["level"] == 1)
         .toList();
-    listLyccesMath2 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesMath2 = AppCubit.elevelyceesForUsing
+        .where((element) => element["math"] == 1 && element["level"] == 2)
         .toList();
-    listLyccesMath3 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesMath3 = AppCubit.elevelyceesForUsing
+        .where((element) => element["math"] == 1 && element["level"] == 3)
         .toList();
-    listLyccesPc1 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesPc1 = AppCubit.elevelyceesForUsing
+        .where((element) => element["physic"] == 1 && element["level"] == 1)
         .toList();
-    listLyccesPc2 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesPc2 = AppCubit.elevelyceesForUsing
+        .where((element) => element["physic"] == 1 && element["level"] == 2)
         .toList();
-    listLyccesPc3 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesPc3 = AppCubit.elevelyceesForUsing
+        .where((element) => element["physic"] == 1 && element["level"] == 3)
         .toList();
-    listLyccesSvt1 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesSvt1 = AppCubit.elevelyceesForUsing
+        .where((element) => element["svt"] == 1 && element["level"] == 1)
         .toList();
-    listLyccesSvt2 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesSvt2 = AppCubit.elevelyceesForUsing
+        .where((element) => element["svt"] == 1 && element["level"] == 2)
         .toList();
-    listLyccesSvt3 = AppCubit.elevePrimaire
-        .where((element) => element["french"] == 1 && element["level"] == 1)
+    listLyccesSvt3 = AppCubit.elevelyceesForUsing
+        .where((element) => element["svt"] == 1 && element["level"] == 3)
         .toList();
-    listCalulateBigs = AppCubit.elevesCalcul
+    listCalulateBigs = AppCubit.elevesCalculForUsing
         .where((element) => element["category"] == 1)
         .toList();
-    listCalulateKids = AppCubit.elevesCalcul
+    listCalulateKids = AppCubit.elevesCalculForUsing
         .where((element) => element["category"] == 2)
         .toList();
     ;
