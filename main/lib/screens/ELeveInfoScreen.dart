@@ -30,10 +30,10 @@ class _EleveInfoState extends State<EleveInfo> {
          void buildBottomSheet(String matiere) {
           setState(() {
               if (matiere == "CM") {
-              AppCubit().deleteData(element);
+              cubit.deleteData(element);
             } else {
               element["$matiere"] = 0;
-              AppCubit().updateData(element);
+              cubit.updateData(element);
             }
       });
           }

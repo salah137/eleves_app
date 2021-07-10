@@ -46,26 +46,29 @@ class _AddMatiereState extends State<AddMatiere> {
                         onChanged: (v) {
                           setState(() {
                             maxdepth = v!;
+                            model["math"] = maxdepth?1:0;
                           });
                         },
                         title: Text("math"),
                       ),
                     if (model["arabic"] == 0)
                       CheckboxListTile(
-                        value: maxdepth,
+                        value: arabic,
                         onChanged: (v) {
                           setState(() {
-                            maxdepth = v!;
+                            arabic = v!;
+                            model["arabic"] = arabic?1:0;
                           });
                         },
                         title: Text("arabic"),
                       ),
                     if (model["french"] == 0)
                       CheckboxListTile(
-                        value: maxdepth,
+                        value: frenchP,
                         onChanged: (v) {
                           setState(() {
-                            maxdepth = v!;
+                            frenchP = v!;
+                            model['french'] = french ? 1 : 0;
                           });
                         },
                         title: Text("francais"),
@@ -80,6 +83,7 @@ class _AddMatiereState extends State<AddMatiere> {
                             onChanged: (v) {
                               setState(() {
                                 mahC = v!;
+                                model["math"] = mahC?1 : 0;
                               });
                             }),
                       if (model["french"] == 0)
@@ -88,6 +92,7 @@ class _AddMatiereState extends State<AddMatiere> {
                             onChanged: (v) {
                               setState(() {
                                 frenchC = v!;
+                                model["french"] = frenchC?1 : 0;
                               });
                             }),
                       if (model["svt"] == 0)
@@ -95,7 +100,8 @@ class _AddMatiereState extends State<AddMatiere> {
                             value: svtC,
                             onChanged: (v) {
                               setState(() {
-                                mahC = v!;
+                                svtC = v!;
+                                model["svt"] = svtC?1:0;
                               });
                             },                          title: Text("Svt")
                         ),
@@ -104,8 +110,9 @@ class _AddMatiereState extends State<AddMatiere> {
                             value: PcC,
                             onChanged: (v) {
                               setState(() {
-                                mahC = v!;
-                              });
+                                PcC = v!;
+                                model["physic"]= PcC?1 : 0;
+                              },);
                             },
                           title: Text("physic")
                             ),
@@ -118,12 +125,14 @@ class _AddMatiereState extends State<AddMatiere> {
                         CheckboxListTile(value: english, onChanged: (v){
                           setState(() {
                             english = v!;
+                            model["english"] = english?1 : 0;
                           });
                         }),
                       if(model["french"] == 0)
                         CheckboxListTile(value: english, onChanged: (v){
                           setState(() {
                             french = v!;
+                            model["french"] = french?1 : 0;
                           });
                         }),
                     ],

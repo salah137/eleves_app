@@ -35,150 +35,56 @@ class AppCubit extends Cubit<AppState> {
   static List<String> elevelangsNames = [];
   static List<String> elevesCalculNames = [];
 
-  static List listEnglisBigs = AppCubit.elevelangs
-      .where((element) => element["english"] == 1 && element["category"] == 2)
-      .toList();
-  static List listEnglisKids = AppCubit.elevelangs
-      .where((element) => element["english"] == 1 && element["category"] == 1)
-      .toList();
-  static List listFrenchBigs = AppCubit.elevelangs
-      .where((element) => element["french"] == 1 && element["category"] == 2)
-      .toList();
-  static List listFrenchKids = AppCubit.elevelangs
-      .where((element) => element["french"] == 1 && element["category"] == 1)
-      .toList();
-  static List listPrimaireArabic1 = AppCubit.elevePrimaire
-      .where((element) => element["arabic"] == 1 && element['level'] == 1)
-      .toList();
-  static List listPrimaireArabic2 = AppCubit.elevePrimaire
-      .where((element) => element["arabic"] == 1 && element['level'] == 2)
-      .toList();
-  static List listPrimaireArabic3 = AppCubit.elevePrimaire
-      .where((element) => element["arabic"] == 1 && element['level'] == 3)
-      .toList();
-  static List listPrimaireArabic4 = AppCubit.elevePrimaire
-      .where((element) => element["arabic"] == 1 && element['level'] == 4)
-      .toList();
-  static List listPrimaireArabic5 = AppCubit.elevePrimaire
-      .where((element) => element["arabic"] == 1 && element['level'] == 5)
-      .toList();
+  static List listEnglisBigs = [];
+  static List listEnglisKids = [];
+  static List listFrenchBigs = [];
+  static List listFrenchKids = [];
+  static List listPrimaireArabic1 = [];
+  static List listPrimaireArabic2 = [];
+  static List listPrimaireArabic3 = [];
+  static List listPrimaireArabic4 = [];
+  static List listPrimaireArabic5 = [];
 
-  static List listPrimaireArabic6 = AppCubit.elevePrimaire
-      .where((element) => element["arabic"] == 1 && element['level'] == 6)
-      .toList();
-  static List listPrimaireFrench1 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element['level'] == 1)
-      .toList();
-  static List listPrimaireFrench2 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element['level'] == 2)
-      .toList();
-  static List listPrimaireFrench3 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element['level'] == 3)
-      .toList();
-  static List listPrimaireFrench4 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element['level'] == 4)
-      .toList();
-  static List listPrimaireFrench5 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element['level'] == 5)
-      .toList();
-  static List listPrimaireFrench6 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element['level'] == 6)
-      .toList();
-  static List listPrimaireMath1 = AppCubit.elevePrimaire
-      .where((element) => element["math"] == 1 && element['level'] == 1)
-      .toList();
-  static List listPrimaireMath2 = AppCubit.elevePrimaire
-      .where((element) => element["math"] == 1 && element['level'] == 2)
-      .toList();
-  static List listPrimaireMath3 = AppCubit.elevePrimaire
-      .where((element) => element["math"] == 1 && element['level'] == 3)
-      .toList();
-  static List listPrimaireMath4 = AppCubit.elevePrimaire
-      .where((element) => element["math"] == 1 && element['level'] == 4)
-      .toList();
-  static List listPrimaireMath5 = AppCubit.elevePrimaire
-      .where((element) => element["math"] == 1 && element['level'] == 5)
-      .toList();
-  static List listPrimaireMath6 = AppCubit.elevePrimaire
-      .where((element) => element["math"] == 1 && element['level'] == 6)
-      .toList();
+  static List listPrimaireArabic6 = [];
+  static List listPrimaireFrench1 = [];
+  static List listPrimaireFrench2 = [];
+  static List listPrimaireFrench3 = [];
+  static List listPrimaireFrench4 = [];
+  static List listPrimaireFrench5 = [];
+  static List listPrimaireFrench6 = [];
+  static List listPrimaireMath1 = [];
+  static List listPrimaireMath2 = [];
+  static List listPrimaireMath3 = [];
+  static List listPrimaireMath4 = [];
+  static List listPrimaireMath5 = [];
+  static List listPrimaireMath6 = [];
 
-  static List CollegeFrench1 = AppCubit.elevecollege
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List CollegeFrench2 = AppCubit.elevecollege
-      .where((element) => element["french"] == 1 && element["level"] == 2)
-      .toList();
-  static List CollegeFrench3 = AppCubit.elevecollege
-      .where((element) => element["french"] == 1 && element["level"] == 3)
-      .toList();
-  static List listCollegeMath1 = AppCubit.elevecollege
-      .where((element) => element["math"] == 1 && element["level"] == 1)
-      .toList();
-  static List listCollegeMath2 = AppCubit.elevecollege
-      .where((element) => element["math"] == 1 && element["level"] == 2)
-      .toList();
-  static List listCollegeMath3 = AppCubit.elevecollege
-      .where((element) => element["math"] == 1 && element["level"] == 3)
-      .toList();
-  static List listCollegePc1 = AppCubit.elevecollege
-      .where((element) => element["physic"] == 1 && element["level"] == 1)
-      .toList();
-  static List listCollegePc2 = AppCubit.elevecollege
-      .where((element) => element["physic"] == 1 && element["level"] == 2)
-      .toList();
-  static List listCollegePc3 = AppCubit.elevecollege
-      .where((element) => element["physic"] == 1 && element["level"] == 3)
-      .toList();
-  static List listCollegeSvt1 = AppCubit.elevecollege
-      .where((element) => element["svt"] == 1 && element["level"] == 1)
-      .toList();
-  static List listCollegeSvt2 = AppCubit.elevecollege
-      .where((element) => element["svt"] == 1 && element["level"] == 2)
-      .toList();
-  static List listCollegeSvt3 = AppCubit.elevecollege
-      .where((element) => element["svt"] == 1 && element["level"] == 3)
-      .toList();
+  static List CollegeFrench1 = [];
+  static List CollegeFrench2 = [];
+  static List CollegeFrench3 = [];
+  static List listCollegeMath1 = [];
+  static List listCollegeMath2 = [];
+  static List listCollegeMath3 = [];
+  static List listCollegePc1 = [];
+  static List listCollegePc2 = [];
+  static List listCollegePc3 = [];
+  static List listCollegeSvt1 = [];
+  static List listCollegeSvt2 = [];
+  static List listCollegeSvt3 = [];
   // LyccE
-  static List listLyccesFrench1 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesFrench2 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesFrench3 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesMath1 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesMath2 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesMath3 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesPc1 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesPc2 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesPc3 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesSvt1 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesSvt2 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listLyccesSvt3 = AppCubit.elevePrimaire
-      .where((element) => element["french"] == 1 && element["level"] == 1)
-      .toList();
-  static List listCalulateBigs = AppCubit.elevesCalcul
-      .where((element) => element["category"] == 1)
-      .toList();
+  static List listLyccesFrench1 = [];
+  static List listLyccesFrench2 = [];
+  static List listLyccesFrench3 = [];
+  static List listLyccesMath1 = [];
+  static List listLyccesMath2 = [];
+  static List listLyccesMath3 = [];
+  static List listLyccesPc1 = [];
+  static List listLyccesPc2 = [];
+  static List listLyccesPc3 = [];
+  static List listLyccesSvt1 = [];
+  static List listLyccesSvt2 = [];
+  static List listLyccesSvt3 = [];
+  static List listCalulateBigs = [];
   static List listCalulateKids = [];
 
   Future createDataBase() async {
@@ -186,9 +92,9 @@ class AppCubit extends Cubit<AppState> {
       "mydata.db",
       version: 1,
       onCreate: (
-          db,
-          version,
-          ) {
+        db,
+        version,
+      ) {
         // primaire
         db.execute(
             "CREATE TABLE Eleveprimaire (id INTEGER PRIMARY KEY, name TEXT, math INTEGER, french INTEGER, arabic INTEGER, level INTEGER )");
@@ -210,8 +116,8 @@ class AppCubit extends Cubit<AppState> {
             "CREATE TABLE payment (id INTEGER PRIMARY KEY, eleveName TEXT, matiere TEXT,hepaythisMonth INTEGER, payedlastmonth INTEGER, nonPayedMonths INTEGER)");
       },
       onOpen: (
-          db,
-          ) async {
+        db,
+      ) async {
         await getdata(db);
       },
     );
@@ -258,7 +164,7 @@ class AppCubit extends Cubit<AppState> {
     listFrenchBigs = AppCubit.elevelangsForUsing
         .where((element) => element["french"] == 1 && element["category"] == 2)
         .toList();
-    listFrenchKids = AppCubit.elevelangsForUsing
+    listFrenchKids = elevelangsForUsing
         .where((element) => element["french"] == 1 && element["category"] == 1)
         .toList();
     listPrimaireArabic1 = AppCubit.elevePrimaireForUsing
@@ -396,7 +302,6 @@ class AppCubit extends Cubit<AppState> {
     listCalulateKids = AppCubit.elevesCalculForUsing
         .where((element) => element["category"] == 2)
         .toList();
-    ;
 
     for (int i = 0; i < elevePrimaire.length; i++) {
       elevePrimaireNames.add(elevePrimaire[i]["name"]);
@@ -437,7 +342,7 @@ class AppCubit extends Cubit<AppState> {
     int frenchisTrue = french ? 1 : 0;
     int arabicisTrue = arabic ? 1 : 0;
     await database!.transaction(
-          (txn) async {
+      (txn) async {
         await txn.rawInsert(
           "INSERT INTO Eleveprimaire(name,math,french,arabic,level) VALUES(?,?,?,?,?)",
           [name, mathisTrue, frenchisTrue, arabicisTrue, level],
@@ -472,7 +377,7 @@ class AppCubit extends Cubit<AppState> {
     int svtisTrue = svt ? 1 : 0;
 
     await database!.transaction(
-          (txn) async {
+      (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevecollege(name,math,french,physic,svt,level) VALUES(?,?,?,?,?,?)",
           [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue, level],
@@ -511,7 +416,7 @@ class AppCubit extends Cubit<AppState> {
     int svtisTrue = svt ? 1 : 0;
 
     await database!.transaction(
-          (txn) async {
+      (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevelycee(name,math,french,physic,svt, level) VALUES(?,?,?,?,?,?)",
           [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue, level],
@@ -548,7 +453,7 @@ class AppCubit extends Cubit<AppState> {
 
     int category = isBig;
     database!.transaction(
-          (txn) async {
+      (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevelangs(name,category,english,french) VALUES(?,?,?,?)",
           [name, category, isEnglish, isFrench],
@@ -646,7 +551,7 @@ class AppCubit extends Cubit<AppState> {
 
   void addCalulateMentaal(String name, int level) async {
     database!.transaction(
-          (txn) async {
+      (txn) async {
         txn.rawInsert(
           "INSERT INTO EleveCalulate(name,category) VALUES(?,?)",
           [name, level],
