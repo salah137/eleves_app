@@ -12,10 +12,12 @@ class AddMatiere extends StatefulWidget {
 }
 
 class _AddMatiereState extends State<AddMatiere> {
-  final model;
+  Map model;
   _AddMatiereState(this.model);
   @override
   Widget build(BuildContext context) {
+  Map useableMap = model;
+    
     return BlocConsumer<AppCubit, AppState>(
         builder: (ctx, state) {
           AppCubit cubit = BlocProvider.of(ctx);
@@ -46,7 +48,7 @@ class _AddMatiereState extends State<AddMatiere> {
                         onChanged: (v) {
                           setState(() {
                             maxdepth = v!;
-                            model["math"] = maxdepth?1:0;
+                            useableMap["math"] = maxdepth?1:0;
                           });
                         },
                         title: Text("math"),
@@ -57,7 +59,7 @@ class _AddMatiereState extends State<AddMatiere> {
                         onChanged: (v) {
                           setState(() {
                             arabic = v!;
-                            model["arabic"] = arabic?1:0;
+                            useableMap["arabic"] = arabic?1:0;
                           });
                         },
                         title: Text("arabic"),
@@ -68,7 +70,7 @@ class _AddMatiereState extends State<AddMatiere> {
                         onChanged: (v) {
                           setState(() {
                             frenchP = v!;
-                            model['french'] = french ? 1 : 0;
+                            useableMap['french'] = french ? 1 : 0;
                           });
                         },
                         title: Text("francais"),
@@ -83,7 +85,7 @@ class _AddMatiereState extends State<AddMatiere> {
                             onChanged: (v) {
                               setState(() {
                                 mahC = v!;
-                                model["math"] = mahC?1 : 0;
+                                useableMap["math"] = mahC?1 : 0;
                               });
                             }),
                       if (model["french"] == 0)
@@ -92,7 +94,7 @@ class _AddMatiereState extends State<AddMatiere> {
                             onChanged: (v) {
                               setState(() {
                                 frenchC = v!;
-                                model["french"] = frenchC?1 : 0;
+                                useableMap["french"] = frenchC?1 : 0;
                               });
                             }),
                       if (model["svt"] == 0)
@@ -101,7 +103,7 @@ class _AddMatiereState extends State<AddMatiere> {
                             onChanged: (v) {
                               setState(() {
                                 svtC = v!;
-                                model["svt"] = svtC?1:0;
+                                useableMap["svt"] = svtC?1:0;
                               });
                             },                          title: Text("Svt")
                         ),
@@ -111,7 +113,7 @@ class _AddMatiereState extends State<AddMatiere> {
                             onChanged: (v) {
                               setState(() {
                                 PcC = v!;
-                                model["physic"]= PcC?1 : 0;
+                                useableMap["physic"]= PcC?1 : 0;
                               },);
                             },
                           title: Text("physic")
@@ -125,14 +127,14 @@ class _AddMatiereState extends State<AddMatiere> {
                         CheckboxListTile(value: english, onChanged: (v){
                           setState(() {
                             english = v!;
-                            model["english"] = english?1 : 0;
+                            useableMap["english"] = english?1 : 0;
                           });
                         }),
                       if(model["french"] == 0)
                         CheckboxListTile(value: english, onChanged: (v){
                           setState(() {
                             french = v!;
-                            model["french"] = french?1 : 0;
+                            useableMap["french"] = french?1 : 0;
                           });
                         }),
                     ],
@@ -141,7 +143,7 @@ class _AddMatiereState extends State<AddMatiere> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: (){
-                cubit.updateData(model);
+                cubit.updateData(useableMap);
               },
               child: Icon(Icons.done),
             )

@@ -92,6 +92,9 @@ class _ElevesScreenState extends State<ElevesScreen> {
   bool showLyccesSvt2 = false;
   bool showLyccesSvt3 = false;
 
+  
+  
+
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
         builder: (ctx, state) {

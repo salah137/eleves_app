@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/ELeveInfoScreen.dart';
+import 'package:main/screens/EleveInfo.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 
 Widget itemBuilder(context, name, matiere, isPayed, nonPayedMonths) => Card(
@@ -65,7 +65,7 @@ Widget buildItemForStudent(Map model, BuildContext ctx, ) {
         child: InkWell(
           onTap: () {
             Navigator.of(ctx)
-                .push(MaterialPageRoute(builder: (ctx) => EleveInfo(model)));
+                .push(MaterialPageRoute(builder: (ctx) => ChangeStudentParametres(model)));
           },
           child: Card(
             color: Colors.grey[200],

@@ -34,6 +34,7 @@ class AppCubit extends Cubit<AppState> {
   static List<String> elevelyceesNames = [];
   static List<String> elevelangsNames = [];
   static List<String> elevesCalculNames = [];
+  static List<String> payementNames = [];
 
   static List listEnglisBigs = [];
   static List listEnglisKids = [];
@@ -125,6 +126,14 @@ class AppCubit extends Cubit<AppState> {
   }
 
   Future getdata(Database db) async {
+
+    elevePrimaireNames = [];
+    elevecollegeNames = [];
+    elevelyceesNames = [];
+    elevelangsNames = [];
+    elevesCalculNames = [];
+    payementNames = [];
+
     // get data for primaire
     elevePrimaire = await db.rawQuery(
       "SELECT * FROM Eleveprimaire",
@@ -323,12 +332,23 @@ class AppCubit extends Cubit<AppState> {
       elevesCalculNames.add(elevesCalcul[i]["name"]);
     }
 
+    for(int i = 0; i < payement.length; i++){
+      payementNames.add(payement[i]["name"]);
+    }
+
     emit(GetDataState());
     print(elevePrimaire);
     print(elevelangs);
     print(elevelycees);
     print(elevecollege);
     print(elevesCalcul);
+    
+    print(elevePrimaireNames);
+    print(elevelangsNames);
+    print(elevelyceesNames);
+    print(elevecollegeNames);
+    print(elevesCalculNames);
+ 
   }
 
   void changeindex(int index) {
@@ -475,7 +495,7 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void updateData(Map model) async {
-    if (payementForUsing.contains(model)) {
+    if (payementNames.contains(model["name"])) {
       database!.rawUpdate(
         "UPDATE payment SET eleveName = ?,matiere = ? hepaythisMonth = ?,payedlastmonth = ?,nonPayedMonths = ? WHERE id = ?",
         [
@@ -487,7 +507,7 @@ class AppCubit extends Cubit<AppState> {
           model["id"],
         ],
       );
-    } else if (elevePrimaireForUsing.contains(model)) {
+    } else if (elevePrimaireNames.contains(model['name'])) {
       database!.rawUpdate(
         "UPDATE ElevePrimaire SET name =?, math = ?, french = ?, arabic = ? WHERE id = ?",
         [
@@ -498,7 +518,7 @@ class AppCubit extends Cubit<AppState> {
           model["id"],
         ],
       );
-    } else if (elevecollegeForUsing.contains(model)) {
+    } else if (elevecollegeNames.contains(model['name'])) {
       database!.rawUpdate(
           "UPDATE Elevecollege SET name =?, math = ?, french = ?, svt =?, physic = ? WHERE id =?",
           [
@@ -509,7 +529,7 @@ class AppCubit extends Cubit<AppState> {
             model["physic"],
             model["id"]
           ]);
-    } else if (elevelyceesForUsing.contains(model)) {
+    } else if (elevelyceesNames.contains(model["name"])) {
       database!.rawUpdate(
           "UPDATE Elevelycee SET name =?, math = ?, french = ?, svt =?, physic = ? WHERE id =?",
           [
@@ -520,7 +540,7 @@ class AppCubit extends Cubit<AppState> {
             model["physic"],
             model["id"]
           ]);
-    } else if (elevelangsForUsing.contains(model)) {
+    } else if (elevelangsNames.contains(model["name"])) {
       database!.rawUpdate(
           "UPDATE Elevelangs SET name =?, category = ?, french = ?, english = ?,  WHERE id =?",
           [
