@@ -186,9 +186,9 @@ class AppCubit extends Cubit<AppState> {
       "mydata.db",
       version: 1,
       onCreate: (
-        db,
-        version,
-      ) {
+          db,
+          version,
+          ) {
         // primaire
         db.execute(
             "CREATE TABLE Eleveprimaire (id INTEGER PRIMARY KEY, name TEXT, math INTEGER, french INTEGER, arabic INTEGER, level INTEGER )");
@@ -210,8 +210,8 @@ class AppCubit extends Cubit<AppState> {
             "CREATE TABLE payment (id INTEGER PRIMARY KEY, eleveName TEXT, matiere TEXT,hepaythisMonth INTEGER, payedlastmonth INTEGER, nonPayedMonths INTEGER)");
       },
       onOpen: (
-        db,
-      ) async {
+          db,
+          ) async {
         await getdata(db);
       },
     );
@@ -437,7 +437,7 @@ class AppCubit extends Cubit<AppState> {
     int frenchisTrue = french ? 1 : 0;
     int arabicisTrue = arabic ? 1 : 0;
     await database!.transaction(
-      (txn) async {
+          (txn) async {
         await txn.rawInsert(
           "INSERT INTO Eleveprimaire(name,math,french,arabic,level) VALUES(?,?,?,?,?)",
           [name, mathisTrue, frenchisTrue, arabicisTrue, level],
@@ -472,7 +472,7 @@ class AppCubit extends Cubit<AppState> {
     int svtisTrue = svt ? 1 : 0;
 
     await database!.transaction(
-      (txn) async {
+          (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevecollege(name,math,french,physic,svt,level) VALUES(?,?,?,?,?,?)",
           [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue, level],
@@ -511,7 +511,7 @@ class AppCubit extends Cubit<AppState> {
     int svtisTrue = svt ? 1 : 0;
 
     await database!.transaction(
-      (txn) async {
+          (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevelycee(name,math,french,physic,svt, level) VALUES(?,?,?,?,?,?)",
           [name, mathisTrue, frenchisTrue, pcisTrue, svtisTrue, level],
@@ -548,7 +548,7 @@ class AppCubit extends Cubit<AppState> {
 
     int category = isBig;
     database!.transaction(
-      (txn) async {
+          (txn) async {
         txn.rawInsert(
           "INSERT INTO Elevelangs(name,category,english,french) VALUES(?,?,?,?)",
           [name, category, isEnglish, isFrench],
@@ -570,7 +570,7 @@ class AppCubit extends Cubit<AppState> {
   }
 
   void updateData(Map model) async {
-    if (payement.contains(model)) {
+    if (payementForUsing.contains(model)) {
       database!.rawUpdate(
         "UPDATE payment SET eleveName = ?,matiere = ? hepaythisMonth = ?,payedlastmonth = ?,nonPayedMonths = ? WHERE id = ?",
         [
@@ -582,7 +582,7 @@ class AppCubit extends Cubit<AppState> {
           model["id"],
         ],
       );
-    } else if (elevePrimaire.contains(model)) {
+    } else if (elevePrimaireForUsing.contains(model)) {
       database!.rawUpdate(
         "UPDATE ElevePrimaire SET name =?, math = ?, french = ?, arabic = ? WHERE id = ?",
         [
@@ -593,7 +593,7 @@ class AppCubit extends Cubit<AppState> {
           model["id"],
         ],
       );
-    } else if (elevecollege.contains(model)) {
+    } else if (elevecollegeForUsing.contains(model)) {
       database!.rawUpdate(
           "UPDATE Elevecollege SET name =?, math = ?, french = ?, svt =?, physic = ? WHERE id =?",
           [
@@ -604,7 +604,7 @@ class AppCubit extends Cubit<AppState> {
             model["physic"],
             model["id"]
           ]);
-    } else if (elevelycees.contains(model)) {
+    } else if (elevelyceesForUsing.contains(model)) {
       database!.rawUpdate(
           "UPDATE Elevelycee SET name =?, math = ?, french = ?, svt =?, physic = ? WHERE id =?",
           [
@@ -615,7 +615,7 @@ class AppCubit extends Cubit<AppState> {
             model["physic"],
             model["id"]
           ]);
-    } else if (elevelangs.contains(model)) {
+    } else if (elevelangsForUsing.contains(model)) {
       database!.rawUpdate(
           "UPDATE Elevelangs SET name =?, category = ?, french = ?, english = ?,  WHERE id =?",
           [
@@ -632,13 +632,13 @@ class AppCubit extends Cubit<AppState> {
 
   void chekPayments() async {
     if (DateTime.now().day == 1) {
-      for (int i = 0; i < payement.length; i++) {
-        if (payement[i]["hepaythisMonth"] == 0) {
-          payement[i]["payedlastmonth"] = 0;
-          payement[i]["nonPayedMonths"] += 1;
+      for (int i = 0; i < payementForUsing.length; i++) {
+        if (payementForUsing[i]["hepaythisMonth"] == 0) {
+          payementForUsing[i]["payedlastmonth"] = 0;
+          payementForUsing[i]["nonPayedMonths"] += 1;
         }
-        payement[i]["hepaythisMonth"] == 0;
-        updateData(payement[i]);
+        payementForUsing[i]["hepaythisMonth"] == 0;
+        updateData(payementForUsing[i]);
       }
     }
     emit(ChekPayments());
@@ -646,7 +646,7 @@ class AppCubit extends Cubit<AppState> {
 
   void addCalulateMentaal(String name, int level) async {
     database!.transaction(
-      (txn) async {
+          (txn) async {
         txn.rawInsert(
           "INSERT INTO EleveCalulate(name,category) VALUES(?,?)",
           [name, level],
