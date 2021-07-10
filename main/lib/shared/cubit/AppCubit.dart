@@ -23,7 +23,12 @@ class AppCubit extends Cubit<AppState> {
   static List<Map> elevelangs = [];
   static List<Map> elevesCalcul = [];
   static List<Map> payement = [];
-
+  static List<Map> elevePrimaireForUsing = [];
+  static List<Map> elevecollegeForUsing = [];
+  static List<Map> elevelyceesForUsing = [];
+  static List<Map> elevelangsForUsing = [];
+  static List<Map> elevesCalculForUsing = [];
+  static List<Map> payementForUsing = [];
   static List<String> elevePrimaireNames = [];
   static List<String> elevecollegeNames = [];
   static List<String> elevelyceesNames = [];
@@ -218,19 +223,27 @@ class AppCubit extends Cubit<AppState> {
     elevePrimaire = await db.rawQuery(
       "SELECT * FROM Eleveprimaire",
     );
+    elevePrimaireForUsing = List<Map>.from(elevePrimaire);
+    
     // get data for college
     elevecollege = await db.rawQuery(
       "SELECT * FROM Elevecollege",
     );
+  
     // get data for lyce
     elevelycees = await db.rawQuery(
       "SELECT * FROM Elevelycee",
     );
+    elevelyceesForUsing = List<Map>.from(elevelycees);    
+    elevecollegeForUsing = List<Map>.from(elevecollege);
+    
     // get data for langs
     elevelangs = await db.rawQuery(
       "SELECT * FROM Elevelangs",
     );
+    elevelangsForUsing = List<Map>.from(elevelangs);
     elevesCalcul = await db.rawQuery("SELECT * FROM EleveCalulate");
+    elevesCalculForUsing = List<Map>.from(elevesCalcul);
     // get data for payments
     payement = await db.rawQuery(
       "SELECT * FROM payment",
