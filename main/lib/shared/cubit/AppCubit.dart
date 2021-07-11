@@ -344,13 +344,13 @@ class AppCubit extends Cubit<AppState> {
     print(elevelycees);
     print(elevecollege);
     print(elevesCalcul);
-    
+    print(payement);
     print(elevePrimaireNames);
     print(elevelangsNames);
     print(elevelyceesNames);
     print(elevecollegeNames);
     print(elevesCalculNames);
- 
+  print(payementNames);
   }
 
   void changeindex(int index) {
@@ -498,16 +498,18 @@ class AppCubit extends Cubit<AppState> {
 
   void updateData(Map model, from) async {
   
-    if (payementNames.contains(model["name"]) && from) {
+    if (payementNames.contains(model["eleveName"]) && from) {
+      print(model);
+    
       database!.rawUpdate(
-        "UPDATE payment SET eleveName = ?,matiere = ? hepaythisMonth = ?,payedlastmonth = ?,nonPayedMonths = ? WHERE id = ?",
+        "UPDATE payment SET eleveName = ?,matiere = ? ,hepaythisMonth = ? ,payedlastmonth = ?,nonPayedMonths = ? WHERE eleveName = ?",
         [
           model["eleveName"],
           model["matiere"],
           model["hepaythisMonth"],
           model["payedlastmonth"],
           model["nonPayedMonths"],
-          model["id"],
+          model["eleveName"],
         ],
       );
     } else if (elevePrimaireNames.contains(model['name'])) {

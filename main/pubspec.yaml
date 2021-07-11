@@ -33,11 +33,16 @@ dependencies:
   flutter_bloc: ^7.0.1
   splashscreen: ^1.3.5
   conditional_builder: ^1.0.2
+  flutter_launcher_icons: ^0.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: "launcher_icon"
+  
+  image_path: "assets/images/209290103_1798394810347180_7350979293146039910_n.jpg"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
