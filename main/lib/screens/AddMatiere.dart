@@ -14,14 +14,7 @@ class AddMatiere extends StatefulWidget {
 class _AddMatiereState extends State<AddMatiere> {
   Map model;
   _AddMatiereState(this.model);
-  @override
-  Widget build(BuildContext context) {
-  Map useableMap = model;
-    
-    return BlocConsumer<AppCubit, AppState>(
-        builder: (ctx, state) {
-          AppCubit cubit = BlocProvider.of(ctx);
-          bool maxdepth = false;
+            bool maxdepth = false;
           bool arabic = false;
           bool frenchP = false;
           bool mahC = false;
@@ -36,6 +29,14 @@ class _AddMatiereState extends State<AddMatiere> {
 
           bool french = false;
           bool english = false;
+
+  @override
+  Widget build(BuildContext context) {
+  Map useableMap = model;
+    
+    return BlocConsumer<AppCubit, AppState>(
+        builder: (ctx, state) {
+          AppCubit cubit = BlocProvider.of(ctx);
 
           return Scaffold(
             body: Column(
@@ -143,7 +144,26 @@ class _AddMatiereState extends State<AddMatiere> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: (){
-                cubit.updateData(useableMap);
+                if(arabic){
+                  cubit.addPayment(model["name"], "arabic");
+                }
+                if(french || frenchC || frenchP) {
+                  cubit.addPayment(model["name"], "french");
+                
+                }
+                if(maxdepth || mahC){
+                  cubit.addPayment(model["name"], "math");
+                }
+                if(svtC) {
+                  cubit.addPayment(model["name"], "svt");
+                }
+                if(PcC) {
+                  cubit.addPayment(model["name"], "phisyc");
+                }
+                if(english) {
+                  cubit.addPayment(model["name"], "english");
+                }
+                cubit.updateData(model,false);
               },
               child: Icon(Icons.done),
             )

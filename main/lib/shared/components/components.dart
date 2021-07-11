@@ -1,36 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:main/screens/EleveInfo.dart';
+import 'package:main/screens/Pay.dart';
 import 'package:main/shared/cubit/AppCubit.dart';
 
-Widget itemBuilder(context, name, matiere, isPayed, nonPayedMonths) => Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: CircleAvatar(
-                child: Text("${name[0]}"),
-                backgroundColor: isPayed == 0 ? Colors.pink : Colors.blue,
-                radius: 30,
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "$name",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1!
-                      .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+Widget itemBuilder(context, model) => Card(
+      child: InkWell(
+        onTap:(){
+          Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>Pay(modedl1:model))); 
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: CircleAvatar(
+                  child: Text("${ model['eleveName'][0]}"),
+                  backgroundColor: model["payedlastmonth"] == 0 ? Colors.pink : Colors.blue,
+                  radius: 30,
                 ),
-                Text("$matiere")
-              ],
-            ),
-            Spacer(),
-            Text("$nonPayedMonths")
-          ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "${model['eleveName']}",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1!
+                        .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text("${model["matiere"]}")
+                ],
+              ),
+              Spacer(),
+              Text("${model["nonPayedMonths"]}")
+            ],
+          ),
         ),
       ),
     );

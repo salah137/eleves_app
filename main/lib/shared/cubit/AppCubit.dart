@@ -16,6 +16,8 @@ class AppCubit extends Cubit<AppState> {
     ElevesScreen(),
   ];
 
+  
+
   // Lists
   static List<Map> elevePrimaire = [];
   static List<Map> elevecollege = [];
@@ -333,7 +335,7 @@ class AppCubit extends Cubit<AppState> {
     }
 
     for(int i = 0; i < payement.length; i++){
-      payementNames.add(payement[i]["name"]);
+      payementNames.add(payement[i]["eleveName"]);
     }
 
     emit(GetDataState());
@@ -494,8 +496,9 @@ class AppCubit extends Cubit<AppState> {
     getdata(database!);
   }
 
-  void updateData(Map model) async {
-    if (payementNames.contains(model["name"])) {
+  void updateData(Map model, from) async {
+  
+    if (payementNames.contains(model["name"]) && from) {
       database!.rawUpdate(
         "UPDATE payment SET eleveName = ?,matiere = ? hepaythisMonth = ?,payedlastmonth = ?,nonPayedMonths = ? WHERE id = ?",
         [
@@ -549,7 +552,8 @@ class AppCubit extends Cubit<AppState> {
             model["french"],
             model["english"],
             model["id"]
-          ]);
+          ]
+          );
     }
     emit(UpdateData());
     getdata(database!);
@@ -563,7 +567,7 @@ class AppCubit extends Cubit<AppState> {
           payementForUsing[i]["nonPayedMonths"] += 1;
         }
         payementForUsing[i]["hepaythisMonth"] == 0;
-        updateData(payementForUsing[i]);
+        updateData(payementForUsing[i], true);
       }
     }
     emit(ChekPayments());
@@ -607,7 +611,20 @@ class AppCubit extends Cubit<AppState> {
       database!
           .rawDelete('DELETE FROM EleveCalulate WHERE id = ?', [model["id"]]);
     }
+    if(payementNames.contains(model["name"])){
+      Map mod = payement[payementNames.indexOf(model["name"])];
+      print(mod);
+      database!.rawDelete('DELETE FROM payment WHERE id = ?', [model["id"]]);
+    }
     emit(DeleteData());
     getdata(database!);
+  }
+  void addPayment(name,matiere,) async {
+    database!.transaction((txn) async {
+      txn.rawInsert(
+        'INSERT INTO payment (eleveName,matiere,hepaythisMonth,payedlastmonth,nonPayedMonths) VALUES(?,?,?,?,?)',
+        [name,matiere,0,1,0]
+      );
+    });
   }
 }
