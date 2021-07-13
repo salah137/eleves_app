@@ -22,15 +22,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa0f67b8-8c17-4403-a3e7-f86ad498174c" name="Default Changelist" comment="Initail">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="aa0f67b8-8c17-4403-a3e7-f86ad498174c" name="Default Changelist" comment="&#10;Any One gonna to read these so I gonna to write an understandable things Ok.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/main/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/lib/screens/AddOneScree.dart" beforeDir="false" afterPath="$PROJECT_DIR$/main/lib/screens/AddOneScree.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/lib/screens/EleveScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/main/lib/screens/EleveScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/lib/screens/SelectLevel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/main/lib/screens/SelectLevel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/lib/shared/components/components.dart" beforeDir="false" afterPath="$PROJECT_DIR$/main/lib/shared/components/components.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/lib/shared/cubit/AppCubit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/main/lib/shared/cubit/AppCubit.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +48,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/flutter/bin/cache/dart-sdk" />
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="additionalArgs" value="--no-sound-null-safety" />
       <option name="filePath" value="$PROJECT_DIR$/main/lib/main.dart" />
       <method v="2" />
     </configuration>
@@ -88,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625483596833</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="&#10;Any One gonna to read these so I gonna to write an understandable things Ok.">
+      <created>1625762192359</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1625762192359</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -115,68 +117,96 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initail" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initail" />
+    <MESSAGE value="&#10;Any One gonna to read these so I gonna to write an understandable things Ok." />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;Any One gonna to read these so I gonna to write an understandable things Ok." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="0" y="19" width="1024" height="722" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1625430165081">
+    <state x="197" y="197" width="620" height="339" key="#Notifications" timestamp="1625930547329">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state x="0" y="19" width="1024" height="722" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1024.741@0.0.1024.741" timestamp="1625430165081" />
+    <state x="197" y="197" width="620" height="339" key="#Notifications/0.0.1024.741@0.0.1024.741" timestamp="1625930547329" />
+    <state x="0" y="19" width="1024" height="722" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1625772306367">
+      <screen x="0" y="0" width="1024" height="741" />
+    </state>
+    <state x="0" y="19" width="1024" height="722" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1024.741@0.0.1024.741" timestamp="1625772306367" />
     <state x="239" y="159" width="525" height="408" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1625571584037">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
     <state x="239" y="159" width="525" height="408" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1024.741@0.0.1024.741" timestamp="1625571584037" />
-    <state x="100" y="100" width="814" height="534" key="DiffContextDialog" timestamp="1625745154454">
+    <state x="270" y="0" key="#xdebugger.evaluate" timestamp="1625772954983">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state x="100" y="100" width="814" height="534" key="DiffContextDialog/0.0.1024.741@0.0.1024.741" timestamp="1625745154454" />
+    <state x="270" y="0" key="#xdebugger.evaluate/0.0.1024.741@0.0.1024.741" timestamp="1625772954983" />
+    <state x="100" y="100" width="824" height="540" key="AVDManager" timestamp="1625856524341">
+      <screen x="0" y="0" width="1024" height="741" />
+    </state>
+    <state x="100" y="100" width="824" height="540" key="AVDManager/0.0.1024.741@0.0.1024.741" timestamp="1625856524341" />
+    <state x="100" y="100" width="814" height="534" key="DiffContextDialog" timestamp="1625763494499">
+      <screen x="0" y="0" width="1024" height="741" />
+    </state>
+    <state x="100" y="100" width="814" height="534" key="DiffContextDialog/0.0.1024.741@0.0.1024.741" timestamp="1625763494499" />
     <state x="295" y="128" width="424" height="478" key="FileChooserDialogImpl" timestamp="1625750698969">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
     <state x="295" y="128" width="424" height="478" key="FileChooserDialogImpl/0.0.1024.741@0.0.1024.741" timestamp="1625750698969" />
-    <state width="982" height="169" key="GridCell.Tab.0.bottom" timestamp="1625576202723">
+    <state width="962" height="292" key="GridCell.Tab.0.bottom" timestamp="1625934928310">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state width="982" height="169" key="GridCell.Tab.0.bottom/0.0.1024.741@0.0.1024.741" timestamp="1625576202723" />
-    <state width="982" height="169" key="GridCell.Tab.0.center" timestamp="1625576202722">
+    <state width="962" height="292" key="GridCell.Tab.0.bottom/0.0.1024.741@0.0.1024.741" timestamp="1625934928310" />
+    <state width="962" height="292" key="GridCell.Tab.0.center" timestamp="1625934928310">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state width="982" height="169" key="GridCell.Tab.0.center/0.0.1024.741@0.0.1024.741" timestamp="1625576202722" />
-    <state width="982" height="169" key="GridCell.Tab.0.left" timestamp="1625576202722">
+    <state width="962" height="292" key="GridCell.Tab.0.center/0.0.1024.741@0.0.1024.741" timestamp="1625934928310" />
+    <state width="962" height="292" key="GridCell.Tab.0.left" timestamp="1625934928310">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state width="982" height="169" key="GridCell.Tab.0.left/0.0.1024.741@0.0.1024.741" timestamp="1625576202722" />
-    <state width="982" height="169" key="GridCell.Tab.0.right" timestamp="1625576202722">
+    <state width="962" height="292" key="GridCell.Tab.0.left/0.0.1024.741@0.0.1024.741" timestamp="1625934928310" />
+    <state width="962" height="292" key="GridCell.Tab.0.right" timestamp="1625934928310">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state width="982" height="169" key="GridCell.Tab.0.right/0.0.1024.741@0.0.1024.741" timestamp="1625576202722" />
+    <state width="962" height="292" key="GridCell.Tab.0.right/0.0.1024.741@0.0.1024.741" timestamp="1625934928310" />
     <state x="313" y="10" width="388" height="714" key="RollbackChangesDialog" timestamp="1625575018512">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
     <state x="313" y="10" width="388" height="714" key="RollbackChangesDialog/0.0.1024.741@0.0.1024.741" timestamp="1625575018512" />
-    <state x="-43" y="11" width="992" height="730" key="SettingsEditor" timestamp="1625742644297">
+    <state x="0" y="11" width="992" height="730" key="SettingsEditor" timestamp="1625855649301">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state x="-43" y="11" width="992" height="730" key="SettingsEditor/0.0.1024.741@0.0.1024.741" timestamp="1625742644297" />
+    <state x="0" y="11" width="992" height="730" key="SettingsEditor/0.0.1024.741@0.0.1024.741" timestamp="1625855649301" />
     <state width="498" height="445" key="SwitcherDM" timestamp="1625595057645">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
     <state width="498" height="445" key="SwitcherDM/0.0.1024.741@0.0.1024.741" timestamp="1625595057645" />
-    <state x="107" y="102" width="800" height="530" key="Vcs.Push.Dialog.v2" timestamp="1625483585489">
+    <state x="107" y="102" width="800" height="530" key="Vcs.Push.Dialog.v2" timestamp="1625762201766">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state x="107" y="102" width="800" height="530" key="Vcs.Push.Dialog.v2/0.0.1024.741@0.0.1024.741" timestamp="1625483585489" />
+    <state x="107" y="102" width="800" height="530" key="Vcs.Push.Dialog.v2/0.0.1024.741@0.0.1024.741" timestamp="1625762201766" />
+    <state x="228" y="22" width="557" height="689" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1625761897690">
+      <screen x="0" y="0" width="1024" height="741" />
+    </state>
+    <state x="228" y="22" width="557" height="689" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1024.741@0.0.1024.741" timestamp="1625761897690" />
     <state x="319" y="283" width="376" height="168" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1625483576834">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
     <state x="319" y="283" width="376" height="168" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1024.741@0.0.1024.741" timestamp="1625483576834" />
-    <state x="176" y="163" key="run.anything.popup" timestamp="1625744841870">
+    <state x="176" y="163" key="run.anything.popup" timestamp="1625769198613">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
-    <state x="176" y="163" key="run.anything.popup/0.0.1024.741@0.0.1024.741" timestamp="1625744841870" />
+    <state x="176" y="163" key="run.anything.popup/0.0.1024.741@0.0.1024.741" timestamp="1625769198613" />
     <state x="175" y="62" width="672" height="678" key="search.everywhere.popup" timestamp="1625740526670">
       <screen x="0" y="0" width="1024" height="741" />
     </state>
     <state x="175" y="62" width="672" height="678" key="search.everywhere.popup/0.0.1024.741@0.0.1024.741" timestamp="1625740526670" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/main/lib/screens/EleveScreen.dart</url>
+          <line>1804</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
